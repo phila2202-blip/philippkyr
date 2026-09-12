@@ -34,6 +34,24 @@
         <p>Cloud-zentrierte Ansätze stoßen in diesem Kontext an physikalische Grenzen, da die Übertragung umfangreicher Rohdatenströme über weite Distanzen die verfügbare Bandbreite belastet und eine lokale Reaktionsfähigkeit erschwert. Im Rahmen dieser Masterarbeit wurde daher ein containerisierter Softwareprototyp für eine dezentrale IIoT-Architektur entwickelt, um den Anforderungen einer autonomen Überwachung und Analyse industrieller Anlagen am Netzwerkrand gerecht zu werden. Die Zielsetzung lag in der Konzeption, prototypischen Entwicklung und Evaluierung dieser Architektur, die speziell für den Einsatz in verteilten Edge-Umgebungen ohne zwingende Abhängigkeit von zentralen Cloud-Instanzen konzipiert wurde.</p>
         <p>Methodisch folgt die Arbeit dem Design-Science-Research-Ansatz nach Hevner, dessen Drei-Zyklen-Modell den Forschungsprozess in theoretische Fundierung, Anwendungsbezug und iterative Artefaktentwicklung gliedert. Das entworfene Architekturkonzept überträgt die Prinzipien der Lambda-Architektur auf eine dezentrale Edge-Umgebung und kombiniert einen latenzoptimierten Speed-Layer für Echtzeitabfragen mit einem durchsatzoptimierten Batch-Layer für die dauerhafte Persistierung. Eine polyglotte Datenhaltung verbindet eine Zeitreihendatenbank mit einer Graphdatenbank für die topologische Anlagenmodellierung, während ein graphgestütztes Semantic-Routing-Verfahren die zonenübergreifende Datenverfügbarkeit über Shadow-Replikation ohne zentrale Koordinationsinstanz ermöglicht.</p>
         <p>Der entwickelte Softwareprototyp wurde in einem Testbed mit zwölf autonomen Edge-Knoten und mehreren Tausend simulierten Sensorkanälen vollständig implementiert und anhand von acht Experimenten unter Laborbedingungen auf dem Technologie-Reifegrad TRL-4 evaluiert. Die identifizierten Limitationen, insbesondere die Co-Location aller Container auf einer einzelnen physischen Maschine, wurden dokumentiert und bilden den Ausgangspunkt für weiterführende Feldvalidierungen auf physisch verteilter Hardware.</p>
+        
+        <div class="image-gallery">
+            <figure>
+                <!-- Platzhalter: Bitte speichere ein Bild deiner Architektur als architektur.jpg im Ordner img/masterarbeit/ -->
+                <img src="../img/masterarbeit/architektur.jpg" alt="Architekturkonzept und Systementwurf" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
+                <figcaption>Systemarchitektur: Edge, Fog &amp; Cloud Layer</figcaption>
+            </figure>
+            <figure>
+                <!-- Platzhalter: Bitte speichere ein Bild deines Shadow-Graphen als shadow-graph.jpg im Ordner img/masterarbeit/ -->
+                <img src="../img/masterarbeit/shadow-graph.jpg" alt="Shadow-Graph-Synchronisation" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
+                <figcaption>Graphgesteuerte Orchestrierung &amp; Shadow-Graphen</figcaption>
+            </figure>
+            <figure>
+                <!-- Platzhalter: Bitte speichere ein Bild vom Dashboard als dashboard.jpg im Ordner img/masterarbeit/ -->
+                <img src="../img/masterarbeit/dashboard.jpg" alt="Dashboard Ansicht" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
+                <figcaption>Operatives Dashboard &amp; Echtzeitüberwachung</figcaption>
+            </figure>
+        </div>
     </section>
 
     <section id="tags" class="project-section" style="margin-top: 40px;">
