@@ -9,14 +9,14 @@
 
 /* ===== Basis ===== */
 :root {
-    --dark: #333;
-    --dark-2: #444;
-    --accent: #ff9900;
-    --accent-hover: #e68a00;
-    --bg: #f9f9f9;
-    --text: #333;
-    --muted: #555;
-    --line: #ddd;
+    --dark: #02110d;
+    --dark-2: rgba(7, 44, 33, 0.6);
+    --accent: #00e5a0;
+    --accent-hover: #00c78a;
+    --bg-gradient: radial-gradient(circle at top, #072c21 0%, #02110d 100%);
+    --text: #f0f0f0;
+    --muted: #a0b2ac;
+    --line: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -27,24 +27,28 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 60px; /* damit Überschriften nicht unter der fixen Navigation landen */
+    scroll-padding-top: 80px;
 }
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text);
-    background-color: var(--bg);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 a {
     color: var(--accent);
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--accent-hover);
+    text-decoration: none;
 }
 
 img {
@@ -53,24 +57,27 @@ img {
 
 /* ===== Header ===== */
 header {
-    background-color: var(--dark);
-    color: #fff;
     text-align: center;
-    padding: 24px 20px;
+    padding: 60px 20px 40px;
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
 }
 
 header p {
     font-size: 1.2rem;
+    color: var(--muted);
 }
 
 /* ===== Navigation ===== */
 nav {
-    background-color: var(--dark-2);
+    background-color: rgba(2, 17, 13, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -81,7 +88,7 @@ nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px;
+    padding: 15px 10px;
 }
 
 nav li {
@@ -90,12 +97,12 @@ nav li {
 
 nav a {
     color: #fff;
+    font-weight: 400;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
     color: var(--accent);
-    text-decoration: none;
 }
 
 /* ===== Inhalt ===== */
@@ -106,19 +113,25 @@ nav a:hover {
 }
 
 section {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 section h2 {
     display: inline-block;
     font-size: 1.8rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     padding-bottom: 5px;
     border-bottom: 2px solid var(--accent);
+    color: #fff;
 }
 
 .list {
     margin-left: 32px;
+    color: var(--muted);
+}
+
+.list li {
+    margin-bottom: 8px;
 }
 
 /* Profil */
@@ -126,7 +139,11 @@ section h2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
+    background: var(--dark-2);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
 }
 
 .profile img {
@@ -134,6 +151,8 @@ section h2 {
     height: 250px;
     object-fit: cover;
     border-radius: 50%;
+    border: 2px solid var(--accent);
+    padding: 5px;
 }
 
 .profile-content {
@@ -141,29 +160,48 @@ section h2 {
     min-width: 280px;
 }
 
+.profile-content p {
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
 /* Button */
 .btn {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    color: #fff;
+    margin-top: 15px;
+    padding: 12px 28px;
+    color: #02110d;
     background-color: var(--accent);
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
     background-color: var(--accent-hover);
-    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 229, 160, 0.3);
+    color: #02110d;
 }
 
 /* ===== Projektübersicht ===== */
 .project-entry {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line);
+    gap: 30px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background: var(--dark-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.project-entry:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 229, 160, 0.3);
 }
 
 .project-thumbnail {
@@ -172,10 +210,20 @@ section h2 {
     flex-shrink: 0;
     object-fit: cover;
     border-radius: 50%;
+    border: 2px solid var(--line);
 }
 
 .project-content {
     flex: 1;
+}
+
+.project-content h2 {
+    border-bottom: none;
+    margin-bottom: 10px;
+}
+
+.project-content p {
+    color: var(--muted);
 }
 
 /* ===== Projekt-Detailseite ===== */
@@ -184,18 +232,20 @@ section h2 {
     height: auto;
     margin: 20px auto;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--line);
 }
 
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 30px;
     margin-bottom: 30px;
-    background-color: #eee;
-    border-radius: 10px;
+    background-color: var(--dark-2);
+    border-radius: 16px;
+    border: 1px solid var(--line);
 }
 
 .image-gallery figure {
@@ -205,12 +255,12 @@ section h2 {
 
 .image-gallery img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .image-gallery figcaption {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 0.9rem;
     color: var(--muted);
 }
@@ -218,84 +268,93 @@ section h2 {
 .project-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 24px;
-    margin: 0 0 30px;
-    padding: 16px 20px;
-    background-color: #fff;
+    gap: 12px 30px;
+    margin: 0 0 40px;
+    padding: 20px 25px;
+    background-color: var(--dark-2);
     border-left: 4px solid var(--accent);
-    border-radius: 4px;
+    border-radius: 8px;
+    color: var(--muted);
+}
+
+.project-meta strong {
+    color: #fff;
 }
 
 .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 8px;
+    margin: 15px 0;
     list-style: none;
 }
 
 .tags li {
-    padding: 2px 10px;
+    padding: 4px 12px;
     font-size: 0.85rem;
-    color: #fff;
-    background-color: var(--dark-2);
-    border-radius: 12px;
+    color: var(--accent);
+    background-color: rgba(0, 229, 160, 0.1);
+    border: 1px solid rgba(0, 229, 160, 0.2);
+    border-radius: 20px;
+}
+
+.project-section p {
+    color: var(--muted);
 }
 
 .project-section p + p,
 .project-section p + .list,
 .project-section .list + p {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .table-wrap {
     overflow-x: auto;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 table {
     border-collapse: collapse;
     min-width: 420px;
-    background-color: #fff;
+    width: 100%;
+    background-color: var(--dark-2);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 8px 14px;
-    text-align: center;
-    border: 1px solid var(--line);
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
 }
 
 th {
     color: #fff;
-    background-color: var(--dark-2);
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 500;
 }
 
 .hinweis {
     font-size: 0.9rem;
     color: var(--muted);
-}
-
-/* ===== Impressum ===== */
-.legal section h2 {
-    font-size: 1.4rem;
-}
-
-.legal p + p {
-    margin-top: 10px;
+    font-style: italic;
 }
 
 /* ===== Footer ===== */
 footer {
     background-color: var(--dark);
-    color: #fff;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
+    margin-top: 40px;
 }
 
 /* ===== Mobil ===== */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     header p {
@@ -312,13 +371,14 @@ footer {
     }
 
     nav li {
-        margin: 6px 0;
+        margin: 8px 0;
     }
 
     .profile {
         flex-direction: column;
         text-align: center;
-        gap: 20px;
+        gap: 25px;
+        padding: 25px;
     }
 
     .profile .list {
@@ -329,5 +389,10 @@ footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 25px;
+    }
+    
+    .tags {
+        justify-content: center;
     }
 }
