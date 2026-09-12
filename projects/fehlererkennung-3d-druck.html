@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fehlererkennung im 3D-Druck – Philipp Kyr BSc</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+    <h1>Fehlererkennung im FDM-3D-Druck</h1>
+    <p>Prototypisches Computer-Vision-Konzept mit Tiefenkamera und neuronalem Netz</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../projects.html">Projekte</a></li>
+        <li><a href="#ausgangslage">Ausgangslage</a></li>
+        <li><a href="#umsetzung">Umsetzung</a></li>
+        <li><a href="#vermessung">Vermessung</a></li>
+        <li><a href="#ergebnisse">Ergebnisse</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <div class="project-meta">
+        <span><strong>Zeitraum:</strong> WS22 – SS23</span>
+        <span><strong>Rahmen:</strong> Duales Praxisprojekt (PT4), 6. Semester, BSc Smart Engineering</span>
+        <span><strong>Rolle:</strong> Projektleitung &amp; Umsetzung</span>
+        <span><strong>Betreuung:</strong> FH-Prof. Dr. Thomas Felberbauer, MSc · Dipl.-Ing. Christoph Braun, BSc</span>
+    </div>
+
+    <section id="ausgangslage" class="project-section">
+        <h2>Ausgangslage</h2>
+        <p>Fehler im 3D-Druck – etwa Löcher oder Maßabweichungen – fallen oft erst am Ende eines stundenlangen
+            Drucks auf und kosten Material und Zeit. Ein vorangegangenes Projekt hatte gezeigt, dass reine
+            2D-Aufnahmen der eingebauten Druckerkamera an ihre Grenzen stoßen. Ziel dieses Projekts war es daher,
+            die Fehlererkennung durch eine 3D-Kamera mit zusätzlichen Tiefeninformationen zu verbessern.</p>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/3d-druck/stiftehalter.jpg" alt="3D-gedruckter Stiftehalter als Testobjekt">
+                <figcaption>Testobjekt: Stiftehalter (50 × 50 × 80 mm)</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/3d-druck/realsense-streams.jpg" alt="Video-Streams der Intel RealSense D435">
+                <figcaption>Farb-, Tiefen- und Infrarot-Streams der Intel RealSense D435</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="umsetzung" class="project-section">
+        <h2>Umsetzung: zwei Segmentierungsansätze</h2>
+        <p><strong>1. Histogrammanalyse mit Tiefeninformation:</strong> Der bestehende Algorithmus auf Basis der
+            Maximal Histogram Acceleration (MHA) wurde um die Tiefendaten erweitert. Farb- und Tiefensegmentierung
+            wurden per ODER- bzw. UND-Verknüpfung kombiniert. An den Objekträndern brachte das kaum Verbesserung,
+            beim Schließen von Lücken in der Maske jedoch einen klaren Vorteil – Löcher im Druck werden so
+            früher sichtbar.</p>
+        <p><strong>2. Neuronales Netz mit Tiefen-Prompts:</strong> Der MHA-Algorithmus wird zeilenweise auf die
+            Tiefendaten angewendet, um den Übergang zwischen Druckbett und Objekt automatisch zu finden. Diese
+            Übergangspunkte dienen als Prompts für Metas <em>Segment Anything Model</em> (SAM), das sich als
+            robust gegenüber Reflexionen, Über- und Unterbelichtung erwies. Mehrere Prompts entlang der Übergänge
+            lieferten deutlich weniger Artefakte als Prompts in den Ecken.</p>
+        <div class="image-gallery">
+            <figure style="width: 240px;">
+                <img src="../img/3d-druck/sam-segmentierung.jpg" alt="Segmentierung mit dem Segment Anything Model">
+                <figcaption>SAM-Segmentierung: 1 = Prompts entlang der Übergänge, 2 = Prompts in den Ecken</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="vermessung" class="project-section">
+        <h2>Vermessung &amp; Fehlererkennung</h2>
+        <ul class="list">
+            <li><strong>Höhe:</strong> erste und letzte Zeile der Segmentierungsmaske mit ausreichend Objektpixeln</li>
+            <li><strong>Breite:</strong> zeilenweise über Minimum und Maximum der Objektpixel</li>
+            <li><strong>Fläche:</strong> Summe der Objektpixel innerhalb definierter Tiefen-Schwellwerte</li>
+            <li><strong>Abgleich:</strong> XOR-Verknüpfung mit einer Referenzmaske liefert den Pixelfehler pro Zeile;
+                Schwellwerte reduzieren Fehlalarme</li>
+        </ul>
+    </section>
+
+    <section id="ergebnisse" class="project-section">
+        <h2>Ergebnisse</h2>
+        <p>Der Prototyp wurde mit der manuellen Segmentierung durch drei Testpersonen verglichen. Die Tabelle zeigt
+            die Abweichung der Gesamtfläche von der Referenz in Prozent:</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>Testlauf</th><th>Prototyp</th><th>Person 1</th><th>Person 2</th><th>Person 3</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>1</td><td>7</td><td>6</td><td>15</td><td>11</td></tr>
+                <tr><td>2</td><td>2</td><td>1</td><td>3</td><td>3</td></tr>
+                <tr><td>3</td><td>3</td><td>5</td><td>4</td><td>7</td></tr>
+                <tr><td>4</td><td>5</td><td>2</td><td>3</td><td>4</td></tr>
+                <tr><td>5</td><td>4</td><td>6</td><td>11</td><td>4</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Der Prototyp liegt damit auf dem Niveau der manuellen Segmentierung. Außerdem wurde festgestellt, dass die
+            RealSense D435 bereits ab 20,5&nbsp;cm vollständige Tiefendaten liefert (Datenblatt: 28&nbsp;cm). Als
+            nächste Schritte bieten sich mehr Testläufe, mehrere Kameraperspektiven und die Umrechnung der
+            Pixelwerte in Millimeter über die Tiefeninformation an.</p>
+        <p class="hinweis">Hinweis: Die Ergebnisse beruhen auf einer begrenzten Anzahl an Testläufen und sind als
+            erste Basis für weitere Untersuchungen zu verstehen.</p>
+        <ul class="tags">
+            <li>Python 3.10</li><li>OpenCV</li><li>NumPy</li><li>SciPy</li><li>pyrealsense2</li>
+            <li>Segment Anything Model</li><li>Intel RealSense D435</li>
+        </ul>
+        <a class="btn" href="../projects.html">Zurück zu den Projekten</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

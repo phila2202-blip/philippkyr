@@ -1,0 +1,333 @@
+/* ===== Schrift (lokal eingebunden, keine Verbindung zu Google) ===== */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== Basis ===== */
+:root {
+    --dark: #333;
+    --dark-2: #444;
+    --accent: #ff9900;
+    --accent-hover: #e68a00;
+    --bg: #f9f9f9;
+    --text: #333;
+    --muted: #555;
+    --line: #ddd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px; /* damit Überschriften nicht unter der fixen Navigation landen */
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+a {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ===== Header ===== */
+header {
+    background-color: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 24px 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+/* ===== Navigation ===== */
+nav {
+    background-color: var(--dark-2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Inhalt ===== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    display: inline-block;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--accent);
+}
+
+.list {
+    margin-left: 32px;
+}
+
+/* Profil */
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    text-decoration: none;
+}
+
+/* ===== Projektübersicht ===== */
+.project-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.project-thumbnail {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.project-content {
+    flex: 1;
+}
+
+/* ===== Projekt-Detailseite ===== */
+.project-section img {
+    display: block;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.image-gallery figure {
+    width: 300px;
+    text-align: center;
+}
+
+.image-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-gallery figcaption {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin: 0 0 30px;
+    padding: 16px 20px;
+    background-color: #fff;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    list-style: none;
+}
+
+.tags li {
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    color: #fff;
+    background-color: var(--dark-2);
+    border-radius: 12px;
+}
+
+.project-section p + p,
+.project-section p + .list,
+.project-section .list + p {
+    margin-top: 10px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 420px;
+    background-color: #fff;
+}
+
+th, td {
+    padding: 8px 14px;
+    text-align: center;
+    border: 1px solid var(--line);
+}
+
+th {
+    color: #fff;
+    background-color: var(--dark-2);
+}
+
+.hinweis {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* ===== Impressum ===== */
+.legal section h2 {
+    font-size: 1.4rem;
+}
+
+.legal p + p {
+    margin-top: 10px;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ===== Mobil ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    nav {
+        position: static;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 6px 0;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profile .list {
+        text-align: left;
+    }
+
+    .project-entry {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
