@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekte – Philipp Kyr BSc</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>Projekte</h1>
+    <p>Computer Vision, neuronale Netze und interaktive Systeme für Industrie 4.0</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Portfolio</a></li>
+        <li><a href="#werkerassistenz">Werkerassistenzsystem</a></li>
+        <li><a href="#fehlererkennung-3d-druck">Fehlererkennung im 3D-Druck</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <section id="werkerassistenz" class="project-entry">
+        <img class="project-thumbnail" src="img/werkerassistenz/thumb.jpg" alt="Thumbnail Werkerassistenzsystem">
+        <div class="project-content">
+            <h2>Projektionsbasiertes Werkerassistenzsystem mit Computer Vision</h2>
+            <p>Ein Kamera-Projektor-System für das Industrie 4.0 Lab der FH St. Pölten, das Anwender*innen Schritt
+                für Schritt durch eine Baugruppenmontage führt – mit Objekterkennung, Gestensteuerung und
+                optischem Feedback direkt auf der Arbeitsfläche.</p>
+            <ul class="tags">
+                <li>Python</li><li>OpenCV</li><li>YOLOv5</li><li>MediaPipe</li><li>Node-RED</li>
+            </ul>
+            <a class="btn" href="projects/werkerassistenzsystem.html">Mehr erfahren</a>
+        </div>
+    </section>
+
+    <section id="fehlererkennung-3d-druck" class="project-entry">
+        <img class="project-thumbnail" src="img/3d-druck/thumb.jpg" alt="Thumbnail Fehlererkennung im 3D-Druck">
+        <div class="project-content">
+            <h2>Fehlererkennung im FDM-3D-Druck mit Tiefenkamera</h2>
+            <p>Ein prototypisches Computer-Vision-Konzept, das Farb- und Tiefeninformationen einer Intel RealSense
+                D435 mit dem neuronalen Netz „Segment Anything“ kombiniert, um 3D-Druckobjekte zu segmentieren,
+                zu vermessen und Abweichungen zu erkennen.</p>
+            <ul class="tags">
+                <li>Python</li><li>OpenCV</li><li>Intel RealSense</li><li>Segment Anything</li><li>NumPy</li>
+            </ul>
+            <a class="btn" href="projects/fehlererkennung-3d-druck.html">Mehr erfahren</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

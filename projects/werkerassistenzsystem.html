@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Werkerassistenzsystem – Philipp Kyr BSc</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+    <h1>Projektionsbasiertes Werkerassistenzsystem</h1>
+    <p>Computer Vision Konzept für das Industrie 4.0 Lab der FH St. Pölten</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../projects.html">Projekte</a></li>
+        <li><a href="#ziel">Ziel</a></li>
+        <li><a href="#kalibrierung">Kalibrierung</a></li>
+        <li><a href="#objekterkennung">Objekterkennung</a></li>
+        <li><a href="#steuerung">Steuerung</a></li>
+        <li><a href="#ergebnis">Ergebnis</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <div class="project-meta">
+        <span><strong>Zeitraum:</strong> Februar – Juli 2022 (SS22)</span>
+        <span><strong>Rahmen:</strong> Duales Praxisprojekt, 4. Semester, BSc Smart Engineering</span>
+        <span><strong>Rolle:</strong> Projektleitung &amp; Umsetzung</span>
+        <span><strong>Betreuung:</strong> Dipl.-Ing. Christoph Braun, BSc · FH-Prof. Dr. Thomas Felberbauer, MSc</span>
+    </div>
+
+    <section id="ziel" class="project-section">
+        <h2>Ziel des Projekts</h2>
+        <p>Im Industrie 4.0 Lab sollten die Möglichkeiten von Computer Vision möglichst anschaulich demonstriert
+            werden. Die Idee: ein Assistenzsystem, das eine Person durch eine Baugruppenmontage begleitet. Eine
+            Kamera analysiert den Arbeitsplatz, ein Projektor blendet Arbeitsschritte, Bauteilinformationen und
+            farbige Markierungen direkt auf der Arbeitsfläche ein.</p>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/werkerassistenz/laborarbeitsplatz.jpg" alt="Laborarbeitsplatz im Industrie 4.0 Lab">
+                <figcaption>Laborarbeitsplatz mit Kamera und Projektor</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/programmablauf.jpg" alt="Programmablauf des Systems">
+                <figcaption>Programmablauf: Kalibrierung, Bildaufnahme, Erkennung, Projektion</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="kalibrierung" class="project-section">
+        <h2>Kamera-Projektor-Kalibrierung</h2>
+        <p>Die größte Herausforderung war, Kamera und Projektor exakt aufeinander abzustimmen. Ein erster Ansatz
+            mit farbigen Markierungen (Blob-Detection) war zu anfällig für Helligkeit, Lichtfarbe und
+            Kamerawinkel und wurde verworfen.</p>
+        <p>Die Lösung war eine eigene Chessboard-Detection:</p>
+        <ul class="list">
+            <li>Ein Algorithmus berechnet die optimale Feldgröße des Schachbretts für die Projektorauflösung
+                (minimaler Pixelfehler, gleichmäßige Messpunktverteilung).</li>
+            <li>Das projizierte, rotierende Schachbrett dient zur automatischen Entzerrung der Kamera.</li>
+            <li>Über eine Perspektiven-Transformation und einen Binärbildabgleich wird die Pixelverschiebung
+                ermittelt und in X- und Y-Richtung automatisch korrigiert.</li>
+        </ul>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/werkerassistenz/schachbrett-projektion.jpg" alt="Projiziertes Schachbrettmuster">
+                <figcaption>Erkennung des projizierten Schachbretts</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/schachbrett-arbeitsflaeche.jpg" alt="Schachbrett auf der Arbeitsfläche">
+                <figcaption>Kalibrierung auf der Arbeitsfläche</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/perspektiven-transformation.jpg" alt="Perspektiven-Transformation">
+                <figcaption>Perspektiven-Transformation</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="objekterkennung" class="project-section">
+        <h2>Objekterkennung mit YOLOv5</h2>
+        <p>Für die Erkennung der Bauteile (Arduino, Bluetooth-Modul, Breadboard, ESP, Drehgeber) wurde YOLOv5
+            trainiert. Nach rund 100 händisch in Roboflow annotierten Aufnahmen übernahm ein eigenes Skript mit dem
+            ersten trainierten Modell die Annotation automatisch – so wuchs das Datenset auf mehrere tausend
+            Objekte. Der Tracking-Algorithmus SORT, ergänzt um eine eigene Glättung, verhindert das „Zittern“ der
+            erkannten Positionen.</p>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/werkerassistenz/roboflow-annotation.jpg" alt="Annotation in Roboflow">
+                <figcaption>Annotation der Bauteile in Roboflow</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/datenset.jpg" alt="Anzahl der Objekte im Datenset">
+                <figcaption>Anzahl der aufgenommenen Objekte pro Klasse</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/yolov5-training.jpg" alt="YOLOv5 Trainingsverlauf">
+                <figcaption>Trainingsverlauf (mAP) von YOLOv5</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="steuerung" class="project-section">
+        <h2>Gestensteuerung, Node-RED &amp; Softwarearchitektur</h2>
+        <ul class="list">
+            <li><strong>Gestensteuerung:</strong> Mit MediaPipe wird die Hand erkannt; virtuelle, projizierte
+                Buttons lassen sich mit dem Zeigefinger auslösen.</li>
+            <li><strong>Node-RED Dashboard:</strong> Externe Kontrolle und Steuerung der Arbeitsschritte,
+                Kommunikation über UDP im JSON-Format.</li>
+            <li><strong>Performance:</strong> Bildverarbeitung, Kommunikation, Gestensteuerung und Objekterkennung
+                laufen als vier parallele Prozesse auf eigenen CPU-Kernen, verbunden über Pipes.</li>
+        </ul>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/werkerassistenz/gestensteuerung.jpg" alt="Gestensteuerung mit virtuellen Buttons">
+                <figcaption>Virtuelle Buttons per Zeigefinger</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="ergebnis" class="project-section">
+        <h2>Ergebnis</h2>
+        <p>Entstanden ist ein funktionsfähiges Werkerassistenzsystem, das in acht Schritten durch den Aufbau
+            einer LED-Steuerung mit Arduino führt – von der Aufgabenbeschreibung über die Platzierung der Bauteile
+            bis zur Verdrahtung. Benötigte Bauteile werden erkannt und auf der Arbeitsfläche hervorgehoben. Das
+            System wurde im Mai 2022 einsatzbereit übergeben und für die Demonstration bei der Langen Nacht der
+            Forschung eingesetzt.</p>
+        <div class="image-gallery">
+            <figure>
+                <img src="../img/werkerassistenz/werkerassistenzsystem.jpg" alt="Werkerassistenzsystem auf der Projektionsfläche">
+                <figcaption>Werkerassistenzsystem auf der Projektionsfläche</figcaption>
+            </figure>
+            <figure>
+                <img src="../img/werkerassistenz/optisches-feedback.jpg" alt="Optisches Feedback bei der Objekterkennung">
+                <figcaption>Optisches Feedback: Objekterkennung und Markierung</figcaption>
+            </figure>
+        </div>
+        <ul class="tags">
+            <li>Python</li><li>OpenCV</li><li>YOLOv5</li><li>PyTorch</li><li>Roboflow</li><li>SORT</li>
+            <li>MediaPipe</li><li>Node-RED</li><li>Multiprocessing</li>
+        </ul>
+        <a class="btn" href="../projects.html">Zurück zu den Projekten</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
