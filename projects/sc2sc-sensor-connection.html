@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SC2SC – Sensor Connection to Siemens Controller – Philipp Kyr BSc</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+    <h1>SC2SC – Sensor Connection</h1>
+    <p>TCP/IP Datenschnittstelle zwischen Siemens S7 Controller und ESP32-Sensormodulen</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../projects.html">Projekte</a></li>
+        <li><a href="#beschreibung">Beschreibung</a></li>
+        <li><a href="#architektur">Architektur</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <div class="project-meta">
+        <span><strong>Zeitraum:</strong> WS 2023/2024</span>
+        <span><strong>Rahmen:</strong> Masterklassenprojekt Industrie 4.0 (MKL-PR-I4.0 PA mit23)</span>
+        <span><strong>Team:</strong> Philipp Kyr BSc, Ing. Andreas Jilch BSc</span>
+        <span><strong>Betreuung:</strong> FH-Prof. Dr. Markus Wagner, BSc MSc · Dipl.-Ing. Christoph Braun, BSc</span>
+    </div>
+
+    <section id="beschreibung" class="project-section">
+        <h2>Projektbeschreibung</h2>
+        <p>In diesem Projekt wurde eine selbstkonzipierte Datenschnittstelle (SC2SC) entwickelt, um eine zuverlässige TCP/IP-Verbindung zwischen einer Siemens S7 Speicherprogrammierbaren Steuerung (SPS) und ESP32-Mikrocontrollern herzustellen. Ziel war es, eine schnelle und benutzerfreundliche Erweiterung der Maschinensteuerung um kostengünstige, selbstentwickelte Sensoreinheiten zu ermöglichen.</p>
+        <p>Die Datenübertragung erfolgt durch eine festgelegte Nachrichtenstruktur (Header-Aufbau), welche eine dynamische Sensorabfrage sowie eine integrierte Fehlererkennung mittels CRC-8-Prüfsumme bietet. Das System wurde bis zum Technologiereifegrad TRL 3 ausgearbeitet und in einem physischen Testaufbau mit echten Hardwarekomponenten (Siemens CPU 1512SP F-1 PN, ESP32 Dev Kits) validiert.</p>
+        
+        <div class="image-gallery">
+            <figure>
+                <!-- Platzhalter: Bitte speichere ein Bild vom Testaufbau als testaufbau.jpg im Ordner img/sc2sc/ -->
+                <img src="../img/sc2sc/testaufbau.jpg" alt="Physischer Testaufbau" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
+                <figcaption>Testaufbau mit Siemens SPS und ESP32-Modulen</figcaption>
+            </figure>
+            <figure>
+                <!-- Platzhalter: Bitte speichere ein Bild des Schemas als schema.jpg im Ordner img/sc2sc/ -->
+                <img src="../img/sc2sc/schema.jpg" alt="Schnittstellen Schema" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
+                <figcaption>Logischer Aufbau der SC2SC-Schnittstelle</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="architektur" class="project-section">
+        <h2>Systemarchitektur &amp; Implementierung</h2>
+        <ul class="list">
+            <li><strong>Client-Server-Modell:</strong> Die Siemens S7 Steuerung agiert als Client, während die ESP32-Module als Server fungieren.</li>
+            <li><strong>Protokolldesign:</strong> Eigenes Kommunikationsprotokoll basierend auf TCP/IP mit Initialisierungs-Header und Sensordirektiven-Header für flexible Payload-Größen.</li>
+            <li><strong>Sicherheit &amp; Fehlerkorrektur:</strong> Implementierung eines 3-Way-Handshakes und einer zyklischen Redundanzprüfung (CRC) zur Absicherung der Datenübertragung.</li>
+            <li><strong>Hardware:</strong> Siemens SIMATIC S7-1500 (CPU 1512SP F-1 PN), SCALANCE XB008 Switch, ESP32 NodeMCU, diverse Sensoren (HTU21, ACS712).</li>
+            <li><strong>Software:</strong> TIA-Portal V18 (SCL/ST) für das Ablaufprogramm der Steuerung, Arduino IDE (C/C++) für die ESP32-Programmierung.</li>
+        </ul>
+        
+        <ul class="tags" style="margin-top: 30px;">
+            <li>Siemens S7 (TIA Portal)</li><li>ESP32</li><li>C/C++</li><li>SCL (Structured Control Language)</li><li>TCP/IP</li><li>IIoT</li>
+        </ul>
+        <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
