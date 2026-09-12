@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterarbeit – Philipp Kyr BSc</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+    <h1>Masterarbeit</h1>
+    <p>Technologische Konzeption eines IoT/IIoT-Systems zur skalierbaren Überwachung und Analyse dezentralisierter Daten</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="../projects.html">Projekte</a></li>
+        <li><a href="#kurzfassung">Kurzfassung</a></li>
+        <li><a href="#download">Download PDF</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+    <div class="project-meta">
+        <span><strong>Zeitraum:</strong> 2026</span>
+        <span><strong>Rahmen:</strong> Masterarbeit am Studiengang Interactive Technologies, Masterklasse Industrie 4.0</span>
+        <span><strong>Autor:</strong> Philipp Kyr BSc</span>
+        <span><strong>Betreuung:</strong> FH-Prof. Dr. Markus Wagner, BSc MSc · Dipl.-Ing. Dr. Christian Jandl</span>
+    </div>
+
+    <section id="kurzfassung" class="project-section">
+        <h2>Kurzfassung</h2>
+        <p>Die fortschreitende Digitalisierung industrieller Fertigungsprozesse führt zu stetig wachsenden Sensordatenmengen, deren dezentrale Erfassung, Verarbeitung und Speicherung bestehende Systemarchitekturen vor erhebliche Herausforderungen stellt. Diese resultieren insbesondere aus den strikten Latenzanforderungen zeitkritischer Steuerungsaufgaben, der Heterogenität industrieller Kommunikationsprotokolle sowie dem Fehlen integrierter Architekturvorschläge, die Edge-Computing, hybride Datenverarbeitung und flexible Persistenzstrategien in einem konsistenten Rahmen vereinen.</p>
+        <p>Cloud-zentrierte Ansätze stoßen in diesem Kontext an physikalische Grenzen, da die Übertragung umfangreicher Rohdatenströme über weite Distanzen die verfügbare Bandbreite belastet und eine lokale Reaktionsfähigkeit erschwert. Im Rahmen dieser Masterarbeit wurde daher ein containerisierter Softwareprototyp für eine dezentrale IIoT-Architektur entwickelt, um den Anforderungen einer autonomen Überwachung und Analyse industrieller Anlagen am Netzwerkrand gerecht zu werden. Die Zielsetzung lag in der Konzeption, prototypischen Entwicklung und Evaluierung dieser Architektur, die speziell für den Einsatz in verteilten Edge-Umgebungen ohne zwingende Abhängigkeit von zentralen Cloud-Instanzen konzipiert wurde.</p>
+        <p>Methodisch folgt die Arbeit dem Design-Science-Research-Ansatz nach Hevner, dessen Drei-Zyklen-Modell den Forschungsprozess in theoretische Fundierung, Anwendungsbezug und iterative Artefaktentwicklung gliedert. Das entworfene Architekturkonzept überträgt die Prinzipien der Lambda-Architektur auf eine dezentrale Edge-Umgebung und kombiniert einen latenzoptimierten Speed-Layer für Echtzeitabfragen mit einem durchsatzoptimierten Batch-Layer für die dauerhafte Persistierung. Eine polyglotte Datenhaltung verbindet eine Zeitreihendatenbank mit einer Graphdatenbank für die topologische Anlagenmodellierung, während ein graphgestütztes Semantic-Routing-Verfahren die zonenübergreifende Datenverfügbarkeit über Shadow-Replikation ohne zentrale Koordinationsinstanz ermöglicht.</p>
+        <p>Der entwickelte Softwareprototyp wurde in einem Testbed mit zwölf autonomen Edge-Knoten und mehreren Tausend simulierten Sensorkanälen vollständig implementiert und anhand von acht Experimenten unter Laborbedingungen auf dem Technologie-Reifegrad TRL-4 evaluiert. Die identifizierten Limitationen, insbesondere die Co-Location aller Container auf einer einzelnen physischen Maschine, wurden dokumentiert und bilden den Ausgangspunkt für weiterführende Feldvalidierungen auf physisch verteilter Hardware.</p>
+    </section>
+
+    <section id="download" class="project-section">
+        <h2>Download</h2>
+        <p>Die vollständige Masterarbeit kann hier als PDF heruntergeladen werden:</p>
+        <a class="btn" href="../docs/masterarbeit.pdf" target="_blank">📄 Masterarbeit PDF ansehen / herunterladen</a>
+        <br><br>
+        <ul class="tags">
+            <li>IIoT</li><li>Edge Computing</li><li>Lambda-Architektur</li><li>Neo4j</li><li>InfluxDB</li><li>NATS JetStream</li><li>Docker</li><li>Python</li>
+        </ul>
+        <a class="btn" href="../projects.html">Zurück zu den Projekten</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
