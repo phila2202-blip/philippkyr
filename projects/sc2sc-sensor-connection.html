@@ -30,9 +30,14 @@
     </div>
 
     <section id="beschreibung" class="project-section">
-        <h2>Projektbeschreibung</h2>
-        <p>In diesem Projekt wurde eine selbstkonzipierte Datenschnittstelle (SC2SC) entwickelt, um eine zuverlässige TCP/IP-Verbindung zwischen einer Siemens S7 Speicherprogrammierbaren Steuerung (SPS) und ESP32-Mikrocontrollern herzustellen. Ziel war es, eine schnelle und benutzerfreundliche Erweiterung der Maschinensteuerung um kostengünstige, selbstentwickelte Sensoreinheiten zu ermöglichen.</p>
-        <p>Die Datenübertragung erfolgt durch eine festgelegte Nachrichtenstruktur (Header-Aufbau), welche eine dynamische Sensorabfrage sowie eine integrierte Fehlererkennung mittels CRC-8-Prüfsumme bietet. Das System wurde bis zum Technologiereifegrad TRL 3 ausgearbeitet und in einem physischen Testaufbau mit echten Hardwarekomponenten (Siemens CPU 1512SP F-1 PN, ESP32 Dev Kits) validiert.</p>
+        <h2>Herausforderung & Problemstellung</h2>
+        <p>Für die Überwachung und Regelung industrieller Anlagen ist die Integration zusätzlicher Sensorik in bestehende Maschinensteuerungen (z.B. Siemens S7) oft aufwändig und teuer. Cloud-basierte Lösungen sind für zeitkritische Prozesse meist nicht geeignet. Die Herausforderung bestand darin, eine direkte, performante und fehlertolerante Datenübertragung von kostengünstigen Sensoren (ESP32) an eine Siemens-SPS zu ermöglichen, ohne den Umweg über eine übergeordnete Cloud zu gehen.</p>
+        
+        <h2>Lösungsansatz</h2>
+        <p>In diesem Projekt wurde eine eigene Datenschnittstelle (SC2SC) entwickelt, um eine zuverlässige TCP/IP-Verbindung zwischen einer Siemens S7 Steuerung (als Client) und ESP32-Mikrocontrollern (als Server) herzustellen. Die Datenübertragung erfolgt durch eine festgelegte Nachrichtenstruktur (Header-Aufbau), welche eine dynamische Sensorabfrage sowie eine integrierte Fehlererkennung mittels CRC-8-Prüfsumme (sowie einem 3-Way-Handshake) bietet.</p>
+        
+        <h2>Ergebnis & Mehrwert</h2>
+        <p>Das System wurde in einem physischen Testaufbau mit echten Hardwarekomponenten (Siemens CPU 1512SP, ESP32 Dev Kits) validiert (TRL 3). Das Ergebnis ist eine kostengünstige, echtzeitnahe und ausfallsichere Lösung, mit der Sensordaten direkt und ohne Zwischenschicht in die Steuerungsebene integriert werden können. Dies ermöglicht eine schnelle und benutzerfreundliche Erweiterung industrieller Maschinensteuerungen.</p>
         
         <div class="image-gallery">
             <figure>
