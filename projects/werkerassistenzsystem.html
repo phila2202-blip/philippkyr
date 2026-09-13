@@ -50,7 +50,7 @@
     </section>
 
     <section id="ziel" class="project-section">
-        <h2>Ziel des Projekts</h2>
+        <h2>Herausforderung & Problemstellung</h2>
         <p>Im Industrie 4.0 Lab sollten die Möglichkeiten von Computer Vision möglichst anschaulich demonstriert
             werden. Die Idee: ein Assistenzsystem, das eine Person durch eine Baugruppenmontage begleitet. Eine
             Kamera analysiert den Arbeitsplatz, ein Projektor blendet Arbeitsschritte, Bauteilinformationen und
@@ -68,7 +68,8 @@
     </section>
 
     <section id="kalibrierung" class="project-section">
-        <h2>Kamera-Projektor-Kalibrierung</h2>
+        <h2>Lösungsansatz</h2>
+        <h3>Kamera-Projektor-Kalibrierung</h3>
         <p>Die größte Herausforderung war, Kamera und Projektor exakt aufeinander abzustimmen. Ein erster Ansatz
             mit farbigen Markierungen (Blob-Detection) war zu anfällig für Helligkeit, Lichtfarbe und
             Kamerawinkel und wurde verworfen.</p>
@@ -97,7 +98,7 @@
     </section>
 
     <section id="objekterkennung" class="project-section">
-        <h2>Objekterkennung mit YOLOv5</h2>
+        <h3>Objekterkennung mit YOLOv5</h3>
         <p>Für die Erkennung der Bauteile (Arduino, Bluetooth-Modul, Breadboard, ESP, Drehgeber) wurde YOLOv5
             trainiert. Nach rund 100 händisch in Roboflow annotierten Aufnahmen übernahm ein eigenes Skript mit dem
             ersten trainierten Modell die Annotation automatisch – so wuchs das Datenset auf mehrere tausend
@@ -120,7 +121,7 @@
     </section>
 
     <section id="steuerung" class="project-section">
-        <h2>Gestensteuerung, Node-RED &amp; Softwarearchitektur</h2>
+        <h3>Gestensteuerung, Node-RED &amp; Softwarearchitektur</h3>
         <ul class="list">
             <li><strong>Gestensteuerung:</strong> Mit MediaPipe wird die Hand erkannt; virtuelle, projizierte
                 Buttons lassen sich mit dem Zeigefinger auslösen.</li>
@@ -138,7 +139,7 @@
     </section>
 
     <section id="ergebnis" class="project-section">
-        <h2>Ergebnis</h2>
+        <h2>Ergebnis & Mehrwert</h2>
         <p>Entstanden ist ein funktionsfähiges Werkerassistenzsystem, das in acht Schritten durch den Aufbau
             einer LED-Steuerung mit Arduino führt – von der Aufgabenbeschreibung über die Platzierung der Bauteile
             bis zur Verdrahtung. Benötigte Bauteile werden erkannt und auf der Arbeitsfläche hervorgehoben. Das
