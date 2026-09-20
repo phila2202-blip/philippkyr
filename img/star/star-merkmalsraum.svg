@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" width="1000" height="980" role="img" aria-label="Begriffe derselben Art bilden Gruppen im Merkmalsraum. Die Beziehung von einem Bauteil zu seiner Messgroesse ist fuer jedes Paar derselbe Schritt, mehrere Begriffe koennen auf denselben Punkt fuehren, und dieselbe Beziehung erscheint in den Zahlen als gleiche Differenz.">
+<rect width="1000" height="980" fill="#ffffff"/>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.2" markerHeight="6.2" orient="auto"><path d="M0,1.2 L9,5 L0,8.8 z" fill="#00664f"/></marker><marker id="pf2" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.2" markerHeight="6.2" orient="auto"><path d="M0,1.2 L9,5 L0,8.8 z" fill="#00664f" opacity="0.7"/></marker></defs>
+<text x="90" y="50" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#0a1f1a" text-anchor="start">Begriffe als Punkte im Merkmalsraum</text>
+<text x="90" y="82" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#54645d" text-anchor="start">Gleichartige Begriffe bilden Gruppen, und dieselbe Beziehung ist immer derselbe Schritt</text>
+<line x1="200.0" y1="120" x2="200.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="270.0" y1="120" x2="270.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="340.0" y1="120" x2="340.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="410.0" y1="120" x2="410.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="480.0" y1="120" x2="480.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="550.0" y1="120" x2="550.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="620.0" y1="120" x2="620.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="690.0" y1="120" x2="690.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="760.0" y1="120" x2="760.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="830.0" y1="120" x2="830.0" y2="540" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="190.0" x2="900" y2="190.0" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="260.0" x2="900" y2="260.0" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="330.0" x2="900" y2="330.0" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="400.0" x2="900" y2="400.0" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="470.0" x2="900" y2="470.0" stroke="#cfdad4" stroke-width="1" opacity="0.6"/>
+<line x1="130" y1="540" x2="926" y2="540" stroke="#a8bcb3" stroke-width="1.6"/>
+<line x1="130" y1="540" x2="130" y2="98" stroke="#a8bcb3" stroke-width="1.6"/>
+<polygon points="926,540 915,535 915,545" fill="#a8bcb3"/>
+<polygon points="130,98 125,109 135,109" fill="#a8bcb3"/>
+<text x="920" y="570" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#54645d" text-anchor="end">Merkmal 1</text>
+<text x="114" y="330" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#54645d" text-anchor="middle" transform="rotate(-90 114 330)">Merkmal 2</text>
+<ellipse cx="300" cy="325" rx="62" ry="150" fill="#e4eae6" opacity="0.55"/>
+<ellipse cx="640" cy="300" rx="62" ry="140" fill="#e4eae6" opacity="0.55"/>
+<circle cx="700" cy="300" r="122" fill="none" stroke="#a8bcb3" stroke-width="1.6" stroke-dasharray="6 6"/>
+<line x1="300" y1="225" x2="300" y2="270" stroke="#a8bcb3" stroke-width="1.3"/>
+<line x1="300" y1="270" x2="300" y2="325" stroke="#a8bcb3" stroke-width="1.3"/>
+<line x1="300" y1="325" x2="300" y2="425" stroke="#a8bcb3" stroke-width="1.3"/>
+<line x1="640" y1="200" x2="640" y2="300" stroke="#a8bcb3" stroke-width="1.3"/>
+<line x1="640" y1="300" x2="640" y2="400" stroke="#a8bcb3" stroke-width="1.3"/>
+<line x1="700" y1="300" x2="640" y2="200" stroke="#00664f" stroke-width="1.6" stroke-dasharray="2 5" stroke-linecap="round" opacity="0.5"/>
+<line x1="700" y1="300" x2="640" y2="300" stroke="#00664f" stroke-width="1.6" stroke-dasharray="2 5" stroke-linecap="round" opacity="0.5"/>
+<line x1="700" y1="300" x2="640" y2="400" stroke="#00664f" stroke-width="1.6" stroke-dasharray="2 5" stroke-linecap="round" opacity="0.5"/>
+<line x1="317.0" y1="223.8" x2="623.0" y2="201.2" stroke="#00664f" stroke-width="2.6" stroke-linecap="round" marker-end="url(#pf)"/>
+<line x1="317.0" y1="323.8" x2="623.0" y2="301.2" stroke="#00664f" stroke-width="2.6" stroke-linecap="round" marker-end="url(#pf)"/>
+<line x1="317.0" y1="423.8" x2="623.0" y2="401.2" stroke="#00664f" stroke-width="2.6" stroke-linecap="round" marker-end="url(#pf)"/>
+<line x1="316.7" y1="266.6" x2="623.3" y2="203.4" stroke="#00664f" stroke-width="2.6" stroke-linecap="round" opacity="0.7" marker-end="url(#pf2)"/>
+<circle cx="300" cy="225" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="300" cy="225" r="7.5" fill="#00664f"/>
+<text x="278" y="231" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="end">Temperatursensor</text>
+<circle cx="300" cy="270" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="300" cy="270" r="7.5" fill="#00664f"/>
+<text x="278" y="276" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="end">Thermoelement</text>
+<circle cx="300" cy="325" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="300" cy="325" r="7.5" fill="#00664f"/>
+<text x="278" y="331" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="end">Kamerasystem</text>
+<circle cx="300" cy="425" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="300" cy="425" r="7.5" fill="#00664f"/>
+<text x="278" y="431" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="end">Drehgeber</text>
+<circle cx="640" cy="200" r="19" fill="#00664f" opacity="0.13"/>
+<circle cx="640" cy="200" r="9.5" fill="#00664f"/>
+<text x="640" y="173" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="middle">Temperaturwert</text>
+<circle cx="640" cy="300" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="640" cy="300" r="7.5" fill="#00664f"/>
+<text x="640" y="273" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="middle">Bildmerkmal</text>
+<circle cx="640" cy="400" r="14" fill="#00664f" opacity="0.13"/>
+<circle cx="640" cy="400" r="7.5" fill="#00664f"/>
+<text x="640" y="373" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#0a1f1a" text-anchor="middle">Winkelwert</text>
+<text x="300" y="506" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="middle" letter-spacing="1.6">BAUTEILE</text>
+<text x="640" y="471" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="middle" letter-spacing="1.6">MESSGRÖSSEN</text>
+<circle cx="700" cy="300" r="10.5" fill="#ffffff" stroke="#00664f" stroke-width="2.8"/>
+<circle cx="700" cy="300" r="3.4" fill="#00664f"/>
+<text x="722" y="306" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#00664f" text-anchor="start">Suchanfrage</text>
+<circle cx="852" cy="452" r="6.5" fill="#ffffff" stroke="#a8bcb3" stroke-width="2"/>
+<text x="852" y="482" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15.5" font-weight="500" fill="#54645d" text-anchor="middle">Gehäusefarbe</text>
+<rect x="90" y="596" width="820" height="150" rx="12" fill="#ffffff" stroke="#cfdad4"/>
+<text x="116" y="626" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0a1f1a" text-anchor="start">Derselbe Schritt, in Zahlen</text>
+<text x="116" y="648" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#54645d" text-anchor="start">Jeder Punkt ist eine Zahlenreihe. Die Beziehung ist die Differenz, und sie fällt für beide Paare gleich aus.</text>
+<text x="324" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">Merkmal 1</text>
+<text x="384" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">2</text>
+<text x="444" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">3</text>
+<text x="464" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<text x="116" y="698" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#0a1f1a" text-anchor="start">Temperatursensor</text>
+<text x="324" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,21</text>
+<text x="384" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,64</text>
+<text x="444" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,30</text>
+<text x="464" y="698" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<text x="116" y="720" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#0a1f1a" text-anchor="start">Temperaturwert</text>
+<text x="324" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,74</text>
+<text x="384" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,52</text>
+<text x="444" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,33</text>
+<text x="464" y="720" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<line x1="116" y1="726" x2="471" y2="726" stroke="#cfdad4" stroke-width="1"/>
+<text x="116" y="742" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="start">Schritt</text>
+<text x="324" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">+0,53</text>
+<text x="384" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">−0,12</text>
+<text x="444" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">+0,03</text>
+<text x="728" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">Merkmal 1</text>
+<text x="788" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">2</text>
+<text x="848" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="end">3</text>
+<text x="868" y="676" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<text x="520" y="698" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#0a1f1a" text-anchor="start">Kamerasystem</text>
+<text x="728" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,18</text>
+<text x="788" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,35</text>
+<text x="848" y="698" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,71</text>
+<text x="868" y="698" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<text x="520" y="720" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="500" fill="#0a1f1a" text-anchor="start">Bildmerkmal</text>
+<text x="728" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,71</text>
+<text x="788" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,23</text>
+<text x="848" y="720" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="400" fill="#0a1f1a" text-anchor="end">0,74</text>
+<text x="868" y="720" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#54645d" text-anchor="start">…</text>
+<line x1="520" y1="726" x2="875" y2="726" stroke="#cfdad4" stroke-width="1"/>
+<text x="520" y="742" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="start">Schritt</text>
+<text x="728" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">+0,53</text>
+<text x="788" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">−0,12</text>
+<text x="848" y="742" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#00664f" text-anchor="end">+0,03</text>
+<rect x="90" y="772" width="820" height="134" rx="12" fill="#e4eae6" stroke="#cfdad4"/>
+<rect x="90" y="772" width="5" height="134" fill="#00664f"/>
+<ellipse cx="139" cy="804" rx="21" ry="12" fill="#ffffff" stroke="#a8bcb3"/>
+<circle cx="130" cy="804" r="3.2" fill="#00664f"/>
+<circle cx="139" cy="804" r="3.2" fill="#00664f"/>
+<circle cx="148" cy="804" r="3.2" fill="#00664f"/>
+<text x="180" y="809" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#35453e" text-anchor="start">Begriffe derselben Art liegen beieinander</text>
+<line x1="118" y1="842" x2="160" y2="842" stroke="#00664f" stroke-width="2.6" stroke-linecap="round" marker-end="url(#pf)"/>
+<text x="180" y="847" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#35453e" text-anchor="start">„Bauteil nennt seine Messgröße“: immer derselbe Schritt</text>
+<line x1="118" y1="872" x2="158" y2="880" stroke="#00664f" stroke-width="2.2" stroke-linecap="round" marker-end="url(#pf)"/>
+<line x1="118" y1="888" x2="158" y2="880" stroke="#00664f" stroke-width="2.2" stroke-linecap="round" opacity="0.7" marker-end="url(#pf2)"/>
+<text x="180" y="885" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#35453e" text-anchor="start">mehrere Begriffe führen auf denselben Punkt</text>
+<circle cx="581" cy="804" r="13" fill="none" stroke="#a8bcb3" stroke-width="1.6" stroke-dasharray="5 5"/>
+<circle cx="581" cy="804" r="3.4" fill="#00664f"/>
+<text x="622" y="809" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#35453e" text-anchor="start">Suchanfrage mit ihrer Nachbarschaft</text>
+<circle cx="581" cy="842" r="6" fill="#ffffff" stroke="#a8bcb3" stroke-width="2"/>
+<text x="622" y="847" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#35453e" text-anchor="start">zu weit entfernt, also kein Treffer</text>
+<text x="90" y="940" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#54645d" text-anchor="start">Die drei gezeigten Merkmale sind der Anfang einer Reihe, die in der Anwendung mehrere Hundert Stellen umfasst.</text>
+<text x="90" y="964" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#54645d" text-anchor="start">Gesucht wird nicht nach exakter Übereinstimmung, sondern nach den nächstgelegenen Punkten.</text>
+</svg>

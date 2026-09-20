@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Modeling in Industrie 4.0 – Philipp Kyr, BSc</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+</head>
+<body>
+<header>
+    <h1>Knowledge Modeling in Industrie 4.0</h1>
+    <p>State-of-the-Art Report zu RDF-Formaten, Graph- und Vektordatenbanken</p>
+</header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../projects.html">Projekte</a></li>
+            <li><a href="#herausforderung">Herausforderung</a></li>
+            <li><a href="#methodik">Methodik</a></li>
+            <li><a href="#technologien">Technologiefelder</a></li>
+            <li><a href="#benchmarking">Benchmarking</a></li>
+            <li><a href="#bewertung">Bewertungskriterien</a></li>
+            <li><a href="#ergebnis">Ergebnis</a></li>
+            <li><a href="#quellen">Quellen</a></li>
+        </ul>
+    </nav>
+
+<main class="container">
+    <div class="project-meta">
+        <span><strong>Zeitraum:</strong> Mai und Juni 2024</span>
+        <span><strong>Rahmen:</strong> State-of-the-Art Report, Masterstudiengang Interactive Technologies (I4.0)</span>
+        <span><strong>Autor:</strong> Philipp Kyr, BSc</span>
+    </div>
+
+    <section id="herausforderung" class="project-section">
+        <h2>Herausforderung &amp; Problemstellung</h2>
+        <p>Industrie 4.0 lebt vom Zusammenspiel von cyber-physischen Systemen, dem Internet der Dinge und
+            intelligenter Automatisierung. Damit dieses Zusammenspiel funktioniert, müssen Daten aus sehr
+            unterschiedlichen Quellen zusammengeführt und in einer gemeinsamen Sicht verfügbar gemacht
+            werden. Genau daran scheitern viele Vorhaben: Die Datenlandschaft ist heterogen, die Formate
+            sind es ebenso, und Systeme verschiedener Hersteller sprechen nicht dieselbe Sprache.</p>
+        <p>Wissensmodellierung setzt an dieser Stelle an. Über Ontologien und semantische Netze lassen sich
+            Bedeutung und Beziehungen der Daten explizit beschreiben, statt sie in der Anwendungslogik zu
+            vergraben. Relationale Datenbanken stoßen dabei an ihre Grenzen, sobald die Verknüpfungen
+            zwischen den Daten wichtiger werden als die Daten selbst. Hinzu kommt ein zweites Problem: Viele
+            Verfahren des maschinellen Lernens arbeiten als Blackbox und machen Entscheidungswege
+            undurchsichtig. Für industrielle Prozesse, in denen Entscheidungen nachvollziehbar sein müssen,
+            ist das ein Ausschlusskriterium.</p>
+        <p>Der Bericht untersucht daher, welche Technologien diese Lücke schließen: RDF-Formate als
+            standardisiertes Austauschformat, Graphdatenbanken für verknüpfte Daten und Vektordatenbanken
+            für Ähnlichkeitssuche auf hochdimensionalen Daten. Die Leitfrage ist, welche davon sich für
+            welchen industriellen Anwendungsfall eignen und woran sich diese Eignung messen lässt.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 1 und 3</span>
+    </section>
+
+    <section id="methodik" class="project-section">
+        <h2>Methodik der Recherche</h2>
+        <p>Die Recherche lief über drei wissenschaftliche Suchdienste: Google Scholar, IEEE Xplore und die
+            ACM Digital Library. Der Suchzeitraum umfasste Mai und Juni 2024. Die gefundenen Arbeiten wurden
+            von Beginn an in Kategorien einsortiert, um den abgedeckten Bereich im Blick zu behalten:
+            Wissensmodellierung, RDF-Formate, Graphdatenbanken und Vektordatenbanken.</p>
+        <p>Der Prozess selbst verlief in sechs Schritten. Zuerst wurden die Suchbegriffe festgelegt und in
+            einer eigenen Liste dokumentiert, damit die Auswahl nachvollziehbar und wiederholbar bleibt.
+            Die Suche in den Diensten wurde über deren erweiterte Optionen nach Erscheinungsdatum, Relevanz
+            und Fachgebiet eingegrenzt. In einer ersten Auswahl entschieden Abstract und Fazit über die
+            Relevanz; Arbeiten ohne Bezug zu den Kernthemen fielen heraus. Die verbleibenden wurden
+            vertieft auf Methodik, Ergebnisse und Aussagekraft geprüft.</p>
+        <p>Den Abschluss bildete eine Visualisierung der Zitationsbeziehungen zwischen den ausgewählten
+            Arbeiten. Sie macht Verwandtschaften zwischen Veröffentlichungen sichtbar und gibt einen
+            thematischen Überblick über den betrachteten Forschungszeitraum, was eine zweite Runde der
+            Kategorisierung und Aussortierung ermöglichte.</p>
+
+        <div class="image-gallery">
+            <figure>
+                <a href="../img/star/star-suchprozess.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/star/star-suchprozess.png" alt="Abbildung 1: Ablauf des Suchprozesses von den Suchbegriffen über drei Suchdienste bis zur zweiten Aussortierung" width="758" height="814" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 1:</strong> Der Suchprozess. Aus den festgelegten Suchbegriffen speisen sich drei Suchdienste, deren Ergebnisse zweimal kategorisiert und aussortiert werden, unterbrochen von der Analyse der Zitationsbeziehungen.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 1</span>
+            </figure>
+            <figure>
+                <a href="../img/star/star-zitationsnetz.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/star/star-zitationsnetz.png" alt="Abbildung 2: Netzwerk der Zitationsbeziehungen zwischen den ausgewählten Veröffentlichungen" width="776" height="751" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 2:</strong> Das Ergebnis dieser Analyse. Jeder Knoten steht für eine Veröffentlichung, jede Verbindung für eine Zitationsbeziehung. Dicht verbundene Bereiche markieren die tragenden Arbeiten des Themas, isolierte Knoten die Randbereiche.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 2</span>
+            </figure>
+        </div>
+    </section>
+
+    <section id="technologien" class="project-section">
+        <h2>Die drei Technologiefelder</h2>
+        <p>Die untersuchten Technologien verfolgen dasselbe Ziel, greifen es aber von verschiedenen Seiten
+            an. Sie schließen einander nicht aus, sondern ergänzen sich in einem gemeinsamen Stapel.</p>
+
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/star/star-technologiefelder.svg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/star/star-technologiefelder.svg" alt="Übersicht der drei Technologiefelder RDF-Formate, Graphdatenbanken und Vektordatenbanken mit Rolle, Einsatzgebiet und untersuchten Systemen" width="1240" height="500" loading="lazy" decoding="async"></a>
+                <figcaption>Die drei Felder im Überblick, jeweils mit ihrer Rolle, dem typischen Einsatzgebiet und den im Bericht untersuchten Systemen.</figcaption>
+                <span class="fig-source">Eigene Darstellung nach Kyr (2024), Kapitel 6</span>
+            </figure>
+        </div>
+
+        <h3>RDF-Formate</h3>
+        <p>Das Resource Description Framework ist ein vom W3C standardisiertes Modell für den Datenaustausch
+            im Web. Daten werden als Tripel aus Subjekt, Prädikat und Objekt abgelegt, was eine flexible und
+            erweiterbare Struktur ergibt. Für Industrie 4.0 ist das aus drei Gründen interessant: Die
+            Flexibilität erlaubt, bestehende Wissensgraphen zusammenzuführen, ohne ein gemeinsames Schema
+            vorauszusetzen. Die Interoperabilität, verstanden als Fähigkeit zweier Systeme, Informationen
+            auszutauschen und die ausgetauschte Information auch zu nutzen, ist die Grundbedingung dafür,
+            dass Systeme zusammenarbeiten und sich weiterentwickeln können. Und die Skalierbarkeit entsteht
+            dadurch, dass Schemageneratoren Änderungen an der Spezifikation automatisch in die abgeleiteten
+            Schemata weitertragen. Das RDF Schema ergänzt dieses Modell um die Mittel, heterogene Wissensgraphen zu beschreiben und zusammenzuführen.</p>
+
+        <h3>Graphdatenbanken</h3>
+        <p>Eine Graphdatenbank speichert Daten als Knoten, Kanten und Eigenschaften. Knoten stehen für
+            Entitäten, Kanten für deren Beziehungen, Eigenschaften für zusätzliche Angaben an beiden. Der
+            entscheidende Unterschied zur relationalen Datenbank liegt im Abfrageweg: Wo dort mehrere
+            Verbundoperationen über Tabellen nötig sind, folgt die Graphdatenbank unmittelbar den
+            Verbindungen eines Knotens. Das macht sie überall dort schnell, wo die Verknüpfungen dicht sind,
+            etwa bei Anlagentopologien, Lieferketten oder semantischen Beziehungen in Ontologien. Hinzu
+            kommt, dass sich die Datenstruktur ändern lässt, ohne das Modell neu aufzusetzen. In der
+            Produktion reicht das Anwendungsspektrum von der Überwachung und Optimierung bis zur
+            Anomalieerkennung in IIoT-Umgebungen mittels graphbasierter neuronaler Netze.</p>
+
+        <h3>Vektordatenbanken</h3>
+        <p>Vektordatenbanken sind auf die Verwaltung hochdimensionaler Einbettungen ausgelegt. Sie
+            beantworten nicht die Frage nach exakter Übereinstimmung, sondern die nach Ähnlichkeit, und
+            liefern dafür schnelle Nächste-Nachbar-Suche, Clusterbildung und Ähnlichkeitsvergleiche. Ihr
+            Einsatzgebiet liegt in Anwendungen künstlicher Intelligenz: In der Sprachverarbeitung werden
+            semantische Ähnlichkeiten zwischen Texten gefunden, in der Bildverarbeitung vergleichbare
+            Aufnahmen identifiziert, in Empfehlungssystemen passende Inhalte vorgeschlagen.</p>
+
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/star/star-merkmalsraum.svg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/star/star-merkmalsraum.svg" alt="Merkmalsraum mit zwei Gruppen, Bauteile und Messgrößen. Jedes Bauteil ist mit seiner Messgröße durch einen gleich gerichteten Pfeil verbunden, zwei Bauteile führen auf dieselbe Messgröße, und eine Zahlentabelle zeigt die Differenz beider Paare als denselben Schritt." width="1000" height="980" loading="lazy" decoding="async"></a>
+                <figcaption>Das Prinzip der Einbettung, vereinfacht auf drei Merkmale. Jeder Begriff wird zu einer Zahlenreihe und damit zu einem Punkt im Raum. Begriffe derselben Art rücken dabei zusammen, sodass bereits aus der Lage eines Punktes seine Zugehörigkeit ablesbar wird. Eine Beziehung zwischen zwei Begriffen ist die Differenz ihrer Zahlenreihen, und weil diese Differenz für jedes gleichartige Paar dieselbe ist, lässt sich ein einmal erkannter Zusammenhang auf andere Paare übertragen. Dass mehrere Begriffe auf denselben Punkt führen können, ist der Grund, warum eine Suche auch bei abweichender Benennung greift: Gefragt wird nicht nach exakter Übereinstimmung, sondern nach den nächstgelegenen Punkten, und was zu weit entfernt liegt, bleibt außerhalb des Ergebnisses. In der Anwendung umfasst die Zahlenreihe mehrere Hundert Stellen.</figcaption>
+                <span class="fig-source">Eigene Darstellung nach Kyr (2024), Kapitel 6.3</span>
+            </figure>
+        </div>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 6.1 bis 6.3</span>
+    </section>
+
+    <section id="benchmarking" class="project-section">
+        <h2>Benchmarking von Knowledge Graphs</h2>
+        <p>Eine Technologieempfehlung ist nur so belastbar wie das Verfahren, mit dem sie gemessen wurde.
+            Der Bericht stellt deshalb die etablierten Benchmarks gegenüber, die Leistung, Skalierbarkeit
+            und Effizienz solcher Systeme anhand definierter Datensätze vergleichbar machen.</p>
+        <div class="table-wrap text">
+            <div class="table-title">Benchmarks für Graph- und RDF-Systeme im Vergleich</div>
+            <table>
+                <thead><tr><th>Benchmark</th><th>Schwerpunkt</th><th>Metriken</th><th>Datentypen</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>LDBC Social Network Benchmark</strong></td><td>Graphdatenbanken</td><td>Antwortzeit, Durchsatz, Effizienz von Graphoperationen</td><td>RDF, Graphen</td></tr>
+                    <tr><td><strong>Berlin SPARQL Benchmark</strong></td><td>SPARQL auf RDF-Daten</td><td>Ausführungszeit, Ladezeiten, gemischte Abfragelasten</td><td>RDF</td></tr>
+                    <tr><td><strong>WatDiv</strong></td><td>SPARQL-Endpunkte</td><td>Leistung und Skalierbarkeit, Erkennen von Engpässen</td><td>RDF</td></tr>
+                    <tr><td><strong>LDBC Graphalytics</strong></td><td>Graph-Analyseplattformen</td><td>Skalierbarkeit, Robustheit, Abfrageeffizienz</td><td>synthetische und reale Graphdaten</td></tr>
+                    <tr><td><strong>SPARQL Query Performance Benchmark</strong></td><td>Datenhaltungssysteme für Graphabfragen</td><td>Abfragegeschwindigkeit über verschiedene Abfragetypen</td><td>Row-, Column-, Graph- und Document-Store</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Gemessen wird dabei nicht an konstruierten Kleinstbeispielen. Die verwendeten realen Datensätze
+            reichen von einem Zitationsnetzwerk mit 3,77 Millionen Knoten und 16,5 Millionen Kanten bis zu
+            sozialen Netzwerken mit 65,6 Millionen Knoten und 1,81 Milliarden Kanten. Erst in dieser
+            Größenordnung zeigt sich, ob eine Technologie trägt.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 6.5 und Tabelle 1</span>
+    </section>
+
+    <section id="bewertung" class="project-section">
+        <h2>Bewertungskriterien des Tech-Stacks</h2>
+        <p>Für den abschließenden Technologievergleich wurde ein eigener Kriterienkatalog entwickelt,
+            abgeleitet aus den ausgewerteten Arbeiten und der technischen Dokumentation der Systeme. Jedes
+            Kriterium trägt eine Begründung, warum es für den industriellen Einsatz zählt, und eine Angabe,
+            woraus sich die Bewertung speist:</p>
+        <ul class="list">
+            <li><strong>Standards und Formate:</strong> Unterstützung von W3C-Standards sowie den Formaten
+                RDF, OBO, OWL und XML. Ohne gemeinsame Formate bleibt der Datenaustausch zwischen Systemen
+                eine Einzelfalllösung.</li>
+            <li><strong>Abfragesprachen:</strong> Unterstützung von SPARQL, SQL und Cypher. Die Fähigkeit,
+                Daten gezielt abzufragen, entscheidet darüber, ob sie sich überhaupt nutzen lassen.</li>
+            <li><strong>Benutzeroberfläche:</strong> Anpassbarkeit und Ontologieunterstützung, weil eine
+                zugängliche Oberfläche über die tatsächliche Verwendung im Betrieb mitentscheidet.</li>
+            <li><strong>Skalierbarkeit:</strong> die Fähigkeit, wachsende Datenmengen und Nutzerzahlen ohne
+                Leistungseinbruch zu tragen, bewertet anhand von Benchmarkstudien.</li>
+            <li><strong>Navigation und Zusammenarbeit:</strong> interaktive Navigation in komplexen
+                Datenstrukturen und Unterstützung gemeinsamer Arbeit daran.</li>
+            <li><strong>Quelloffenheit und Echtzeitfähigkeit:</strong> Offenheit schafft Transparenz und
+                Anpassbarkeit, Echtzeitfähigkeit ist für zeitkritische Anwendungen unverzichtbar.</li>
+            <li><strong>Datenbanktyp:</strong> die Einordnung als Graph- oder Vektordatenbank, weil daraus
+                die Eignung für den jeweiligen Anwendungsfall folgt.</li>
+        </ul>
+        <p>Der Katalog deckt neben den Datenbanken auch die Werkzeuge zur Ontologiemodellierung ab,
+            darunter Protégé, TopBraid Composer und WebProtégé.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 6.4 und 9</span>
+    </section>
+
+    <section id="ergebnis" class="project-section">
+        <h2>Ergebnis &amp; Mehrwert</h2>
+        <p>Der Bericht kommt zu dem Schluss, dass sich die drei Technologiefelder nicht gegenseitig
+            ersetzen, sondern gemeinsam eine tragfähige Grundlage bilden. Ontologien und semantische Netze
+            harmonisieren die Daten und sichern die Interoperabilität industrieller Systeme.
+            Graphdatenbanken verarbeiten verknüpfte Daten spürbar schneller und skalierbarer als relationale
+            Systeme und eignen sich sowohl für Echtzeitauswertungen als auch für die Analyse großer
+            Ereignismengen. Vektordatenbanken ergänzen diesen Stapel um die Ähnlichkeitssuche, die
+            Verfahren des maschinellen Lernens in Sprach- und Bildverarbeitung überhaupt erst praktikabel
+            macht.</p>
+        <p>Offen bleiben Komplexität und Skalierbarkeit: Die Systeme sind anspruchsvoll in Entwicklung und
+            Betrieb, und es fehlt an standardisierten Integrationsrahmen, an schnelleren Abfragen und an
+            Werkzeugen, die für den industriellen Alltag zugänglich genug sind. Zugleich unterstreicht der
+            Bericht die Bedeutung erklärbarer Schlussfolgerungen über semantische Technologien, damit
+            Entscheidungen in der Produktion nachvollziehbar bleiben, sowie die Rolle menschlicher Aufsicht
+            als Korrektiv.</p>
+        <p>Für die eigene Arbeit war der Bericht die Vorarbeit: Die hier getroffene Einordnung von Graph-
+            und Zeitreihendatenhaltung führte unmittelbar zur polyglotten Persistenz der
+            <a href="masterarbeit.html">Masterarbeit</a>, in der eine Graphdatenbank die Anlagentopologie
+            modelliert und eine Zeitreihendatenbank die Messwerte trägt.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 6.6, 7 und 8</span>
+    </section>
+
+    <section id="quellen" class="project-section">
+        <h2>Quellen</h2>
+        <p class="citation-box">Kyr, P. (2024). <em>Comprehensive Knowledge Modeling in Industry 4.0: Tools and Technologies</em> [State-of-the-Art Report]. Fachhochschule St. Pölten, Masterstudiengang Interactive Technologies.</p>
+        <p>Die Abbildungen 1 und 2 stammen aus dem genannten Bericht und tragen dessen Nummerierung; sie
+            sind eigene Darstellung beziehungsweise eigenes Rechercheergebnis. Die Übersicht der
+            Technologiefelder und die Darstellung des Merkmalsraums sind eigene Darstellungen auf Basis
+            von Kapitel 6.</p>
+
+        <ul class="tags" style="margin-top: 30px;">
+            <li>Knowledge Modeling</li><li>RDF / RDFS / OWL</li><li>SPARQL</li><li>Graphdatenbanken</li>
+            <li>Neo4j</li><li>Vektordatenbanken</li><li>Ontologien</li><li>Industrie 4.0</li>
+        </ul>
+        <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+</footer>
+<script src="../js/seite.js" defer></script>
+<script src="../js/kopfbiegung.js" defer></script>
+</body>
+</html>

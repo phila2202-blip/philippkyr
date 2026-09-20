@@ -2,9 +2,15 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dezentrales Edge-Computing – Philipp Kyr BSc</title>
+    <title>Dezentrales Edge-Computing – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 </head>
 <body>
 <header>
@@ -12,62 +18,283 @@
     <p>Evaluierung von Docker, Kubernetes und alternativen Technologien im Industrie 4.0-Kontext</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="../index.html">Portfolio</a></li>
-        <li><a href="../projects.html">Projekte</a></li>
-        <li><a href="#beschreibung">Beschreibung</a></li>
-        <li><a href="#ergebnisse">Ergebnisse &amp; Best Practices</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../projects.html">Projekte</a></li>
+            <li><a href="#herausforderung">Herausforderung</a></li>
+            <li><a href="#zielsetzung">Zielsetzung</a></li>
+            <li><a href="#analyse">Technologievergleich</a></li>
+            <li><a href="#empfehlung">Empfehlung</a></li>
+            <li><a href="#praxis">Praktische Erprobung</a></li>
+            <li><a href="#anforderungen">Anforderungen</a></li>
+            <li><a href="#ergebnis">Ergebnis</a></li>
+            <li><a href="#ausblick">Ausblick</a></li>
+            <li><a href="#quellen">Quellen</a></li>
+        </ul>
+    </nav>
 
 <main class="container">
     <div class="project-meta">
-        <span><strong>Zeitraum:</strong> SS 2024 / WS 2024/2025</span>
+        <span><strong>Zeitraum:</strong> SS 2024 / WS 2024/25</span>
         <span><strong>Rahmen:</strong> Masterklassenprojekt Industrie 4.0 (MKL-PR-I4.0 PA mit24)</span>
-        <span><strong>Autor:</strong> Philipp Kyr BSc</span>
-        <span><strong>Betreuung:</strong> FH-Prof. Dr. Markus Wagner, BSc MSc · Dipl.-Ing. Christoph Braun, BSc</span>
+        <span><strong>Autor:</strong> Philipp Kyr, BSc</span>
     </div>
 
-    <section id="beschreibung" class="project-section">
-        <h2>Herausforderung & Problemstellung</h2>
-        <p>Die zunehmende Digitalisierung industrieller Produktionsprozesse generiert stetig wachsende Datenvolumina. Zentrale Cloud-basierte Architekturen stoßen hierbei zunehmend an ihre Grenzen hinsichtlich Latenz, Bandbreite und Ausfallsicherheit, insbesondere in kritischen Produktionsumgebungen.</p>
-        
-        <h2>Lösungsansatz</h2>
-        <p>Diese Arbeit untersucht, inwieweit sich containerbasierte Edge-Computing-Architekturen zur Lösung dieser Probleme integrieren lassen. Im Zentrum der Evaluierung standen Container-Laufzeitumgebungen (Docker, Podman) sowie Orchestrierungslösungen (Kubernetes, K3s, Docker Swarm). Dabei wurden technische Anforderungen wie Sicherheit (z.B. Rootless-Betrieb), Skalierbarkeit und Ressourceneffizienz systematisch analysiert und durch explorative Prototyping-Versuche verifiziert.</p>
-        
-        <h2>Ergebnis & Mehrwert</h2>
-        <p>Das Ergebnis ist ein strukturiertes Architekturkonzept, das konkrete Best Practices aufzeigt. Es verdeutlicht, dass leichtgewichtige Varianten (wie K3s) oder daemonlose Umgebungen (wie Podman) oft praxistauglicher für Edge-Devices sind als reine Cloud-Tools. Dies ermöglicht es Unternehmen, Daten lokal zu verarbeiten, Latenzen zu minimieren und die Ausfallsicherheit maßgeblich zu erhöhen.</p>
-        
-        <div class="image-gallery">
-            <figure>
-                <!-- Platzhalter: Bitte speichere ein passendes Bild als technologie-vergleich.jpg im Ordner img/edge-computing/ -->
-                <img src="../img/edge-computing/technologie-vergleich.jpg" alt="Technologie Vergleich Edge Computing" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Vergleich von Orchestrierungslösungen (Kubernetes vs K3s vs Swarm)</figcaption>
-            </figure>
-        </div>
+    <section id="herausforderung" class="project-section">
+        <h2>Herausforderung &amp; Problemstellung</h2>
+        <p>Die fortschreitende Digitalisierung industrieller Produktionsprozesse erfordert eine engere
+            Verzahnung von Produktionsmitteln und IT-Systemen. Die dabei entstehenden Datenvolumina wachsen
+            kontinuierlich, und ihre Verarbeitung in Echtzeit stellt Anforderungen an Latenzminimierung,
+            Bandbreiteneffizienz und Systemverfügbarkeit. Zentrale, cloudbasierte Architekturen zeigen in
+            diesem Umfeld deutliche Grenzen, insbesondere dort, wo die unmittelbare Reaktionsfähigkeit auf
+            Produktionsereignisse oder prädiktive Wartungserfordernisse über den Erfolg entscheidet.</p>
+        <p>Edge-Computing verlagert die Verarbeitung an die Datenquelle, etwa auf Industrie-Gateways oder
+            ressourcenbeschränkte Einplatinensysteme. Als technologische Basis dienen containerisierte
+            Lösungen, deren leichtgewichtige Virtualisierung einen effizienten Betrieb auch auf schwacher
+            Hardware erlaubt; Orchestrierungssysteme verwalten die verteilten Container automatisiert.
+            Sicherheitsmechanismen wie der Betrieb ohne Root-Rechte und Selbstheilungsfunktionen sind dabei
+            keine Zusatzfunktionen, sondern zentrale Komponenten, weil Betriebsunterbrechungen in
+            industriellen Umgebungen erhebliche Kosten verursachen und Produktionsdaten besonders
+            schützenswert sind.</p>
+        <p>Die Praxis zeigt drei wiederkehrende Anwendungsfälle: die Anlagenüberwachung, bei der Vibrations-
+            und Temperaturdaten lokal vorverarbeitet und aggregiert werden; die Ausführung von
+            Machine-Learning-Modellen unmittelbar am Produktionsstandort; und Edge-Gateways, die proprietäre
+            Protokolle in standardisierte IoT-Protokolle übersetzen. In allen drei Fällen erlaubt eine
+            containerisierte Architektur, einzelne Dienste zu aktualisieren oder zu ergänzen, ohne den
+            laufenden Betrieb zu unterbrechen.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 1 und 4</span>
     </section>
 
-    <section id="ergebnisse" class="project-section">
-        <h2>Ergebnisse &amp; Best Practices</h2>
-        <p>Die Analyse verdeutlicht, dass keine einzelne Technologie universell für alle Edge-Szenarien geeignet ist. Die Wahl hängt stark vom Einsatzzweck, der Hardwareausstattung und den Sicherheitsanforderungen ab.</p>
+    <section id="zielsetzung" class="project-section">
+        <h2>Zielsetzung &amp; Vorgehen</h2>
+        <p>Die Arbeit analysiert containerbasierte Plattformen und Orchestrierungssysteme auf Basis einer
+            systematischen Literaturrecherche. Untersucht wurden vier Achsen:</p>
         <ul class="list">
-            <li><strong>Docker &amp; Docker Swarm:</strong> Gelten als Standardlösungen, sind einfach aufzusetzen, weisen aber bei sehr großen Clustern oder stark limitierten Ressourcen Nachteile durch den Daemon-Overhead auf.</li>
-            <li><strong>Podman:</strong> Bietet durch seinen nativen daemonlosen und "Rootless"-Betrieb entscheidende Sicherheitsvorteile in exponierten Industrieanlagen.</li>
-            <li><strong>Kubernetes vs. K3s:</strong> Während Kubernetes für leistungsstarke, komplexe Großcluster optimal ist, erwies sich die leichtgewichtige Variante <strong>K3s</strong> als wesentlich ressourcenschonender und praxistauglicher für typische Edge-Devices.</li>
+            <li><strong>Skalierbarkeit und Leistung:</strong> wie containerisierte Anwendungen auf
+                Edge-Geräten mit unterschiedlicher Hardwareausstattung arbeiten, wo bei der Skalierung
+                Grenzen auftreten und wie sich Latenz und Durchsatz bewerten lassen.</li>
+            <li><strong>Sicherheitskonzepte:</strong> welchen Beitrag Mechanismen wie der Betrieb ohne
+                Root-Rechte und verschlüsselte Kommunikation zu Stabilität und Ressourceneffizienz leisten.</li>
+            <li><strong>Energie- und Ressourcenoptimierung:</strong> wie sich der Verbrauch in
+                ressourcenbeschränkten Umgebungen senken lässt, insbesondere mit Blick auf den Überbau der
+                Orchestrierungssysteme und die bedarfsgerechte Skalierung von Diensten.</li>
+            <li><strong>Best Practices:</strong> welche Kombination aus Technologien und Vorgehensweisen sich
+                für welches Szenario eignet.</li>
         </ul>
-        <p>Auf Basis der Erkenntnisse wurden konkrete Best Practices abgeleitet, darunter die Nutzung von Minimal-Images, rollierenden Updates und strikten Network Policies zur Absicherung von IIoT-Netzwerken.</p>
+        <p>Neben quantitativen Faktoren wie Latenz- und Durchsatzwerten flossen qualitative Merkmale in die
+            Bewertung ein, etwa der Wartungsaufwand und die Integrationsfähigkeit in vorhandene
+            OT-Protokolle. Auf dieser Grundlage entstand ein Kriterienkatalog, aus dem sich am Ende ein
+            Anforderungskatalog für künftige Umsetzungen ableitet.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 4.2 und 5</span>
+    </section>
+
+    <section id="analyse" class="project-section">
+        <h2>Technologievergleich</h2>
+        <p>Fünf Technologien wurden entlang von fünf Kriterien gegenübergestellt. Die Analyse zeigt, dass
+            keine davon universell für alle Edge-Szenarien geeignet ist: Die Wahl hängt an
+            Hardwareausstattung, Clustergröße und Integrationsanforderungen.</p>
+        <div class="table-wrap text">
+            <div class="table-title">Analyse der untersuchten Technologien</div>
+            <table>
+                <thead>
+                    <tr><th>Kriterium</th><th>Docker</th><th>Podman</th><th>Kubernetes</th><th>K3s</th><th>Docker Swarm</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Leistung</strong></td>
+                        <td>weit verbreitet, Daemon-Überbau</td>
+                        <td>daemonlos, ressourcenschonend</td>
+                        <td>hoch skalierbar, komplex</td>
+                        <td>leichtgewichtige Kubernetes-Variante</td>
+                        <td>schlank, aber eingeschränkt</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sicherheit</strong></td>
+                        <td>Rootless ab neueren Versionen, großes Ökosystem an Werkzeugen</td>
+                        <td>nativ rootless, kleinere Angriffsfläche</td>
+                        <td>Network Policies, RBAC, Secrets, starke Isolierung</td>
+                        <td>Basisumfang von Kubernetes, etwas reduziert</td>
+                        <td>Grundfunktionen, einfache TLS-Konfiguration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ressourcenbedarf</strong></td>
+                        <td>mittel, abhängig von Daemon und Containeranzahl</td>
+                        <td>niedriger, kein Daemon, kleinerer Speicherbedarf</td>
+                        <td>hoch, viele Komponenten und Master-Überbau</td>
+                        <td>deutlich geringer als Kubernetes</td>
+                        <td>gering, einfacher Aufbau</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wartung</strong></td>
+                        <td>große Community, reichhaltige Dokumentation</td>
+                        <td>weniger verbreitet, primär Kommandozeile, gute Systemd-Integration</td>
+                        <td>hohe Funktionalität, erfordert tieferes DevOps-Wissen</td>
+                        <td>einfaches Setup, Upgrades leichter als bei vollem Kubernetes</td>
+                        <td>simpel zu verwalten, geringerer Funktionsumfang</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integration</strong></td>
+                        <td>umfangreiches Ökosystem, viele Erweiterungen</td>
+                        <td>weitgehend Docker-kompatibel, gute Interoperabilität</td>
+                        <td>Helm-Charts, Service-Discovery, Add-ons</td>
+                        <td>Kubernetes-kompatibel, kleineres Ökosystem</td>
+                        <td>einfach, Compose-Syntax auch für Swarm nutzbar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Unabhängig von der Technologieauswahl legt die Literatur nahe, dass konsistente Update- und
+            Patch-Strategien, regelmäßiges Prüfen der Container-Images auf Schwachstellen sowie der Betrieb
+            ohne Root-Rechte den größten Beitrag zu Sicherheit und Stabilität leisten.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Tabelle 1 und Kapitel 8.5</span>
+    </section>
+
+    <section id="empfehlung" class="project-section">
+        <h2>Empfehlung nach Szenario</h2>
+        <p>Aus der Analyse leitet sich eine Zuordnung ab, die für typische Edge-Szenarien die passende
+            Kombination aus Laufzeitumgebung, Orchestrierung und Sicherheitsmaßnahmen benennt. Den
+            Ausschlag gibt dabei die Clustergröße: Bis zu fünf Knoten genügt eine schlanke Lösung, ab
+            etwa zwanzig Knoten lohnt der volle Funktionsumfang, und dazwischen liegt die reduzierte
+            Variante.</p>
+
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/edge-computing/edge-empfehlung.svg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/edge-computing/edge-empfehlung.svg" alt="Empfehlung nach Clustergröße: bis fünf Knoten Docker Swarm, bis zwanzig Knoten K3s, darüber Kubernetes" width="1240" height="560" loading="lazy" decoding="async"></a>
+                <figcaption>Die Empfehlung nach Clustergröße, dazu die beiden Sonderfälle für sicherheitskritische und echtzeitnahe Anwendungen.</figcaption>
+                <span class="fig-source">Eigene Darstellung nach Kyr (2025), Tabelle 2</span>
+            </figure>
+        </div>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 8.6 und Tabelle 2</span>
+    </section>
+
+    <section id="praxis" class="project-section">
+        <h2>Praktische Erprobung</h2>
+        <p>Der Schwerpunkt der Arbeit liegt auf der theoretischen Analyse. Ergänzend wurde eine explorative
+            Praxisphase durchgeführt, um die alltägliche Handhabung der Werkzeuge und mögliche Hürden
+            einzuschätzen. Ein groß angelegter Hardwaretest war ausdrücklich nicht vorgesehen.</p>
+        <p>Docker erwies sich dabei als unkompliziert in Installation und Bedienung; mit Docker Swarm
+            entstand ein kleines Cluster aus wenigen Diensten. Podman ließ sich in einer Testumgebung
+            einrichten und startete Container zuverlässig, wobei der Betrieb ohne Root-Rechte auf ein
+            geringeres Risiko hindeutet. Die Versuche mit Kubernetes und K3s scheiterten dagegen an
+            Kompatibilitätsproblemen der verwendeten Apple-Silicon-Hardware. Da kein alternativer
+            Gerätepool zur Verfügung stand und diese Fragen nicht zum Kern der Arbeit gehörten, wurde dieser
+            Zweig nicht weiterverfolgt; für künftige Projekte empfiehlt sich x86-Hardware oder eine
+            ARM-kompatible Distribution.</p>
+
+        <h3>Prototypischer Aufbau</h3>
+        <p>Für den Prototyp wurde die Shopfloor-Ebene durch mehrere untergeordnete Edge-Geräte simuliert,
+            auf denen Sensordaten erfasst, aggregiert und bereitgestellt werden. Diese Daten gehen an ein
+            übergeordnetes Edge-Gerät, das als zentrale Stelle für die weitere Verarbeitung und die
+            Überwachung dient.</p>
+
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/edge-computing/edge-topologie-original.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/edge-computing/edge-topologie-original.png" alt="Abbildung 1: Virtueller Aufbau mit drei untergeordneten und einem übergeordneten Edge-Gerät" width="1292" height="852" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 1:</strong> Virtueller Aufbau des Prototyps. Die grün dargestellten Geräte simulieren die Shopfloor-Ebene und liefern an das blau dargestellte übergeordnete Gerät, das die Daten zusammenführt.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2025), Abbildung 1</span>
+            </figure>
+        </div>
+
+        <p>Auf jedem Gerät erzeugten Python-Dienste zyklische und statische Messwerte, um verschiedene
+            Szenarien einer industriellen Umgebung nachzubilden. Für die Übertragung kamen zunächst MQTT und
+            UDP zum Einsatz; MQTT zeigte sich als leicht zu implementieren und in IIoT-Projekten gut
+            dokumentiert. Ergänzend wurden WebSockets für die bidirektionale Kommunikation zu einem
+            möglichen Dashboard erprobt. Apache Kafka für eine ereignisgetriebene Verarbeitung wurde
+            diskutiert, aber im Rahmen des Prototyps nicht umgesetzt. Bei den Datenformaten stand JSON
+            wegen seiner schemalosen Flexibilität zur Verfügung, während FlatBuffers und Protocol Buffers
+            auf ihr Leistungsverhalten hin betrachtet wurden.</p>
+        <p class="hinweis">Leistungstests und Skalierungsmessungen waren nicht Teil dieser Phase. Für einen
+            breiteren produktiven Einsatz wären gezielte Messungen zu Performanz, Latenz und
+            Ressourcennutzung nötig, um die optimale Kombination aus Orchestrierung, Protokollen und
+            Datenformaten zu bestimmen.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 9</span>
+    </section>
+
+    <section id="anforderungen" class="project-section">
+        <h2>Anforderungskatalog</h2>
+        <p>Den Abschluss der Arbeit bildet ein Katalog von Anforderungen, der die theoretischen Erkenntnisse
+            in überprüfbare Vorgaben überführt und als Leitfaden für künftige Umsetzungen dient. Er
+            unterscheidet funktionale, nicht-funktionale und sicherheitsbezogene Anforderungen und
+            kennzeichnet einzelne davon als Ausschlusskriterium. Die tragenden Punkte:</p>
+        <ul class="list">
+            <li>Die Edge-Geräte müssen Sensor- und Steuerungsdaten über ein standardisiertes
+                Industrieprotokoll wie OPC UA oder MQTT empfangen und den nachgelagerten Diensten
+                bereitstellen. Der Knoten übernimmt damit die Vermittlung, eine direkte Kommunikation mit
+                Steuerung und Sensorik kann entfallen.</li>
+            <li>Netzwerkunterbrechungen müssen erkannt werden, und die Verbindung ist selbsttätig wieder
+                aufzubauen, damit ein Ausfall nicht zu längeren Dienstunterbrechungen führt.</li>
+            <li>Die Laufzeitumgebung muss so sparsam sein, dass ein Gerät mit 512 MB Arbeitsspeicher oder
+                weniger nutzbar bleibt. Bei derart begrenzter Hardware kommen eine daemonlose Laufzeit oder
+                eine reduzierte Kubernetes-Variante in Frage statt einer vollen Installation.</li>
+            <li>Jedes Gerät muss einen lokalen Datenpuffer einrichten können, um Messwerte bei Ausfall der
+                Anbindung zwischenzuspeichern, bis die Verbindung wieder steht.</li>
+            <li>Container-Images sind regelmäßig auf bekannte Schwachstellen zu prüfen, eingebettet in einen
+                sicherheitsbewussten Entwicklungs- und Auslieferungsprozess.</li>
+            <li>Die Kommunikation zwischen Edge-Geräten und übergeordneten Diensten muss verschlüsselt
+                erfolgen. Unverschlüsselter Datenverkehr gilt als unzulässig, weil Edge-Geräte
+                häufig ungeschützt und über öffentliche Netze angebunden sind. Dieser Punkt ist als
+                Ausschlusskriterium eingestuft.</li>
+            <li>Eine rollenbasierte Zugriffskontrolle steuert, wer auf Geräte und Bereitstellungen
+                zugreifen darf, unterschieden nach Rollen wie Betrieb, Administration und Einsicht.</li>
+        </ul>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 10</span>
+    </section>
+
+    <section id="ergebnis" class="project-section">
+        <h2>Ergebnis &amp; Mehrwert</h2>
+        <p>Das Ergebnis ist ein strukturiertes Architekturkonzept mit konkreten Handlungsempfehlungen. Es
+            zeigt, dass Docker durch seine Verbreitung und Dokumentation oft als Standard gilt, der
+            Daemon-Überbau bei knappem Arbeitsspeicher aber zum Engpass wird. Podman ist die
+            ressourcenschonende, daemonlose Alternative mit nativer Unterstützung für den Betrieb ohne
+            Root-Rechte und empfiehlt sich überall dort, wo Sicherheit und geringer Verbrauch im
+            Vordergrund stehen. Kubernetes bietet den größten Funktionsumfang, wirkt in kleinteiligen
+            Edge-Netzen wegen seines Ressourcenbedarfs jedoch überdimensioniert; K3s ist die reduzierte
+            Variante für genau diesen Fall, und Docker Swarm bleibt die schlanke Lösung für kleine Cluster,
+            stößt aber bei komplexen Netzwerk- und Sicherheitsanforderungen an Grenzen.</p>
+        <p>Der praktische Nutzen liegt in der Entscheidungshilfe: Unternehmen können anhand von
+            Clustergröße, Sicherheitsniveau und verfügbarer Hardware die passende Kombination auswählen,
+            statt sich an einer einzelnen Technologie zu orientieren. Der Anforderungskatalog macht diese
+            Auswahl überprüfbar und liefert die Vorgaben, an denen sich eine spätere Umsetzung messen
+            lassen muss.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 11.1</span>
+    </section>
+
+    <section id="ausblick" class="project-section">
+        <h2>Ausblick</h2>
+        <p>Ein bedarfsgerechtes Edge-System muss stets auf den konkreten Anwendungsfall zugeschnitten
+            werden, weil Überbau, Sicherheitsfunktionen und Komplexität je nach Technologie deutlich
+            variieren. Eine ganzheitliche Betrachtung, die neben Performanz und Latenz auch Energieeffizienz
+            und Langzeitverhalten im industriellen Maßstab einbezieht, ist bislang nur in Ansätzen
+            vorhanden. Erforderlich sind daher Evaluierungen in umfangreichen verteilten Installationen mit
+            Hunderten von Geräten, die auch betriebswirtschaftliche Faktoren wie Wartungsaufwand,
+            Schulungsbedarf und Kosten berücksichtigen.</p>
+        <p>Für viele Unternehmen wäre zudem eine vertiefte Integration proprietärer Feldbus-Protokolle von
+            Bedeutung, da in zahlreichen Anlagen weiterhin ältere Steuerungssysteme im Einsatz sind. Offen
+            bleibt außerdem die Weiterentwicklung der Container- und Orchestrierungstechnologien in
+            Richtung automatisierter Sicherheitstests und widerstandsfähiger Netzstrukturen, um einheitliche
+            Sicherheitsstandards über das gesamte Spektrum von der Edge bis zur Cloud zu etablieren.</p>
+        <span class="fig-source">Quelle: Kyr (2025), Kapitel 11.2 und 11.3</span>
+    </section>
+
+    <section id="quellen" class="project-section">
+        <h2>Quellen</h2>
+        <p class="citation-box">Kyr, P. (2025). <em>Analyse und Definition von Anforderungen für ein dezentrales Edge-Computing-System unter Verwendung von Docker, Kubernetes und alternativen Technologien</em> [Abschlussdokumentation, Masterklassenprojekt Industrie 4.0]. Fachhochschule St. Pölten, Department Medien und Digitale Technologien.</p>
+        <p>Die Abbildung und die Tabellen dieser Seite stammen aus der genannten Abschlussdokumentation und
+            tragen deren Nummerierung.</p>
 
         <ul class="tags" style="margin-top: 30px;">
-            <li>Edge Computing</li><li>Docker</li><li>Podman</li><li>Kubernetes / K3s</li><li>Industrie 4.0</li><li>IIoT</li>
+            <li>Edge Computing</li><li>Docker</li><li>Podman</li><li>Kubernetes / K3s</li>
+            <li>Docker Swarm</li><li>MQTT</li><li>Industrie 4.0</li><li>IIoT</li>
         </ul>
         <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
     </section>
 </main>
 
 <footer>
-    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
 </footer>
-<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+<script src="../js/seite.js" defer></script>
+<script src="../js/kopfbiegung.js" defer></script>
 </body>
 </html>

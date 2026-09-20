@@ -2,9 +2,15 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SC2SC – Sensor Connection to Siemens Controller – Philipp Kyr BSc</title>
+    <title>SC2SC – Sensor Connection to Siemens Controller – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 </head>
 <body>
 <header>
@@ -12,69 +18,276 @@
     <p>TCP/IP Datenschnittstelle zwischen Siemens S7 Controller und ESP32-Sensormodulen</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="../index.html">Portfolio</a></li>
-        <li><a href="../projects.html">Projekte</a></li>
-        <li><a href="#beschreibung">Beschreibung</a></li>
-        <li><a href="#architektur">Architektur</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../projects.html">Projekte</a></li>
+            <li><a href="#herausforderung">Herausforderung</a></li>
+            <li><a href="#loesungsansatz">Lösungsansatz</a></li>
+            <li><a href="#protokoll">Protokollentwurf</a></li>
+            <li><a href="#aufbau">Testaufbau</a></li>
+            <li><a href="#implementierung">Implementierung</a></li>
+            <li><a href="#ergebnis">Ergebnis</a></li>
+            <li><a href="#ausblick">Ausblick</a></li>
+            <li><a href="#quellen">Quellen</a></li>
+        </ul>
+    </nav>
 
 <main class="container">
     <div class="project-meta">
-        <span><strong>Zeitraum:</strong> WS 2023/2024</span>
+        <span><strong>Zeitraum:</strong> WS 2023/24 und SS 2024</span>
         <span><strong>Rahmen:</strong> Masterklassenprojekt Industrie 4.0 (MKL-PR-I4.0 PA mit23)</span>
-        <span><strong>Team:</strong> Philipp Kyr BSc, Ing. Andreas Jilch BSc</span>
-        <span><strong>Betreuung:</strong> FH-Prof. Dr. Markus Wagner, BSc MSc · Dipl.-Ing. Christoph Braun, BSc</span>
+        <span><strong>Bearbeitung:</strong> im Zweierteam</span>
+        <span><strong>Eigener Anteil:</strong> Protokollentwurf, Datenschnittstelle und ESP32-Software</span>
     </div>
 
-    <section id="beschreibung" class="project-section">
-        <h2>Herausforderung & Problemstellung</h2>
-        <p>Für die Überwachung und Regelung industrieller Anlagen ist die Integration zusätzlicher Sensorik in bestehende Maschinensteuerungen (z.B. Siemens S7) oft aufwändig und teuer. Cloud-basierte Lösungen sind für zeitkritische Prozesse meist nicht geeignet. Die Herausforderung bestand darin, eine direkte, performante und fehlertolerante Datenübertragung von kostengünstigen Sensoren (ESP32) an eine Siemens-SPS zu ermöglichen, ohne den Umweg über eine übergeordnete Cloud zu gehen.</p>
-        
+    <section id="herausforderung" class="project-section">
+        <h2>Herausforderung &amp; Problemstellung</h2>
+        <p>Sensorik ist in industriellen Anlagen allgegenwärtig, doch die am Markt verfügbaren Lösungen
+            sind häufig teuer und als geschlossene, proprietäre Systeme ausgelegt. Wer eine bestehende
+            Maschinensteuerung um eine selbst entwickelte Sensoreinheit erweitern möchte, steht deshalb vor
+            einem erheblichen Entwicklungsaufwand: Es fehlt eine offene, dokumentierte Schnittstelle,
+            über die sich eigene Messeinheiten an eine übergeordnete Auswerteeinheit anbinden lassen.</p>
+        <p>Cloud-basierte Ansätze lösen das Problem nicht, weil sie für zeitkritische Prozesse in der
+            Automatisierungstechnik ungeeignet sind. Gesucht war daher eine direkte, performante und
+            fehlertolerante Übertragung von kostengünstigen Sensoreinheiten auf Mikrocontrollerbasis an
+            eine Siemens-S7-Steuerung, ohne den Umweg über eine übergeordnete Plattform. Daraus ergab sich
+            die leitende Fragestellung des Projekts:</p>
+        <p class="citation-box">Wie ist die Datenschnittstelle auf Basis TCP/IP zu gestalten, um eine
+            schnelle und benutzerfreundliche Erweiterung einer Siemens S7 Maschinensteuerung um
+            zusätzliche, selbstentwickelte Sensoreinheiten zu ermöglichen?</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 2 und 3</span>
+    </section>
+
+    <section id="loesungsansatz" class="project-section">
         <h2>Lösungsansatz</h2>
-        <p>In diesem Projekt wurde eine eigene Datenschnittstelle (SC2SC) entwickelt, um eine zuverlässige TCP/IP-Verbindung zwischen einer Siemens S7 Steuerung (als Client) und ESP32-Mikrocontrollern (als Server) herzustellen. Die Datenübertragung erfolgt durch eine festgelegte Nachrichtenstruktur (Header-Aufbau), welche eine dynamische Sensorabfrage sowie eine integrierte Fehlererkennung mittels CRC-8-Prüfsumme (sowie einem 3-Way-Handshake) bietet.</p>
-        
-        <h2>Ergebnis & Mehrwert</h2>
-        <p>Das System wurde in einem physischen Testaufbau mit echten Hardwarekomponenten (Siemens CPU 1512SP, ESP32 Dev Kits) validiert (TRL 3). Das Ergebnis ist eine kostengünstige, echtzeitnahe und ausfallsichere Lösung, mit der Sensordaten direkt und ohne Zwischenschicht in die Steuerungsebene integriert werden können. Dies ermöglicht eine schnelle und benutzerfreundliche Erweiterung industrieller Maschinensteuerungen.</p>
-        
+        <p>Entwickelt wurde eine eigene Datenschnittstelle mit dem Arbeitstitel SC2SC, die eine
+            TCP/IP-Verbindung zwischen einer Siemens S7 Steuerung und ESP32-Mikrocontrollern herstellt. Die
+            Steuerung tritt dabei als Client auf, die Sensormodule als Server. Übertragen wird nicht ein
+            beliebiger Datenstrom, sondern eine festgelegte Nachrichtenstruktur, über deren Kopfdaten sich
+            Betriebsart, Sensorauswahl, Nachrichtenlänge und optionale Funktionen steuern lassen.</p>
+        <p>Methodisch folgte das Projekt dem evolutionären Prototyping: Zu Beginn stand die Definition der
+            Kernfunktionen, in den späteren Iterationen deren schrittweise Erweiterung und Detailoptimierung.
+            Die Schnittstelle wurde dabei fortlaufend gegen Anforderungen wie Durchsatzleistung,
+            Datensicherheit, Sensordichte und Implementierungsfähigkeit geprüft.</p>
+
         <div class="image-gallery">
-            <figure>
-                <img src="../img/sc2sc/schema.jpg?v=3" alt="Schnittstellen Schema" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Logischer Aufbau der SC2SC-Schnittstelle</figcaption>
-            </figure>
-            <figure>
-                <img src="../img/sc2sc/testaufbau.jpg?v=2" alt="Testaufbau Siemens Steuerung" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Testaufbau Siemens Steuerung</figcaption>
-            </figure>
-            <figure>
-                <img src="../img/sc2sc/esp32-module.jpg?v=2" alt="Testaufbau Sensormodule" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Testaufbau Sensormodule (ESP32)</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/sc2sc/schema.jpg?v=3" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/schema.jpg?v=3" alt="Abbildung 1: Schema der SC2SC-Schnittstelle zwischen Siemens S7 Steuerung und ESP32-Sensormodulen" width="1313" height="858" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 1:</strong> Logischer Aufbau der SC2SC-Schnittstelle. Die Steuerung fragt als Client die ESP32-Module ab, die als Server antworten.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 1</span>
             </figure>
         </div>
     </section>
 
-    <section id="architektur" class="project-section">
-        <h2>Systemarchitektur &amp; Implementierung</h2>
+    <section id="protokoll" class="project-section">
+        <h2>Protokollentwurf</h2>
+        <p>Das Protokoll gliedert sich in drei statische Segmente: den Initialisierungs-Header, den
+            Sensordirektive-Header und die Integritätsprüfung. Über die Konfiguration der beiden Header
+            werden die dynamischen Bestandteile der Nachricht gesteuert und optionale Funktionen
+            aktiviert.</p>
+
+        <div class="image-gallery">
+            <figure>
+                <a href="../img/sc2sc/sc2sc-protokollaufbau.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/sc2sc-protokollaufbau.png" alt="Abbildung 49: Die drei Segmente des SC2SC-Protokolls" width="697" height="632" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 49:</strong> Die drei statischen Segmente der Datenschnittstelle.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 49</span>
+            </figure>
+        </div>
+
+        <h3>Initialisierungs-Header</h3>
+        <p>Der Initialisierungs-Header umfasst ein Byte und trägt die Steuerinformationen der Nachricht.
+            Neben Start- und Endekennung regelt er die Portwahl, schaltet optionale Header frei und legt
+            über zwei Bit die Betriebsart fest.</p>
+        <div class="table-wrap text">
+            <div class="table-title">Initialisierungs-Header, ein Byte</div>
+            <table>
+                <thead><tr><th>Bit</th><th>Funktion</th><th>Bedeutung</th></tr></thead>
+                <tbody>
+                    <tr><td>0</td><td>Message Start/Repeat</td><td>0 = neue Nachricht, 1 = Folgenachricht</td></tr>
+                    <tr><td>1</td><td>Message End</td><td>0 = weitere Pakete folgen, 1 = Ende der Nachricht</td></tr>
+                    <tr><td>2</td><td>Backup-Port</td><td>0 = nur primärer Port, 1 = zusätzlich Backup-Port</td></tr>
+                    <tr><td>3</td><td>QoS-Enable</td><td>schaltet den QoS-Header frei</td></tr>
+                    <tr><td>4</td><td>Security-Enable</td><td>schaltet den Secure-Header frei</td></tr>
+                    <tr><td>5</td><td>Reserved</td><td>reserviert für spätere Iterationen</td></tr>
+                    <tr><td>6–7</td><td>Mode</td><td>00 Default, 01 Setup, 10 Sensor-Info, 11 Error</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Sensordirektive-Header</h3>
+        <p>Der Sensordirektive-Header umfasst zwei Byte und steuert die eigentliche Sensorabfrage. Sieben
+            Bit für die Sensorauswahl ergeben 126 adressierbare Sensoren; die Kennung 0 ist für allgemeine
+            Statusabfragen einer Sensorgruppe reserviert. Ein eigenes Bit entscheidet, ob Messwerte als
+            umgerechnete Größe oder als Rohwert zurückkommen. Das letzte Bit erlaubt, mehrere Sensoren in
+            einer einzigen Nachricht zu bündeln: Folgt ein weiterer Sensordirektive-Header, sinkt der
+            prozentuale Anteil des Überbaus aus Initialisierungs-Header und Prüfsumme deutlich.</p>
+        <div class="table-wrap text">
+            <div class="table-title">Sensordirektive-Header, zwei Byte</div>
+            <table>
+                <thead><tr><th>Bit</th><th>Funktion</th><th>Bedeutung</th></tr></thead>
+                <tbody>
+                    <tr><td>0–6</td><td>Sensor Selection</td><td>Kennung des abgefragten Sensors, 126 mögliche Kennungen</td></tr>
+                    <tr><td>7</td><td>Raw Data</td><td>0 = umgerechneter Wert, 1 = Rohwert ohne Umrechnung</td></tr>
+                    <tr><td>8–14</td><td>Message Length</td><td>Nachrichtenlänge von 0 bis 127 Byte</td></tr>
+                    <tr><td>15</td><td>Additional Sensor Header</td><td>1 = ein weiterer Sensordirektive-Header folgt</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Integritätsprüfung</h3>
+        <p>Die Integrität der Nachricht sichert eine CRC8-Prüfsumme über den gesamten Nachrichtenpuffer.
+            Die zugehörige Lookup-Tabelle wird einmalig erzeugt; das kostet anfangs Zeit und Speicher,
+            beschleunigt danach aber jede Berechnung und jede Verifikation erheblich. Über die Prüfsumme
+            lassen sich Bitfehler ebenso feststellen wie Manipulationen am Datenpaket.</p>
+
+        <div class="image-gallery">
+        </div>
+    </section>
+
+    <section id="aufbau" class="project-section">
+        <h2>Testaufbau</h2>
+        <p>Validiert wurde die Schnittstelle an einem physischen Aufbau mit einer Siemens SIMATIC S7-1500
+            (CPU 1512SP F-1 PN), einem SCALANCE XB008 Switch und mehreren ESP32 NodeMCU als Sensormodule.
+            Als Messgrößen dienten Temperatur und Luftfeuchte (HTU21) sowie Strom (ACS712), weil sich diese
+            Werte leicht gegenprüfen lassen. Programmiert wurde die Steuerung im TIA-Portal V18 in SCL, die
+            Sensormodule in C/C++ über die Arduino-IDE.</p>
+        <p>Für die Entwicklung der Schnittstelle selbst entstand zusätzlich eine webbasierte Testoberfläche
+            in Python. Über sie lassen sich einzelne Bits des Protokolls gezielt setzen, die Nachricht
+            manuell versenden und die Antwort des Systems unmittelbar ablesen. Das erlaubte, den
+            Protokollentwurf zu prüfen, bevor die Steuerungsseite fertig war.</p>
+
+        <div class="image-gallery">
+            <figure>
+                <a href="../img/sc2sc/testaufbau.jpg?v=2" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/testaufbau.jpg?v=2" alt="Abbildung 53: Testaufbau mit Siemens SIMATIC S7-1500 Steuerung" width="1317" height="1396" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 53:</strong> Testaufbau mit der Siemens-Steuerung, an der die Schnittstelle validiert wurde.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 53</span>
+            </figure>
+            <figure>
+                <a href="../img/sc2sc/esp32-module.jpg?v=4" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/esp32-module.jpg?v=4" alt="Abbildung 54: Die aufgebauten ESP32-Sensormodule" width="1081" height="445" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 54:</strong> Die aufgebauten ESP32-Sensormodule mit eigener Stromversorgung.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 54</span>
+            </figure>
+        </div>
+    </section>
+
+    <section id="implementierung" class="project-section">
+        <h2>Implementierung auf dem Sensormodul</h2>
+        <p>Auf der Seite der ESP32-Module sind die beiden Header als Bitfelder umgesetzt. Statt mit
+            numerischen Werten wird dabei mit sprechenden Bezeichnern gearbeitet, sodass sich ein einzelnes
+            Bit über seinen Namen setzen lässt und nicht über seine Position. Das macht die Bibliothek
+            lesbar und in anderen Projekten wiederverwendbar. Für die Übertragung steht ein
+            Nachrichtenpuffer von 512 Byte bereit. Ein Leistungstest ergab, dass sich im Mittel eine
+            Million Header-Zuweisungen samt Gültigkeitsprüfung in 468 ms ausführen lassen, wovon 466 ms
+            auf die Prüfung entfallen; eine weitere Optimierung dieser Bibliothek war daher nicht
+            erforderlich.</p>
+
+        <div class="image-gallery">
+        </div>
+
+        <h3>Ablauf einer Abfrage</h3>
+        <p>Das Ablaufprogramm gliedert sich in acht Schritte, vom Empfang bis zum Versand der Antwort:</p>
         <ul class="list">
-            <li><strong>Client-Server-Modell:</strong> Die Siemens S7 Steuerung agiert als Client, während die ESP32-Module als Server fungieren.</li>
-            <li><strong>Protokolldesign:</strong> Eigenes Kommunikationsprotokoll basierend auf TCP/IP mit Initialisierungs-Header und Sensordirektiven-Header für flexible Payload-Größen.</li>
-            <li><strong>Sicherheit &amp; Fehlerkorrektur:</strong> Implementierung eines 3-Way-Handshakes und einer zyklischen Redundanzprüfung (CRC) zur Absicherung der Datenübertragung.</li>
-            <li><strong>Hardware:</strong> Siemens SIMATIC S7-1500 (CPU 1512SP F-1 PN), SCALANCE XB008 Switch, ESP32 NodeMCU, diverse Sensoren (HTU21, ACS712).</li>
-            <li><strong>Software:</strong> TIA-Portal V18 (SCL/ST) für das Ablaufprogramm der Steuerung, Arduino IDE (C/C++) für die ESP32-Programmierung.</li>
+            <li>Informationen empfangen</li>
+            <li>CRC-Prüfung der empfangenen Nachricht</li>
+            <li>Analyse des SC2SC-Protokolls</li>
+            <li>Sensorinformationen abrufen</li>
+            <li>Aufbau des SC2SC-Protokolls für die Antwort</li>
+            <li>CRC-Kalkulation über den Antwortpuffer</li>
+            <li>Nachrichtenpuffer erstellen</li>
+            <li>Informationen senden</li>
         </ul>
-        
+        <p>Die Analyse und Zerlegung des Protokolls war dabei die technisch anspruchsvollste Aufgabe der
+            Umsetzung. Aus dem Sensordirektive-Header wird die adressierte Sensorgruppe bestimmt, über alle
+            zugehörigen Sensoren iteriert und für jeden ein eigener Header samt Messwert in den Puffer
+            geschrieben; das Flag für einen weiteren Sensor-Header wird dabei automatisch gesetzt. Erst zum
+            Schluss entsteht der Initialisierungs-Header an Position 1 und die Prüfsumme am Ende des
+            Puffers. Ein reiner Erreichbarkeitstest kommt auf diese Weise mit vier Byte aus. Gruppenabfragen
+            steigern die Leistungsfähigkeit spürbar, weil sie die Anzahl der Verbindungsaufbauten
+            verringern. Für die Fehlerbehandlung werden Fehlercodes mit Zeitstempel protokolliert, und bei
+            Verbindungsverlust baut das Modul die Verbindung zum Netzwerk selbsttätig neu auf.</p>
+
+        <h3>Anbindung beliebiger Sensorik</h3>
+        <p>Damit sich unterschiedliche Sensortypen ohne Eingriff in die Schnittstellenlogik anbinden
+            lassen, kapselt eine eigene Datenstruktur den Messwert samt Typkennung, und eine virtuelle
+            Klasse gibt die Funktionen vor, über die jeder Sensor angesprochen wird. Ein Temperatursensor,
+            der Ganzzahlen liefert, und ein Vibrationssensor, der Gleitkommawerte zurückgibt, nutzen damit
+            dieselben Aufrufe. Vorgesehen sind das Abrufen eines Messwerts, die Abfrage der
+            Sensorinformationen, die Kalibrierung, das Setzen und Auslesen der Einheiten sowie die
+            Konfiguration; optionale Parameter im JSON-Format erlauben dabei eine weitergehende
+            Parametrisierung direkt aus der Nachricht heraus.</p>
+
+        <div class="image-gallery">
+        </div>
+
+        <h3>Inbetriebnahme ohne Programmierkenntnisse</h3>
+        <p>Für die Einrichtung im Feld spannt das Modul beim Start einen eigenen Zugangspunkt auf. Ein
+            Captive Portal leitet über einen eigenen DNS-Server jede Anfrage auf die Konfigurationsseite um,
+            auf der sich Netzwerkname, Adresse, Gateway, Subnetz und Passwort eintragen lassen. Nach
+            erfolgreicher Konfiguration wechselt das Modul in den Stationsmodus und verbindet sich mit dem
+            Netz der Steuerungskomponenten, wo es anschließend selbst als Webserver läuft.</p>
+
+        <div class="image-gallery">
+            <figure>
+                <a href="../img/sc2sc/sc2sc-webkonfiguration.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/sc2sc-webkonfiguration.png" alt="Abbildung 60: Weboberfläche zur Konfiguration der Netzwerkverbindung" width="423" height="612" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 60:</strong> Die Konfigurationsseite des Sensormoduls, erreichbar über den eigenen Zugangspunkt.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2024), Abbildung 60</span>
+            </figure>
+        </div>
+    </section>
+
+    <section id="ergebnis" class="project-section">
+        <h2>Ergebnis &amp; Mehrwert</h2>
+        <p>Entstanden ist ein lauffähiger Softwareprototyp auf dem Technologie-Reifegrad TRL 3, also der
+            Implementierung und Testung der kritischen Funktionen. Am physischen Testaufbau werden
+            Temperatur-, Luftfeuchte- und Strommesswerte erfolgreich von den Sensormodulen an die Steuerung
+            übertragen und dort ausgewertet. Umgesetzt sind der Auf- und Abbau der Verbindung, die
+            dynamische Zusammenstellung und Zerlegung des Protokolls, die Gruppenabfrage mehrerer Sensoren,
+            die validierte CRC8-Prüfung sowie die Fehlerbehandlung mit Zeitstempel und selbsttätigem
+            Neuaufbau der Verbindung.</p>
+        <p>Der Mehrwert liegt in der Offenheit des Entwurfs. Die Sensorstruktur standardisiert den Aufbau
+            der Sensoreinheiten, sodass neue Messgrößen ohne Eingriff in die Schnittstellenlogik hinzukommen
+            können, und die Weboberfläche macht die Inbetriebnahme ohne Programmierkenntnisse möglich.
+            Damit lässt sich eine bestehende Maschinensteuerung um eigene Sensorik erweitern, ohne sich an
+            ein proprietäres System zu binden.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 17.8</span>
+    </section>
+
+    <section id="ausblick" class="project-section">
+        <h2>Ausblick</h2>
+        <p>Das Protokoll ist bewusst weiter ausgelegt, als der Prototyp umsetzt. Die im Initialisierungs-Header
+            bereits vorgesehenen Bits für Quality of Service und Sicherheit warten auf ihre Spezifikation;
+            für die Absicherung stehen AES und TLS zur Diskussion. Systematische Leistungs- und
+            Validierungstests sollen die Funktionsfähigkeit des Gesamtsystems belegen und die Grundlage für
+            weitere Optimierungen schaffen.</p>
+        <p>Auf der Bedienseite soll die Weboberfläche über die Netzwerkeinrichtung hinauswachsen und auch
+            die Konfiguration der Gruppenabfragen aufnehmen. Ein bekannter Engpass ist derzeit der
+            Verbindungsaufbau des Mikrocontrollers zum Netzwerk: Die ursprünglich vorgesehene Bibliothek war
+            nach einem Update des Arduino-Frameworks nicht mehr nutzbar, sodass auf eine weniger performante
+            Alternative ausgewichen werden musste. Dieser Punkt ist der erste Ansatzpunkt für die nächste
+            Iteration.</p>
+        <span class="fig-source">Quelle: Kyr (2024), Kapitel 17.9 und 17.11</span>
+    </section>
+
+    <section id="quellen" class="project-section">
+        <h2>Quellen</h2>
+        <p class="citation-box">Kyr, P. (2024). <em>SC2SC – Sensor Connection to Siemens Controller</em> [Abschlussdokumentation, Masterklassenprojekt Industrie 4.0, gemeinsam mit einem Projektpartner verfasst]. Fachhochschule St. Pölten, Department Medien und Digitale Technologien.</p>
+        <p>Die Abbildungen dieser Seite stammen aus der genannten Abschlussdokumentation und tragen deren
+            Abbildungsnummern. Das Projekt wurde zu zweit bearbeitet; die hier dargestellten Inhalte
+            beziehen sich auf den Protokollentwurf, die Datenschnittstelle und die ESP32-seitige Software.</p>
+
         <ul class="tags" style="margin-top: 30px;">
-            <li>Siemens S7 (TIA Portal)</li><li>ESP32</li><li>C/C++</li><li>SCL (Structured Control Language)</li><li>TCP/IP</li><li>IIoT</li>
+            <li>Siemens S7 (TIA Portal)</li><li>ESP32</li><li>C/C++</li><li>SCL</li><li>TCP/IP</li>
+            <li>Protokollentwurf</li><li>CRC8</li><li>Python</li><li>IIoT</li>
         </ul>
         <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
     </section>
 </main>
 
 <footer>
-    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
 </footer>
-<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+<script src="../js/seite.js" defer></script>
+<script src="../js/kopfbiegung.js" defer></script>
 </body>
 </html>

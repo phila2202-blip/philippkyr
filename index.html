@@ -2,10 +2,16 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio von Philipp Kyr BSc – Tech Founder & Smart Engineer. Computer Vision, Industrie 4.0 und Co-Founder von engiQ systems.">
-    <title>Philipp Kyr BSc – Tech Founder &amp; Engineer</title>
+    <meta name="description" content="Portfolio von Philipp Kyr, BSc – Tech Founder & Smart Engineer. Computer Vision, Industrie 4.0 und Co-Founder von engiQ systems.">
+    <title>Philipp Kyr, BSc – Tech Founder &amp; Engineer</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <body>
 
@@ -15,7 +21,7 @@
             <a href="#hero" class="nav-brand">
                 <div class="nav-logo-badge">PK</div>
                 <div class="nav-brand-text">
-                    <span class="nav-name">Philipp Kyr BSc</span>
+                    <span class="nav-name">Philipp Kyr, BSc</span>
                     <span class="nav-tagline">Founder &amp; Engineer</span>
                 </div>
             </a>
@@ -45,7 +51,7 @@
 
         <div class="hero-stage">
             <!-- Freigestelltes Porträt (Vektor-Platzhalter, kann durch img/philipp.png ersetzt werden) -->
-            <img class="hero-portrait-img" src="img/hero-portrait.svg" alt="Philipp Kyr BSc – Tech Founder &amp; Engineer">
+            <img class="hero-portrait-img" src="img/hero-portrait.svg" alt="Philipp Kyr, BSc, Tech Founder &amp; Engineer">
         </div>
 
         <div class="hero-meta-bar">
@@ -148,7 +154,7 @@
                             </li>
                         </ul>
                         <div class="about-actions">
-                            <a href="https://engiq-systems.de" target="_blank" rel="noopener" class="btn btn-primary">engiQ systems besuchen →</a>
+                            <a href="https://engiq.systems" target="_blank" rel="noopener" class="btn btn-primary">engiQ systems besuchen →</a>
                             <a href="#kontakt" class="btn btn-secondary">Gespräch vereinbaren</a>
                         </div>
                     </div>
@@ -185,7 +191,7 @@
                 <!-- Project 1: Masterarbeit -->
                 <article class="featured-project-card">
                     <div class="project-media-wrap">
-                        <img src="img/masterarbeit/master_1.png" alt="Architektur Masterarbeit" onerror="this.src='img/profil.svg';">
+                        <img src="img/masterarbeit/c4-container-architektur.png" alt="Architektur Masterarbeit" data-ersatz="img/profil.svg">
                     </div>
                     <div class="project-info-wrap">
                         <span class="project-category-tag">IIoT &amp; Edge Computing</span>
@@ -224,7 +230,7 @@
                 <!-- Project 3: Werkerassistenzsystem -->
                 <article class="featured-project-card">
                     <div class="project-media-wrap">
-                        <img src="img/werkerassistenz/thumb.jpg" alt="Werkerassistenzsystem" onerror="this.src='img/profil.svg';">
+                        <img src="img/werkerassistenz/thumb.jpg" alt="Werkerassistenzsystem" data-ersatz="img/profil.svg">
                     </div>
                     <div class="project-info-wrap">
                         <span class="project-category-tag">Computer Vision &amp; Assistenz</span>
@@ -243,7 +249,7 @@
                 <!-- Project 4: 3D Druck Fehlererkennung -->
                 <article class="featured-project-card">
                     <div class="project-media-wrap">
-                        <img src="img/3d-druck/thumb.jpg" alt="Fehlererkennung 3D-Druck" onerror="this.src='img/profil.svg';">
+                        <img src="img/3d-druck/thumb.jpg" alt="Fehlererkennung 3D-Druck" data-ersatz="img/profil.svg">
                     </div>
                     <div class="project-info-wrap">
                         <span class="project-category-tag">Edge AI &amp; Deep Learning</span>
@@ -338,8 +344,8 @@
                     <strong>engiQ systems</strong> oder potenzielle Kooperationen – ich freue mich auf deine Nachricht!
                 </p>
                 <div class="contact-options">
-                    <a href="mailto:it231504@fhstp.ac.at" class="btn btn-primary">📩 E-Mail schreiben (it231504@fhstp.ac.at)</a>
-                    <a href="https://engiq-systems.de" target="_blank" rel="noopener" class="btn btn-secondary">🌐 engiQ systems besuchen</a>
+                    <a href="mailto:kontakt@engiq.systems" class="btn btn-primary">E-Mail schreiben (kontakt@engiq.systems)</a>
+                    <a href="https://engiq.systems" target="_blank" rel="noopener" class="btn btn-secondary">engiQ systems besuchen</a>
                 </div>
                 <div style="margin-top: 30px; font-size: 0.95rem; color: var(--text-light-muted);">
                     📍 Standort: Sitzenberg-Reidling / St. Pölten, Niederösterreich
@@ -350,23 +356,10 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum &amp; Datenschutz</a></p>
+            <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum &amp; Datenschutz</a></p>
         </div>
     </footer>
 
-    <script>
-        // Dynamisches Jahr im Footer
-        document.getElementById('jahr').textContent = new Date().getFullYear();
-
-        // Navbar Styling bei Scrollen
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
+    <script src="js/seite.js" defer></script>
 </body>
 </html>

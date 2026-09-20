@@ -2,10 +2,16 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Impressum &amp; Datenschutz – Philipp Kyr BSc</title>
+    <title>Impressum &amp; Datenschutz – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <body>
 <header>
@@ -29,16 +35,15 @@
 
     <section>
         <h2>Medieninhaber &amp; Herausgeber</h2>
-        <p>Philipp Kyr BSc<br>
+        <p>Philipp Kyr, BSc<br>
             3454 Sitzenberg-Reidling<br>
             Österreich</p>
-        <p>E-Mail: <a href="mailto:it231504@fhstp.ac.at">it231504@fhstp.ac.at</a></p>
+        <p>E-Mail: <a href="mailto:kontakt@engiq.systems">kontakt@engiq.systems</a></p>
     </section>
 
     <section>
         <h2>Grundlegende Richtung</h2>
-        <p>Private, nicht-kommerzielle Website zur Präsentation der Ausbildung, der Projekte und der fachlichen
-            Kompetenzen von Philipp Kyr BSc, insbesondere im Rahmen des Masterstudiums an der FH St. Pölten.</p>
+        <p>Persönliche Website zur Darstellung des fachlichen Werdegangs, der Studien- und Praxisprojekte sowie des in Entwicklung befindlichen Softwareprojekts engiQ Compass von Philipp Kyr, BSc, insbesondere im Rahmen des Masterstudiums an der FH St. Pölten. Über diese Website werden keine Waren oder Dienstleistungen angeboten, keine Preise genannt und keine Verträge geschlossen. engiQ systems ist ein Projektname; ein Unternehmen besteht derzeit nicht.</p>
     </section>
 
     <section>
@@ -58,7 +63,7 @@
     <section>
         <h2>Urheberrecht</h2>
         <p>Texte, Bilder und Grafiken auf dieser Website sind, sofern nicht anders gekennzeichnet, urheberrechtlich
-            geschützt. Die Projekte wurden im Rahmen des dualen Bachelorstudiums an der FH St. Pölten umgesetzt.
+            geschützt. Die dargestellten Projekte entstanden im Rahmen des dualen Bachelor- und des Masterstudiums an der FH St. Pölten sowie in der beruflichen Praxis.
             Eine Vervielfältigung oder Verwendung ist ohne ausdrückliche Zustimmung nicht gestattet.</p>
     </section>
 
@@ -71,8 +76,8 @@
 
     <section>
         <h2>Verantwortlicher</h2>
-        <p>Philipp Kyr BSc, 3454 Sitzenberg-Reidling, Österreich<br>
-            E-Mail: <a href="mailto:it231504@fhstp.ac.at">it231504@fhstp.ac.at</a></p>
+        <p>Philipp Kyr, BSc, 3454 Sitzenberg-Reidling, Österreich<br>
+            E-Mail: <a href="mailto:kontakt@engiq.systems">kontakt@engiq.systems</a></p>
     </section>
 
     <section>
@@ -106,8 +111,9 @@
 </main>
 
 <footer>
-    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="index.html">Zurück zum Portfolio</a></p>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="index.html">Zurück zum Portfolio</a></p>
 </footer>
-<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+<script src="js/seite.js" defer></script>
+<script src="js/kopfbiegung.js" defer></script>
 </body>
 </html>

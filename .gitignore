@@ -1,1 +1,32 @@
 .DS_Store
+
+# ---------------------------------------------------------------------------
+# Die zugrunde liegenden Arbeiten gehoeren NIE in das Repository.
+# Masterarbeit und Praxisberichte sind unveroeffentlichte Studienarbeiten; sie
+# liegen nur lokal und dienen als Quelle fuer die Projektseiten. Drei Ebenen
+# Schutz: der Ablageordner, die Dateiendung und der gesamte Variantenbaum.
+# ---------------------------------------------------------------------------
+arbeiten/
+*.pdf
+*.docx
+*.doc
+
+# Designvarianten sind lokale Arbeitsstaende und nicht versioniert.
+varianten/
+
+# Werkzeugverzeichnisse
+.claude/
+skills-lock.json
+.agents/
+.codex/
+node_modules/
+
+# Rohfotos: Originalauflösungen, die nur als Vorlage dienen. Die fertigen
+# Zuschnitte liegen als eigene Dateien in img/ und sind versioniert.
+img/Firefly*.png
+img/hero-portrait-neu.png
+img/hero-portrait.png
+
+# Zweites Repository ueber denselben Ordner: der vollstaendige, private
+# Abzug nach github.com/phila2202-blip/portfolio. Siehe README-Hinweis.
+.git-portfolio/

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 560" width="1240" height="560" role="img" aria-label="Empfehlung nach Clustergroesse: bis fuenf Knoten Docker Swarm, bis zwanzig Knoten K3s, darueber Kubernetes.">
+<rect width="1240" height="560" fill="#ffffff"/>
+<text x="48" y="52" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#0a1f1a">Welche Orchestrierung passt zu welcher Clustergröße?</text>
+<text x="48" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#54645d">Laufzeitumgebung in allen drei Fällen: Docker oder Podman</text>
+<rect x="48" y="96" width="364" height="250" rx="14" fill="#e4eae6" stroke="#cfdad4"/>
+<rect x="48" y="96" width="364" height="46" rx="14" fill="#dfeae5"/>
+<rect x="48" y="128" width="364" height="14" fill="#dfeae5"/>
+<text x="230" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#00664f">1 bis 5 Knoten</text>
+<text x="230" y="188" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="27" font-weight="700" fill="#0a1f1a">Docker Swarm</text>
+<text x="72" y="234" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">BEST PRACTICES</text>
+<text x="72" y="255" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">Minimal-Images,</text>
+<text x="72" y="274" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">einfache CI/CD</text>
+<text x="72" y="309" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">SICHERHEIT</text>
+<text x="72" y="330" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">Rootless, Firewall</text>
+<rect x="438" y="96" width="364" height="250" rx="14" fill="#e4eae6" stroke="#cfdad4"/>
+<rect x="438" y="96" width="364" height="46" rx="14" fill="#dfeae5"/>
+<rect x="438" y="128" width="364" height="14" fill="#dfeae5"/>
+<text x="620" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#00664f">5 bis 20 Knoten</text>
+<text x="620" y="188" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="27" font-weight="700" fill="#0a1f1a">K3s</text>
+<text x="462" y="234" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">BEST PRACTICES</text>
+<text x="462" y="255" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">rollierende Updates,</text>
+<text x="462" y="274" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">SQLite-Backend</text>
+<text x="462" y="309" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">SICHERHEIT</text>
+<text x="462" y="330" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">Network Policies, TLS</text>
+<rect x="828" y="96" width="364" height="250" rx="14" fill="#e4eae6" stroke="#cfdad4"/>
+<rect x="828" y="96" width="364" height="46" rx="14" fill="#dfeae5"/>
+<rect x="828" y="128" width="364" height="14" fill="#dfeae5"/>
+<text x="1010" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#00664f">20 bis 100+ Knoten</text>
+<text x="1010" y="188" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="27" font-weight="700" fill="#0a1f1a">Kubernetes</text>
+<text x="852" y="234" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">BEST PRACTICES</text>
+<text x="852" y="255" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">Helm-Charts,</text>
+<text x="852" y="274" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">Monitoring</text>
+<text x="852" y="309" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#54645d" letter-spacing="0.06em">SICHERHEIT</text>
+<text x="852" y="330" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e">RBAC, verschl. Secrets</text>
+<line x1="48" y1="380" x2="1192" y2="380" stroke="#a8bcb3" stroke-width="1.5"/>
+<polygon points="1192,380 1181,375 1181,385" fill="#a8bcb3"/>
+<text x="48" y="404" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13.5" fill="#54645d">wachsende Clustergröße und Komplexität</text>
+<rect x="48" y="428" width="1144" height="66" rx="12" fill="#ffffff" stroke="#cfdad4"/>
+<rect x="48" y="428" width="5" height="66" fill="#00664f"/>
+<text x="74" y="455" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e"><tspan font-weight="700" fill="#0a1f1a">Sicherheitskritisch:</tspan> Podman mit K3s oder Kubernetes, striktes Hardening, Zero Trust</text>
+<text x="74" y="479" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#35453e"><tspan font-weight="700" fill="#0a1f1a">Echtzeitnah:</tspan> 1 bis 3 Knoten, Docker Swarm oder K3s, lokale Adapterdienste, minimierte Angriffsfläche</text>
+</svg>

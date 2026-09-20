@@ -2,9 +2,15 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masterarbeit – Philipp Kyr BSc</title>
+    <title>Masterarbeit – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 </head>
 <body>
 <header>
@@ -12,63 +18,321 @@
     <p>Technologische Konzeption eines IoT/IIoT-Systems zur skalierbaren Überwachung und Analyse dezentralisierter Daten</p>
 </header>
 
-<section class="project-details">
-    <div class="content-wrapper">
-        <h2>Herausforderung & Problemstellung</h2>
-        <p>In modernen industriellen Produktionsumgebungen entsteht eine zunehmende Anzahl von IoT-Geräten, die riesige Datenmengen erzeugen. Die Herausforderung besteht in der mangelnden Interoperabilität bestehender Systeme und fehlenden skalierbaren Konzepten, um diese dezentralisierten Daten effizient, sicher und mit geringer Latenz zu erfassen, zu verarbeiten und bereitzustellen, ohne von zentralen Cloud-Lösungen abhängig zu sein.</p>
-        
-        <h2>Lösungsansatz</h2>
-        <p>Zur Bewältigung dieser Herausforderungen wurde ein technologisches Konzept für ein Industrial IoT (IIoT)-System entworfen und prototypisch umgesetzt. Der Lösungsansatz basiert auf Edge Computing, Containerisierung (Docker) und standardisierten Messaging-Protokollen (MQTT). Durch den Einsatz von Edge-Nodes, die direkt in der Produktionsnähe agieren, werden Daten lokal verarbeitet, gefiltert und durch einen Device Shadowmechanismus für übergeordnete Anwendungen abstrahiert.</p>
 
-        <h2>Ergebnis & Mehrwert</h2>
-        <p>Das Ergebnis ist eine voll funktionsfähige, skalierbare Systemarchitektur, die eine sichere und latenzarme Datenübertragung ermöglicht. Ein entwickeltes Echtzeit-Dashboard (basierend auf Node-RED) erlaubt die zentrale Überwachung der dezentralen Edge-Knoten. Das System reduziert Bandbreitenanforderungen, erhöht die Ausfallsicherheit und ermöglicht eine einfache Integration zukünftiger Sensorik in die bestehende Infrastruktur.</p>
-    </div>
-</section>
-
-<nav>
-    <ul>
-        <li><a href="../index.html">Portfolio</a></li>
-        <li><a href="../projects.html">Projekte</a></li>
-        <li><a href="#kurzfassung">Kurzfassung</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../projects.html">Projekte</a></li>
+            <li><a href="#herausforderung">Herausforderung</a></li>
+            <li><a href="#loesungsansatz">Lösungsansatz</a></li>
+            <li><a href="#ergebnis">Ergebnis</a></li>
+            <li><a href="#umsetzung">Methodik &amp; Umsetzung</a></li>
+            <li><a href="#evaluierung">Messergebnisse</a></li>
+            <li><a href="#limitationen">Limitationen</a></li>
+            <li><a href="#ausblick">Ausblick</a></li>
+            <li><a href="#quellen">Quellen</a></li>
+        </ul>
+    </nav>
 
 <main class="container">
     <div class="project-meta">
         <span><strong>Zeitraum:</strong> 2026</span>
         <span><strong>Rahmen:</strong> Masterarbeit am Studiengang Interactive Technologies, Masterklasse Industrie 4.0</span>
-        <span><strong>Autor:</strong> Philipp Kyr BSc</span>
-        <span><strong>Betreuung:</strong> FH-Prof. Dr. Markus Wagner, BSc MSc · Dipl.-Ing. Dr. Christian Jandl</span>
+        <span><strong>Autor:</strong> Philipp Kyr, BSc</span>
     </div>
 
-    <section id="kurzfassung" class="project-section">
-        <h2>Kurzfassung</h2>
-        <p>Die fortschreitende Digitalisierung industrieller Fertigungsprozesse führt zu stetig wachsenden Sensordatenmengen, deren dezentrale Erfassung, Verarbeitung und Speicherung bestehende Systemarchitekturen vor erhebliche Herausforderungen stellt. Diese resultieren insbesondere aus den strikten Latenzanforderungen zeitkritischer Steuerungsaufgaben, der Heterogenität industrieller Kommunikationsprotokolle sowie dem Fehlen integrierter Architekturvorschläge, die Edge-Computing, hybride Datenverarbeitung und flexible Persistenzstrategien in einem konsistenten Rahmen vereinen.</p>
-        <p>Cloud-zentrierte Ansätze stoßen in diesem Kontext an physikalische Grenzen, da die Übertragung umfangreicher Rohdatenströme über weite Distanzen die verfügbare Bandbreite belastet und eine lokale Reaktionsfähigkeit erschwert. Im Rahmen dieser Masterarbeit wurde daher ein containerisierter Softwareprototyp für eine dezentrale IIoT-Architektur entwickelt, um den Anforderungen einer autonomen Überwachung und Analyse industrieller Anlagen am Netzwerkrand gerecht zu werden. Die Zielsetzung lag in der Konzeption, prototypischen Entwicklung und Evaluierung dieser Architektur, die speziell für den Einsatz in verteilten Edge-Umgebungen ohne zwingende Abhängigkeit von zentralen Cloud-Instanzen konzipiert wurde.</p>
-        <p>Methodisch folgt die Arbeit dem Design-Science-Research-Ansatz nach Hevner, dessen Drei-Zyklen-Modell den Forschungsprozess in theoretische Fundierung, Anwendungsbezug und iterative Artefaktentwicklung gliedert. Das entworfene Architekturkonzept überträgt die Prinzipien der Lambda-Architektur auf eine dezentrale Edge-Umgebung und kombiniert einen latenzoptimierten Speed-Layer für Echtzeitabfragen mit einem durchsatzoptimierten Batch-Layer für die dauerhafte Persistierung. Eine polyglotte Datenhaltung verbindet eine Zeitreihendatenbank mit einer Graphdatenbank für die topologische Anlagenmodellierung, während ein graphgestütztes Semantic-Routing-Verfahren die zonenübergreifende Datenverfügbarkeit über Shadow-Replikation ohne zentrale Koordinationsinstanz ermöglicht.</p>
-        <p>Der entwickelte Softwareprototyp wurde in einem Testbed mit zwölf autonomen Edge-Knoten und mehreren Tausend simulierten Sensorkanälen vollständig implementiert und anhand von acht Experimenten unter Laborbedingungen auf dem Technologie-Reifegrad TRL-4 evaluiert. Die identifizierten Limitationen, insbesondere die Co-Location aller Container auf einer einzelnen physischen Maschine, wurden dokumentiert und bilden den Ausgangspunkt für weiterführende Feldvalidierungen auf physisch verteilter Hardware.</p>
-        
+    <section id="herausforderung" class="project-section">
+        <h2>Herausforderung &amp; Problemstellung</h2>
+        <p>Die zunehmende Sensordichte industrieller Anlagen erzeugt Datenvolumina, welche die
+            Übertragungskapazität zentralisierter Cloud-Architekturen übersteigen. Erschwerend wirkt die
+            räumliche Distanz zu überregionalen Rechenzentren: Die daraus resultierenden
+            Übertragungslatenzen sind für echtzeitkritische Regelkreise nicht tolerierbar. Unabhängig davon
+            stehen Anforderungen an die Datensouveränität und den Schutz von Betriebsgeheimnissen einer
+            vollständigen Auslagerung in externe Netze entgegen. Eine rein cloud-zentrierte Architektur kann
+            die Anforderungen an geringe Latenz, Bandbreiteneffizienz und lokale Datenhoheit folglich nicht
+            gleichzeitig erfüllen. Dieses Spannungsfeld bildet den Ausgangspunkt der Arbeit.</p>
+        <p>Edge-Computing begegnet dem Konflikt, indem Rechenoperationen an den Entstehungsort der Daten
+            verlagert werden. Die dezentrale Vorverarbeitung reduziert den Backbone-Verkehr, vermeidet
+            Lastspitzen im Anlagennetz und senkt die Verarbeitungslatenz auf lokaler Ebene. Zugleich
+            adressiert der Ansatz die historisch gewachsene Trennung zwischen Operational Technology und
+            Information Technology. Die OT-Domäne ist durch proprietäre Protokolle, deterministische
+            Kommunikation und hohe Verfügbarkeitsanforderungen geprägt, die IT-Domäne durch
+            Standardisierung, Skalierbarkeit und datenzentrierte Prozesse. Ein vermittelndes Edge-Gateway
+            bildet damit die Voraussetzung für eine durchgängige Anlagenüberwachung.</p>
+        <p>Die Dezentralisierung führt ihrerseits zu neuen Anforderungen. Mit der Verteilung steigt die
+            Heterogenität der Datenstrukturen, für die sich relationale Datenmodelle als unzureichend
+            flexibel erweisen. Auf der Kommunikationsebene setzt sich diese Heterogenität fort: Für
+            ressourcenbeschränkte Geräte existiert eine Vielzahl leichtgewichtiger Protokolle, und bei
+            netzwerkübergreifenden Fernaufrufen erfordert die fehlende Standardisierung zusätzliche
+            Übersetzungsschichten, die selbst zur Fehlerquelle werden. Nach der Persistierung tritt zudem
+            ein architektonischer Zielkonflikt zwischen latenzkritischer Echtzeitverarbeitung und
+            rechenintensiver Stapelverarbeitung hervor. Die etablierte Trennung in zwei
+            Verarbeitungsschichten ist funktional, verursacht jedoch erhebliche Wartungsaufwände, da
+            identische Fachlogik im Extremfall in zwei Codebasen zu pflegen ist. Der alternative Ansatz
+            einer durchgängigen Stream-Verarbeitung vereinfacht den Aufbau, verlagert die Anforderungen
+            jedoch auf die performante Neuverarbeitung persistierter Datenströme.</p>
+        <p>Über die einzelne Anlage hinaus besteht ein strukturelles Defizit. Proprietäre Standards
+            fragmentieren den Markt und begünstigen geschlossene Insellösungen, während eine
+            vereinheitlichende Gesamtarchitektur fehlt; Einzelaspekte wie Latenzreduktion,
+            Interoperabilität oder Skalierbarkeit werden überwiegend isoliert behandelt. Verfügbare
+            Plattformen decken daher Konnektivität und lokale Steuerung ab, lassen jedoch offen, wie
+            hochfrequente Sensordaten dezentral gepuffert, mit topologischem Kontext angereichert und für
+            historische Auswertungen strukturiert abgelegt werden können. Aus dieser Ausgangslage leiten
+            sich drei Motive ab: Wachsende Datenmengen erfordern lokale Rechenressourcen, prädiktive
+            Verfahren setzen bereinigte Zeitreihen mit topologischem Kontext voraus, und die Konvergenz von
+            OT und IT verlangt eine ausfallsichere, logisch entkoppelte Zwischenschicht. Daraus ergeben sich
+            die beiden Forschungsfragen:</p>
+        <p class="citation-box"><strong>F1:</strong> Wie kann durch den Einsatz verteilter IoT/IIoT-Systeme
+            eine Überwachung und Analyse dezentraler Anlagen und Maschinen realisiert werden?<br><br>
+            <strong>F2:</strong> Wie kann ein verteiltes IoT/IIoT-System zur Überwachung und Analyse
+            dezentraler Anlagen und Maschinen beitragen, während zugleich eine zentrale Datenverarbeitung
+            und Analyse gewährleistet ist?</p>
+        <span class="fig-source">Quelle: Kyr (2026), Kapitel 1</span>
+    </section>
+
+    <section id="loesungsansatz" class="project-section">
+        <h2>Lösungsansatz</h2>
+        <p>Entworfen wurde ein Architekturmodell, das lokale operative Autarkie, getragen von adaptiven
+            Puffermechanismen und Edge-naher Ereignisverarbeitung, mit einer hybriden Datenhaltung auf Basis
+            polyglotter Persistenz verbindet. Es verknüpft Zeitreihen- und Graphdatenbank und etabliert ein
+            dezentrales, graphgesteuertes Routing, das die logische Anlagenstruktur von der physischen
+            Netzwerkinfrastruktur entkoppelt. Die Umsetzung erfolgt als containerisierter
+            Softwareprototyp auf Basis von Docker mit standardisierten Protokollen wie MQTT und gRPC an den
+            Schnittstellen.</p>
+        <p>Leitend war dabei ein <strong>herstellerunabhängiger Rahmen</strong>, in dem Systemkomponenten als eigenständige, lose
+            gekoppelte Dienste über standardisierte Schnittstellen ausgeführt werden. Dies ermöglicht eine
+            inkrementelle Weiterentwicklung sowie eine Skalierung in zwei Richtungen: horizontal für
+            steigende Sensorlasten, vertikal für rechenintensive Analysen. Die angestrebte funktionale
+            Balance weist die Verarbeitung nach ihrer Dringlichkeit zu: Latenzkritische Aufgaben werden
+            direkt am Edge ausgeführt, lokale Aggregationsknoten übernehmen die Vorverdichtung, und der
+            Rechenaufwand historischer Analysen wird an übergeordnete Instanzen ausgelagert. Die Orchestrierung folgt dabei einem ressourcenschonenden
+            Software-Defined-Ansatz: die Steuerungslogik ist von den Datenpfaden getrennt.</p>
+
+        <h3>Makroarchitektur: zwei Ebenen, zwei Knotenklassen</h3>
+        <p>Der Entwurf ist mit dem C4-Modell dokumentiert und als On-Premises-Lösung ausgelegt, die im autarken Inselbetrieb arbeitet, womit
+            funktionale Abhängigkeiten von externen Diensten strukturell entfallen. Die Segmentierung in zwei funktionale Ebenen orientiert sich an der Tier-Architektur
+            der Industrial Internet Reference Architecture: eine <strong>Edge-Tier</strong> für Datenerfassung
+            und Echtzeitverarbeitung, eine <strong>Platform-Tier</strong> für Langzeitspeicherung und
+            historische Analyse.</p>
+        <p>Der Unterschied zwischen den Knotenklassen ist dabei bewusst nicht an die Hardware gebunden,
+            sondern <strong>konfigurationsbasiert</strong>: beide führen denselben Software-Stack aus und
+            unterscheiden sich nur darin, welche Dienste sie starten. Ein <strong>Micro-Edge-Knoten</strong>
+            aktiviert ausschließlich die operativen Kernkomponenten: Protocol-Adapter,
+            Data-Processing-Gateway und Message-Broker. Stößt seine lokale Pufferkapazität an die Grenze,
+            leitet er regelbasiert an einen leistungsfähigeren Nachbarknoten weiter; die kritische lokale
+            Alarmierung verbleibt jedoch zwingend auf dem Ursprungsknoten, sodass eine ausgelastete Pufferkapazität die lokale
+            Reaktionsfähigkeit nicht beeinträchtigt. Ein <strong>Macro-Edge-Knoten</strong> ist
+            dagegen ein Industrie-PC mit eigenem Massenspeicher: er führt zusätzlich Graph- und
+            Zeitreihendatenbank aus, dient als Datensenke für untergeordnete Sensoren und behält bei einer
+            physischen Netzwerktrennung den vollen Funktionsumfang inklusive lokaler Historisierung.</p>
+        <p>Mikrocontroller und Steuerungen bestehender Brownfield-Anlagen zählen in diesem Entwurf bewusst
+            nicht zur Edge-Ebene. Ihre limitierten Ressourcen oder geschlossenen Architekturen schließen die
+            Ausführung des Software-Stacks aus; sie bleiben reine Datenquellen. Auf dieser Trennung zwischen
+            Micro- und Macro-Edge beruht die gesamte Skalierungslogik des Entwurfs.</p>
+
+        <h3>Graphgesteuerte Orchestrierung und Semantic Routing</h3>
+        <p>Der Topologie-Dienst fungiert in dieser Architektur nicht als
+            reine Registrierungsstelle, sondern als aktive Steuerungsebene. Während der Zeitreihenspeicher die hochfrequente Telemetrie verarbeitet,
+            modelliert die Graphdatenbank als Property-Graph die Anlagentopologie, die
+            Konfigurationsbeziehungen und die Routing-Regeln. Damit überträgt der Entwurf Prinzipien des
+            Software-Defined Networking auf die Applikationsebene: Kommunikationsbeziehungen und
+            Funktionszuweisungen lassen sich zur Laufzeit ändern, ohne die physische Netzwerktopologie
+            anzufassen. Ein neuer Sensorknoten wird über die Graphkonfiguration integriert statt über manuelle
+            Netzwerkanpassungen.</p>
+        <p>Im Graphmodell trennt das System dazu das <strong>physische Gerät</strong>, beschrieben durch
+            Netzwerkadresse, gRPC-Endpunkt und eindeutige Kennung, vom <strong>logischen Knoten</strong>, der eine fachliche
+            Aufgabe kapselt. Eine gerichtete Verwaltungskante verbindet beide und löst zur Laufzeit auf,
+            welches Gerät für welchen Datenstrom zuständig ist. Sensoren hängen als Asset-Knoten daran, mit
+            Abtastintervall, Protokolltyp, Alarmschwellwerten, Betriebsstatus und der Weiterleitungsstrategie
+            der Selective-Bridge. Bei einem Hardwarewechsel ist deshalb nur die Gerätezuordnung zu aktualisieren;
+            die logischen Kommunikationsbeziehungen zu den Partner-Knoten bleiben unberührt.</p>
+        <p>Für die Überwindung von Netzwerkgrenzen führt der Entwurf <strong>Shadow-Graphen</strong> ein:
+            lokal persistierte semantische Abbilder entfernter Knoten, die eine kontrollierte Weiterleitung
+            zwischen Netzwerksegmenten erlauben. Data-Plane für den operativen Datentransfer und Control-Plane
+            für Konfigurationssignale sind dabei getrennt, damit hochfrequente Telemetrie den
+            Topologie-Dienst nicht überlastet.</p>
+        <span class="fig-source">Quelle: Kyr (2026), Kapitel 1.3, 4.2 und 4.4</span>
+    </section>
+
+    <section id="ergebnis" class="project-section">
+<h2>Ergebnis & Mehrwert</h2>
+        <p>Das Ergebnis ist ein vollständig implementierter, containerisierter Softwareprototyp: zwölf autonome Edge-Knoten mit 143 parallel aktiven Containern und 5.000 simulierten Sensorkanälen, evaluiert in acht Experimenten auf dem Technologie-Reifegrad TRL-4. Ein Dashboard im Serving-Layer zeigt die hierarchische Anlagenstruktur und die Echtzeit-Telemetrie der Edge-Knoten. Die zonenübergreifende Datenverfügbarkeit entsteht über graphgestütztes Semantic Routing mit Shadow-Replikation,
+            ohne zentrale Koordinationsinstanz.</p>
+    </section>
+
+
+    <section id="umsetzung" class="project-section">
+        <h2>Methodik &amp; Umsetzung</h2>
+        <p>Methodisch folgt die Arbeit dem Design-Science-Research-Ansatz nach Hevner, dessen
+            Drei-Zyklen-Modell den Prozess in theoretische Fundierung, Anwendungsbezug und iterative
+            Artefaktentwicklung gliedert. Jede Entwurfsentscheidung wird dabei gegen die theoretische
+            Fundierung und den Anwendungsbezug geprüft, bevor der nächste Zyklus einsetzt.</p>
+        <p>Das Architekturkonzept überträgt die Prinzipien der Lambda-Architektur auf eine dezentrale
+            Edge-Umgebung: ein latenzoptimierter Speed-Layer bedient Echtzeitabfragen, ein
+            durchsatzoptimierter Batch-Layer die dauerhafte Persistierung. Die polyglotte Datenhaltung
+            verbindet dafür eine Zeitreihendatenbank für die Messwerte mit einer Graphdatenbank für die
+            topologische Anlagenmodellierung. Die folgenden Abbildungen dokumentieren diesen Weg in drei
+            Schritten, vom Entwurf über die Implementierung bis zum Betrieb im Testbed.</p>
+
+        <h3 class="figure-group">Architekturkonzept</h3>
+        <p>Die folgenden Abbildungen dokumentieren den Entwurf auf drei Abstraktionsebenen: die Einordnung
+            des Systems zwischen Produktionsebene und übergeordneter IT, die innere Gliederung in Edge-Tier
+            und Platform-Tier mit den jeweils aktiven Diensten sowie das Verfahren, über das Daten ohne
+            zentrale Koordinationsinstanz über Netzwerkgrenzen hinweg verfügbar bleiben.</p>
         <div class="image-gallery">
-            <figure>
-                <!-- Platzhalter: Bitte speichere ein Bild deiner Architektur als architektur.jpg im Ordner img/masterarbeit/ -->
-                <img src="../img/masterarbeit/architektur.png" alt="Architekturkonzept und Systementwurf" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Systemarchitektur: Edge, Fog &amp; Cloud Layer</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-4-2-systemkontext-c4.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-4-2-systemkontext-c4.png" alt="Abbildung 4.2: Systemkontext der Architektur (C4 Level 1)" width="1714" height="632" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 4.2:</strong> Systemkontext der Architektur (C4 Level 1). Das Edge-Artefakt agiert als autarke Plattform zur lokalen Auswertung und Visualisierung und isoliert das Produktionsnetzwerk (OT) physisch und logisch von nachgelagerten, optionalen IT-Infrastrukturen. Der unidirektionale Datenfluss stellt sicher, dass keine Rücksteuerung in den physischen Prozess erfolgt (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 4.2</span>
             </figure>
-            <figure>
-                <!-- Platzhalter: Bitte speichere ein Bild deines Shadow-Graphen als shadow-graph.jpg im Ordner img/masterarbeit/ -->
-                <img src="../img/masterarbeit/shadow-graph.png" alt="Shadow-Graph-Synchronisation" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Graphgesteuerte Orchestrierung &amp; Shadow-Graphen</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-4-3-container-architektur.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-4-3-container-architektur.png" alt="Abbildung 4.3: Container-Architektur des Systems (C4 Level 2)" width="1802" height="1078" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 4.3:</strong> Container-Architektur des Systems (C4 Level 2). Die Edge-Tier normalisiert eingehende Datenströme über Protocol-Adapter und bedient den latenzkritischen Speed-Layer, während die Platform-Tier über Batch- und Serving-Layer die Datenhistorisierung und die logische Systemanalyse verantwortet (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 4.3</span>
             </figure>
-            <figure>
-                <!-- Platzhalter: Bitte speichere ein Bild vom Dashboard als dashboard.jpg im Ordner img/masterarbeit/ -->
-                <img src="../img/masterarbeit/dashboard.png" alt="Dashboard Ansicht" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Operatives Dashboard &amp; Echtzeitüberwachung</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-4-10-graphgesteuertes-routing.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-4-10-graphgesteuertes-routing.png" alt="Abbildung 4.10: Überwindung von Netzwerkgrenzen durch graphgesteuertes Routing" width="1848" height="846" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 4.10:</strong> Überwindung von Netzwerkgrenzen durch graphgesteuertes Routing. Der Graph abstrahiert die physische Segmentierung und ermöglicht logische Kommunikation über Sicherheitszonen hinweg. Ein Edge-Knoten fungiert als Selective-Bridge und leitet Telemetriedaten selektiv weiter, gesteuert durch das im Graphen hinterlegte Weiterleitungsmanifest (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 4.10</span>
+            </figure>
+        </div>
+        <h3 class="figure-group">Prototypische Umsetzung</h3>
+        <p>Die Implementierung wird anhand dreier Aspekte dargestellt: dem inneren Aufbau eines einzelnen
+            Edge-Knotens, der Modellierung der Anlagentopologie als Property-Graph und dem Abgleich zweier
+            Knoten über die Shadow-Replikation, bei dem keine Rohdaten den Standort verlassen.</p>
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-5-1-komponentendiagramm.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-5-1-komponentendiagramm.png" alt="Abbildung 5.1: Komponentendiagramm eines Edge-Knotens (Zonenübersicht)" width="1753" height="887" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 5.1:</strong> Komponentendiagramm eines Edge-Knotens (Zonenübersicht). Der primäre Datenfluss verläuft von den Sensoren über die Ingress-Schicht, das Data-Processing-Gateway und NATS JetStream zu den Consumer-Diensten, welche die Daten in Neo4j und InfluxDB persistieren (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 5.1</span>
+            </figure>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-5-3-neo4j-graphmodell.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-5-3-neo4j-graphmodell.png" alt="Abbildung 5.3: Exemplarisches Property-Graph-Datenmodell eines Edge-Knotens in Neo4j" width="1839" height="1199" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 5.3:</strong> Exemplarisches Property-Graph-Datenmodell eines Edge-Knotens in Neo4j. Links die lokale Anlagenstruktur mit der Hierarchie Device → Unit → Machine → Sensor, rechts der replizierte Shadow-Subgraph eines gepaarten Partner-Edge. Die Governance-Attribute isLocal, isShadow und shadowSource differenzieren lokale Ressourcen von replizierten Kopien (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 5.3</span>
+            </figure>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-5-4-shadow-synchronisation.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-5-4-shadow-synchronisation.png" alt="Abbildung 5.4: Ablauf der Shadow-Graph-Synchronisation" width="1737" height="801" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 5.4:</strong> Ablauf der Shadow-Graph-Synchronisation. Die Selective-Bridge auf Edge A initiiert den Connect-Handshake und empfängt anschließend die lokalen Assets von Edge B als Protobuf-Stream. Die empfangenen Knoten werden mit isLocal=false und isShadow=true im lokalen Graphen persistiert (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 5.4</span>
+            </figure>
+        </div>
+        <h3 class="figure-group">Evaluierung im Testbed</h3>
+        <p>Abschließend zeigen zwei Abbildungen das System im Betrieb: das Dashboard als visuellen Nachweis
+            der Prototypfähigkeit sowie die Topologie des Testbeds, auf dem die im folgenden Abschnitt
+            dokumentierten Messwerte erhoben wurden.</p>
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-7-9-dashboard.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-7-9-dashboard.png" alt="Abbildung 7.9: Dashboard-Übersicht mit Telemetrie-Ansicht und Edge-Topologie" width="1629" height="904" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 7.9:</strong> Dashboard-Übersicht mit Telemetrie-Ansicht und Edge-Topologie. Die linke Seitenleiste zeigt die hierarchische Anlagenstruktur, während der zentrale Bereich die Echtzeit-Sensordaten des ausgewählten Edge-Knotens visualisiert (Screenshot des Prototyps).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 7.9</span>
+            </figure>
+            <figure class="figure-wide">
+                <a href="../img/masterarbeit/abb-7-10-fabriktopologie.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/masterarbeit/abb-7-10-fabriktopologie.png" alt="Abbildung 7.10: Hierarchisches Strukturmodell und Kommunikationslinien der 12-Edge-Fabriktopologie" width="1795" height="729" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 7.10:</strong> Hierarchisches Strukturmodell und Kommunikationslinien der 12-Edge-Fabriktopologie. Das Testbed simuliert zwei physisch getrennte Fertigungshallen mit insgesamt acht Machine-Edges, zwei Aggregatoren und zwei Gateways, die über eine Pumba-WAN-Emulation (50 ms) verbunden sind (eigene Darstellung).</figcaption>
+                <span class="fig-source">Quelle: Kyr (2026), Abbildung 7.10</span>
             </figure>
         </div>
     </section>
 
-    <section id="tags" class="project-section" style="margin-top: 40px;">
-        <ul class="tags">
+    <section id="evaluierung" class="project-section">
+        <h2>Messergebnisse der Evaluierung</h2>
+        <p>Das Testbed umfasst zwölf autonome Edge-Knoten, 143 parallel aktive Container und
+            5.000 simulierte Sensorkanäle. Acht Experimente prüften die Systemfähigkeiten gegen die zuvor
+            festgelegten Qualitätsszenarien. Die Verarbeitungskette jedes Edge-Knotens läuft dabei
+            vollständig lokal, ohne Abhängigkeit von einer zentralen Cloud-Instanz.</p>
+        <div class="table-wrap">
+            <div class="table-title">Messergebnisse der acht Experimente gegenüber den Zielvorgaben</div>
+            <table>
+                <thead>
+                    <tr><th>Kennzahl</th><th>Messwert</th><th>Zielvorgabe</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Verarbeitungslatenz der internen Pipeline (P95)</td><td><strong>30,5 ms</strong></td><td>&lt; 100 ms</td></tr>
+                    <tr><td>Zonenübergreifende Cross-Edge-Traversierung (P95)</td><td><strong>31,8 ms</strong></td><td>&lt; 100 ms</td></tr>
+                    <tr><td>Isolierte CEP-Alarmlatenz</td><td>29,19 ms</td><td>—</td></tr>
+                    <tr><td>Lokale Graph-Discovery</td><td>2,12 ms</td><td>—</td></tr>
+                    <tr><td>Durchsatz unter Volllast</td><td><strong>2.648,5 Nachrichten/s</strong> bei 0 % Drop-Rate</td><td>—</td></tr>
+                    <tr><td>Daraus abgeleitetes Tagesvolumen</td><td><strong>34,8 GB/Tag</strong></td><td>10 GB/Tag (Faktor 3,48)</td></tr>
+                    <tr><td>Datenreduktion der Vorverarbeitung am Edge</td><td>33,4 %</td><td>—</td></tr>
+                    <tr><td>Recovery Time nach simuliertem Containerausfall</td><td><strong>1,2 s</strong>, 11.251 gepufferte Datensätze verlustfrei nachgeliefert</td><td>—</td></tr>
+                    <tr><td>Abfrage über den Speed-Layer</td><td>17,8 ms</td><td>—</td></tr>
+                    <tr><td>Abfrage über den Batch-Layer</td><td>32,4 ms</td><td>—</td></tr>
+                    <tr><td>Protobuf statt JSON</td><td>−68,4 % bzw. −69,5 % Nachrichtengröße</td><td>−40 % (Faktor 1,7)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Alle direkt messbaren Qualitätsszenarien wurden eingehalten. Der Unterschied zwischen
+            Speed- und Batch-Layer bestätigt dabei die beabsichtigte funktionale Trennung der beiden
+            Verarbeitungsschichten: der Speed-Layer antwortet schneller, der Batch-Layer liefert die
+            dauerhaft persistierte Sicht.</p>
+        <span class="fig-source">Quelle: Kyr (2026), Kapitel 6 und 7.1</span>
+    </section>
+
+    <section id="limitationen" class="project-section">
+        <h2>Limitationen</h2>
+        <p>Sämtliche direkt messbaren Qualitätsszenarien wurden eingehalten. Die
+            Ergebnisse beziehen sich aber auf die im Labor validierten Kernmechanismen des Softwareprototyps und nicht auf eine
+            feldvalidierte Produktionslösung. Die Arbeit dokumentiert
+            diese Grenze und benennt die Bedingungen, unter denen die Aussagekraft der Messwerte
+            einzuschränken ist:</p>
+        <ul class="list">
+            <li><strong>Co-Location:</strong> Alle 143 Container laufen auf einer einzigen physischen
+                Maschine. Die dadurch entstehende Ressourcenkonkurrenz kann die gemessenen Latenzen in
+                <em>beide</em> Richtungen verzerren: nach oben durch den Wettbewerb um Ressourcen, nach
+                unten, weil reale Netzwerklatenzen innerhalb des Docker-Netzwerks entfallen.</li>
+            <li><strong>Netzwerkemulation:</strong> Die Pumba-Emulation gleicht den fehlenden
+                Netzwerk-Overhead nur teilweise aus; asymmetrische Verzögerungen und wechselnde
+                Routingpfade realer Weitverkehrsstrecken lassen sich damit nicht vollständig abbilden.</li>
+            <li><strong>Synthetische Last:</strong> Der Sensor-Simulator erzeugt deterministische Signale
+                mit bekannter statistischer Verteilung. Reale Industriesensoren weisen komplexere
+                Signalcharakteristiken auf.</li>
+            <li><strong>Pufferungsdauer:</strong> Die geforderte Pufferung über eine Stunde wurde nicht
+                durch einen vollständigen 60-minütigen Ausfalltest belegt, sondern über die architektonische
+                Analyse der persistenten Speicherung in Mosquitto und NATS JetStream begründet, deren
+                Kapazität am Festplattenspeicher und nicht an einem flüchtigen Ringpuffer hängt.</li>
+            <li><strong>Betrachtungsrahmen:</strong> Die Evaluierung erfasst quantitative
+                Leistungsmetriken. Zu betrieblicher Wartbarkeit, Bedienbarkeit und organisatorischer
+                Integration lassen sich auf Basis einer Laborstudie keine belastbaren Aussagen treffen.</li>
+        </ul>
+        <span class="fig-source">Quelle: Kyr (2026), Kapitel 6.3.1 und 7.3.3</span>
+    </section>
+
+    <section id="ausblick" class="project-section">
+        <h2>Ausblick</h2>
+        <p>Der nächste Schritt ist die Überführung des Softwareprototyps in eine physisch verteilte
+            Umgebung mit eigenen Edge-Geräten und realen WAN-Strecken. Eine solche Feldvalidierung würde
+            genau die Einschränkung auflösen, die aus der Co-Location entsteht, und die Robustheit des
+            Systems unter realen Netzwerkbedingungen prüfen. Dies bildet
+            den nächsten Schritt zur Erreichung höherer TRL-Stufen. Ein eigener
+            Langzeit-Ausfalltest über die geforderte Stundendauer würde zugleich die bislang architektonisch
+            begründete Pufferung empirisch absichern.</p>
+        <p>Funktional ist die modulare Adapter-Architektur des Data-Processing-Gateway bereits auf
+            Erweiterung ausgelegt. Die Integration von OPC UA PubSub, PROFINET oder EtherCAT würde das
+            System auf ein deutlich breiteres Spektrum industrieller Anlagen öffnen und damit die eingangs
+            beschriebene Protokollheterogenität umfassender behandeln. Analytisch bietet die asynchrone
+            Struktur des NATS-JetStream-Datenflusses denselben Spielraum: zusätzliche Analysedienste lassen
+            sich als weitere Consumer an den bestehenden Message-Bus hängen, ohne den regulären
+            Verarbeitungspfad zu beeinflussen, etwa für statistische Trendanalysen oder komplexere
+            Korrelationsverfahren. Für unternehmensübergreifende Datenaggregation kann eine Cloud-Ebene als
+            zusätzlicher Aggregationsknoten hinzutreten; gRPC-Schnittstelle und Shadow-Replikation bilden
+            dafür bereits die architektonische Grundlage.</p>
+        <p>Ein eigener Entwicklungspfad betrifft die Härtung für den produktiven Einsatz ab TRL-5. Dazu
+            gehört die Anbindung über einen dedizierten Security-Proxy ebenso wie ein ein deterministisches
+            Deployment nach dem Infrastructure-as-Code-Paradigma, das die Verlässlichkeit einer verteilten
+            Installation deutlich erhöht.
+            Neue Komponenten würden dabei zunächst in einem passiven Shadow Mode validiert, um ungeprüfte
+            Steuereingriffe in den laufenden Prozess von vornherein auszuschließen. Dieses Vorgehen
+            orientiert sich an etablierten Konzepten der Angriffsabwehr.</p>
+        <span class="fig-source">Quelle: Kyr (2026), Kapitel 7.3</span>
+    </section>
+
+    <section id="quellen" class="project-section">
+        <h2>Quellen</h2>
+        <p class="citation-box">Kyr, P. (2026). <em>Technologische Konzeption eines IoT/IIoT-Systems zur skalierbaren Überwachung und Analyse dezentralisierter Daten</em> [Unveröffentlichte Masterarbeit]. Fachhochschule St. Pölten, Masterstudiengang Interactive Technologies, Masterklasse Industrie 4.0.</p>
+        <p>Die Abbildungen dieser Seite stammen aus der genannten Masterarbeit und tragen deren Kapitel- und Abbildungsnummern.</p>
+
+        <ul class="tags" style="margin-top: 30px;">
             <li>IIoT</li><li>Edge Computing</li><li>Lambda-Architektur</li><li>Neo4j</li><li>InfluxDB</li><li>NATS JetStream</li><li>Docker</li><li>Python</li>
         </ul>
         <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
@@ -76,8 +340,9 @@
 </main>
 
 <footer>
-    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
 </footer>
-<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+<script src="../js/seite.js" defer></script>
+<script src="../js/kopfbiegung.js" defer></script>
 </body>
 </html>

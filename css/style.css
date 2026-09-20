@@ -1226,3 +1226,936 @@ footer a:hover {
         width: 100%;
     }
 }
+
+/* =========================================================================
+   UNTERSEITEN: KOPF DUNKEL, INHALT HELL
+   Der Titelblock und die Abschnittsnavigation bleiben dunkel wie der Hero der
+   Startseite, ab dem Inhalt uebernimmt die helle Bahn. Lange Fachtexte und die
+   Abbildungen aus den Arbeiten lesen sich auf hellem Grund besser, und
+   Diagramme mit weissem Hintergrund brauchen keine Extrabehandlung.
+   Diese Schicht steht absichtlich am Ende und ueberschreibt den Finish-Pass.
+   ========================================================================= */
+
+:root {
+    /* Groessenstufen: Seitentitel steht in der React-Startseite, hier die
+       Dokumentstufe und die Leadgroesse. */
+    --t-doc: clamp(1.6rem, 2.6vw, 2.25rem);
+    --t-lead: clamp(1.02rem, 1.2vw, 1.15rem);
+
+    /* Flaechen, von Grund nach gehoben */
+    --p-ground: #eef2ef;
+    --p-surface: #f7faf8;
+    --p-inset: #e4eae6;
+    --p-plate: #ffffff;
+
+    /* Linien */
+    --p-line: #cfdad4;
+    --p-line-strong: #a8bcb3;
+
+    /* Schrift, alle >= 4,5:1 auf Grund und Inset */
+    --p-ink: #0a1f1a;
+    --p-ink-2: #35453e;
+    --p-ink-3: #54645d;
+
+    /* Der Markenakzent, auf hellem Grund lesbar (6,2:1) */
+    --p-accent: #00664f;
+    --p-accent-strong: #04503e;
+    --p-accent-wash: #dfeae5;
+
+    /* Eine Schattenfamilie, gerichtet und in den Grund getoent */
+    --p-lift: 0 12px 28px -20px rgba(10, 31, 26, 0.55);
+    --p-lift-2: 0 18px 34px -22px rgba(10, 31, 26, 0.6);
+}
+
+body {
+    background: var(--p-ground);
+    background-image: none;
+    color: var(--p-ink-2);
+}
+
+/* ---- Der Kopf bleibt dunkel ---- */
+header:not(.hero-b2b):not(.hero-section) {
+    background: var(--dark-gradient);
+    border-bottom: 1px solid rgba(0, 229, 176, 0.18);
+    padding: 96px 20px 56px;
+}
+
+header:not(.hero-b2b):not(.hero-section) h1 {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+header:not(.hero-b2b):not(.hero-section) p {
+    color: #a7b8b2;
+    font-weight: 400;
+}
+
+/* ---- Der Abschnitt: helle Flaeche, eine Haarlinie, gerichteter Schatten ---- */
+.project-section {
+    background: var(--p-surface);
+    background-image: none;
+    border: 1px solid var(--p-line);
+    border-radius: 18px;
+    padding: 48px;
+    margin-bottom: 40px;
+    box-shadow: var(--p-lift);
+}
+
+/* Der Mint-Strich ueber der ersten Ueberschrift entfaellt: die Groesse der
+   Ueberschrift markiert den Abschnitt, kein zusaetzliches Zeichen. */
+.project-section > h2:first-child,
+.project-section > h3:first-child {
+    padding-top: 0;
+}
+.project-section > h2:first-child::before,
+.project-section > h3:first-child::before {
+    content: none;
+    display: none;
+}
+
+.project-section h2 {
+    color: var(--p-ink);
+    /* Dokumenttitel: eine Stufe unter dem Seitentitel der Startseite, weil die
+       Detailseiten Fliesstext tragen und nicht plakatieren. */
+    font-size: var(--t-doc, clamp(1.6rem, 2.6vw, 2.25rem));
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.project-section h3 {
+    color: var(--p-ink);
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.project-section p,
+.project-section .list,
+.project-section li {
+    color: var(--p-ink-2);
+}
+
+.project-section p strong,
+.project-section li strong,
+.project-meta strong {
+    color: var(--p-ink);
+}
+
+/* ---- Innere Gruppen: vertiefte Flaeche, kein Schatten ---- */
+.project-section .metric-card,
+.project-section .table-wrap,
+.project-section .citation-box,
+.project-section .hinweis {
+    background: var(--p-inset);
+    border: 1px solid var(--p-line);
+    box-shadow: none;
+}
+
+.project-section .citation-box,
+.project-section .hinweis,
+.citation-box,
+.hinweis {
+    border-left-width: 1px;
+    border-radius: 12px;
+}
+
+.hinweis,
+.project-section .hinweis {
+    background: var(--p-accent-wash);
+    color: var(--p-ink-2);
+}
+
+.citation-box h3 {
+    color: var(--p-accent);
+}
+.citation-box p.citation-text {
+    color: var(--p-ink);
+}
+.citation-box p.citation-note {
+    color: var(--p-ink-3);
+}
+
+.metric-card .metric-val,
+.project-section .metric-card .metric-val {
+    color: var(--p-accent);
+}
+.metric-card .metric-lbl,
+.project-section .metric-card .metric-lbl {
+    color: var(--p-ink-3);
+}
+
+/* ---- Abbildungen stehen auf weisser Platte ---- */
+.image-gallery figure,
+.project-section .image-gallery figure {
+    background: var(--p-plate);
+    border: 1px solid var(--p-line);
+    box-shadow: none;
+}
+
+.image-gallery figure:hover,
+.project-section .image-gallery figure:hover {
+    border-color: var(--p-line-strong);
+    box-shadow: var(--p-lift-2);
+}
+
+.image-gallery figcaption {
+    color: var(--p-ink-3);
+    background: var(--p-plate);
+}
+
+.fig-source,
+a.fig-source {
+    color: var(--p-accent);
+}
+a.fig-source:hover {
+    color: var(--p-accent-strong);
+}
+
+/* ---- Die Meta-Zeile der Detailseiten ---- */
+.project-meta {
+    background: var(--p-surface);
+    border: 1px solid var(--p-line);
+    border-radius: 18px;
+    color: var(--p-ink-2);
+    box-shadow: var(--p-lift);
+}
+
+/* ---- Chips ---- */
+.tags li {
+    background: var(--p-inset);
+    border: none;
+    color: var(--p-ink-2);
+}
+
+/* ---- Tabellen ---- */
+.table-wrap table {
+    color: var(--p-ink-2);
+}
+.table-wrap th {
+    background: var(--p-inset);
+    color: var(--p-ink);
+    border-bottom: 1px solid var(--p-line);
+}
+.table-wrap td {
+    color: var(--p-ink-2);
+    border-bottom: 1px solid var(--p-line);
+}
+.table-wrap tr:hover td {
+    background: rgba(0, 102, 79, 0.05);
+    color: var(--p-ink);
+}
+.table-wrap td.highlight-col,
+.table-wrap th.highlight-col {
+    background: var(--p-accent-wash);
+    color: var(--p-ink);
+}
+.table-title {
+    color: var(--p-ink);
+}
+.table-title span.badge-stat {
+    background: var(--p-accent-wash);
+    border: none;
+    color: var(--p-accent);
+}
+
+/* ---- Links und Code im Textkoerper ---- */
+main a:not(.btn):not(.fig-source) {
+    color: var(--p-accent);
+}
+main a:not(.btn):not(.fig-source):hover {
+    color: var(--p-accent-strong);
+}
+code {
+    background: var(--p-inset);
+    color: var(--p-ink);
+}
+
+/* ---- Buttons auf hellem Grund ---- */
+.btn {
+    color: var(--p-ink);
+    border: 1px solid var(--p-line-strong);
+    background: transparent;
+}
+.btn:hover {
+    color: var(--p-accent);
+    border-color: var(--p-accent);
+    background: transparent;
+    box-shadow: none;
+}
+.btn-primary {
+    background: var(--p-accent);
+    color: var(--p-ground);
+    border-color: transparent;
+}
+.btn-primary:hover {
+    background: var(--p-accent-strong);
+    color: var(--p-ground);
+    box-shadow: var(--p-lift-2);
+}
+.btn-secondary {
+    background: transparent;
+    color: var(--p-ink);
+    border-color: var(--p-line-strong);
+}
+.btn-secondary:hover {
+    color: var(--p-accent);
+    border-color: var(--p-accent);
+    box-shadow: none;
+}
+
+/* Die dunkle Leiste behaelt ihre eigenen Knopffarben */
+.navbar .btn-primary,
+.navbar .nav-cta-btn {
+    background: var(--accent);
+    color: #031513;
+}
+.navbar .btn-primary:hover,
+.navbar .nav-cta-btn:hover {
+    background: var(--accent-hover);
+    box-shadow: none;
+}
+
+/* ---- Projektuebersicht ---- */
+.projects-header h1 {
+    color: var(--p-ink);
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+}
+.projects-header p {
+    color: var(--p-ink-2);
+}
+
+.project-entry {
+    background: var(--p-surface);
+    border: 1px solid var(--p-line);
+    border-radius: 18px;
+    box-shadow: var(--p-lift);
+}
+.project-entry:hover {
+    background: var(--p-surface);
+    border-color: var(--p-line-strong);
+    box-shadow: var(--p-lift-2);
+}
+.project-thumbnail {
+    background: var(--p-plate);
+    border: 1px solid var(--p-line);
+}
+.project-content h2 {
+    color: var(--p-ink);
+    font-size: 1.4rem;
+}
+.project-content p {
+    color: var(--p-ink-2);
+}
+
+/* ---- Zustaende ---- */
+a:focus-visible,
+.btn:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--p-accent);
+    outline-offset: 3px;
+}
+
+::selection {
+    background: var(--p-accent);
+    color: var(--p-ground);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--p-ground);
+}
+::-webkit-scrollbar-thumb {
+    background: #c3d0ca;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--p-accent);
+}
+
+/* Kein Mint-Schein auf hellem Grund */
+.project-section .image-gallery figure:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+    box-shadow: var(--p-lift-2);
+}
+
+@media (max-width: 720px) {
+    header:not(.hero-b2b):not(.hero-section) { padding: 64px 20px 40px; }
+    .project-section { padding: 28px 20px; border-radius: 16px; }
+    .project-meta { padding: 18px 20px; border-radius: 16px; }
+}
+
+/* Nachzuegler aus dem dunklen Bestand: weisse und mintfarbene Schrift, die auf
+   hellem Grund nicht lesbar ist. */
+main strong,
+main b,
+.list strong,
+.hinweis strong,
+.citation-box strong,
+.table-wrap strong {
+    color: var(--p-ink);
+}
+
+.list,
+.list li {
+    color: var(--p-ink-2);
+}
+
+.legal section h2 {
+    color: var(--p-ink);
+}
+.legal section p,
+.legal section li {
+    color: var(--p-ink-2);
+}
+
+/* Der Fuss schliesst die Seite dunkel ab, wie der Kopf sie oeffnet. */
+footer {
+    background-color: #02110f;
+    border-top: none;
+    color: #8b9c96;
+    padding: 32px 20px;
+}
+footer a {
+    color: var(--accent);
+}
+
+/* Impressum und Datenschutz liegen auf derselben hellen Flaeche wie die
+   Abschnitte der Detailseiten. */
+.legal section {
+    background: var(--p-surface);
+    border: 1px solid var(--p-line);
+    border-radius: 18px;
+    box-shadow: var(--p-lift);
+    padding: 32px 36px;
+}
+.legal section h2 {
+    border-bottom: 1px solid var(--p-line);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+}
+.legal a {
+    color: var(--p-accent);
+}
+
+@media (max-width: 720px) {
+    .legal section { padding: 24px 20px; border-radius: 16px; }
+}
+
+/* Unterhalb des Fusses liegt der dunkle Grund, damit die Seite dunkel endet und
+   nicht in eine leere helle Flaeche auslaeuft. Der Koerper darf dafuer nicht auf
+   Fensterhoehe gestreckt werden, sonst deckt seine helle Flaeche alles ab. */
+html {
+    background-color: #02110f;
+}
+body {
+    min-height: auto;
+}
+
+/* Tabellen: der Titelbalken und der Rahmen stammten noch aus dem dunklen Bestand
+   und standen mit dunkler Schrift auf dunklem Grund. */
+.table-wrap,
+.project-section .table-wrap {
+    background: var(--p-plate);
+    border: 1px solid var(--p-line);
+    box-shadow: none;
+    border-radius: 14px;
+}
+
+.table-title,
+.project-section .table-title {
+    background: var(--p-inset);
+    color: var(--p-ink);
+    border-bottom: 1px solid var(--p-line);
+}
+
+.table-title .fig-source,
+.table-title a.fig-source {
+    color: var(--p-accent);
+    font-weight: 600;
+}
+
+.table-wrap th,
+.project-section .table-wrap th {
+    background: var(--p-inset);
+    color: var(--p-ink);
+    border-bottom: 1px solid var(--p-line-strong);
+}
+
+.table-wrap td.highlight-col,
+.table-wrap th.highlight-col {
+    color: var(--p-accent);
+    background: var(--p-accent-wash);
+    border-left: 1px solid var(--p-line);
+    border-right: 1px solid var(--p-line);
+}
+
+/* Abbildungen: nie ueber ihre natuerliche Groesse hinaus skalieren und breit
+   genug, dass Diagramme und Tabellen lesbar bleiben. Die Abbildungen aus den
+   Arbeiten sind Inhalt, kein Schmuck. */
+.image-gallery {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 24px;
+}
+
+.image-gallery figure {
+    width: min(100%, 460px);
+}
+
+.image-gallery figure.figure-wide {
+    width: 100%;
+    max-width: 920px;
+}
+
+.image-gallery figure.figure-medium {
+    width: calc(50% - 12px);
+    min-width: 320px;
+}
+
+.image-gallery img,
+.image-gallery figure.figure-wide img,
+.image-gallery figure.figure-medium img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 440px;
+    object-fit: contain;
+    background-color: var(--p-plate);
+    border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+    .image-gallery figure,
+    .image-gallery figure.figure-medium,
+    .image-gallery figure.figure-wide {
+        width: 100%;
+        min-width: 0;
+    }
+    .image-gallery img { max-height: 300px; }
+}
+
+/* Dichte Diagramme und Tabellen lassen sich in Originalgroesse oeffnen. */
+.image-gallery figure.figure-wide a {
+    display: block;
+    cursor: zoom-in;
+}
+.image-gallery figure.figure-wide a:focus-visible {
+    outline: 2px solid var(--p-accent);
+    outline-offset: 4px;
+}
+
+/* Zwischen dem dunklen Kopf und dem ersten Inhalt braucht es Luft, sonst klebt
+   die erste Karte an der Kante. */
+main.container {
+    padding-top: 56px;
+}
+.project-meta {
+    margin-top: 0;
+}
+
+@media (max-width: 720px) {
+    main.container { padding-top: 36px; }
+}
+
+/* =========================================================================
+   V3: RHYTHMUS UND UEBERGANG AUF DEN UNTERSEITEN
+   Drei Schwaechen der Vorgaengerfassung: alle Abschnitte sahen gleich aus,
+   die Abschnittsleiste lag dunkel ueber hellem Inhalt, und der Kopf stiess
+   hart an den Text. Hier die Korrektur.
+   ========================================================================= */
+
+/* 1) Der Kopf laeuft in einer Kurve aus, wie die Biegung auf der Startseite */
+header:not(.hero-b2b):not(.hero-section) {
+    border-bottom: none;
+    border-bottom-left-radius: 50% 46px;
+    border-bottom-right-radius: 50% 46px;
+    padding-bottom: 72px;
+}
+
+/* 2) Die Abschnittsleiste gehoert zum hellen Inhalt, nicht zum dunklen Kopf */
+nav:not(.navbar) {
+    background-color: rgba(247, 250, 248, 0.92);
+    /* Kein harter Strich: die Leiste stand mit 1px-Rand UND Schatten da, also
+       mit zwei Trennern uebereinander. Auf hellem Grund las sich die Linie wie
+       ein vergessenes Lineal quer durch die Seite. Der weiche Schatten allein
+       trennt genug, sobald die Leiste beim Scrollen ueber dem Inhalt klebt. */
+    border-bottom: none;
+    box-shadow: 0 10px 24px -20px rgba(10, 31, 26, 0.55);
+}
+
+nav:not(.navbar) a {
+    color: var(--p-ink-2);
+}
+
+nav:not(.navbar) a:hover {
+    color: var(--p-accent);
+    background: var(--p-accent-wash);
+    border-color: transparent;
+}
+
+/* 3) Abschnitte wechseln sich ab: gehobene Flaeche, dann offener Grund.
+      Damit bekommt eine lange Seite einen Takt, statt achtmal dieselbe Karte. */
+.project-section:nth-of-type(even) {
+    background: none;
+    border: none;
+    border-top: 1px solid var(--p-line);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 56px 0 8px;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 720px) {
+    header:not(.hero-b2b):not(.hero-section) {
+        border-bottom-left-radius: 50% 26px;
+        border-bottom-right-radius: 50% 26px;
+        padding-bottom: 52px;
+    }
+    /* Die Leiste bleibt einzeilig und laesst sich seitlich schieben,
+       statt auf drei Zeilen zu wachsen. */
+    nav:not(.navbar) ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    nav:not(.navbar) ul::-webkit-scrollbar { display: none; }
+    nav:not(.navbar) li { flex: 0 0 auto; }
+    .project-section:nth-of-type(even) { padding: 40px 0 4px; }
+}
+
+/* 4) Die Projektuebersicht spricht dieselbe Sprache wie die Startseite:
+      grosses Bild, Kategorie darueber, Karte als Flaeche. */
+.project-entry {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 28px;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+}
+
+.project-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 860px) {
+    .project-entry {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .project-thumbnail { height: 200px; }
+}
+
+/* 5) Die obere Leiste der Projektuebersicht liegt ueber hellem Inhalt und ist
+      deshalb hell. Eine dunkle Leiste ueber heller Seite wirkt aufgesetzt. */
+.navbar,
+.navbar.nav-dark-override {
+    background-color: rgba(247, 250, 248, 0.94);
+    border-bottom: 1px solid var(--p-line);
+    box-shadow: none;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.navbar .nav-logo-badge {
+    background: var(--p-accent-wash);
+    color: var(--p-accent);
+    border: none;
+    box-shadow: none;
+}
+
+.navbar .nav-name {
+    color: var(--p-ink);
+}
+
+.navbar .nav-tagline {
+    color: var(--p-ink-3);
+    text-transform: none;
+}
+
+.navbar .nav-link {
+    color: var(--p-ink-2);
+}
+
+.navbar .nav-link:hover {
+    color: var(--p-accent);
+}
+
+.navbar .btn-primary,
+.navbar .nav-cta-btn {
+    background: var(--p-accent);
+    color: var(--p-ground);
+}
+
+.navbar .btn-primary:hover,
+.navbar .nav-cta-btn:hover {
+    background: var(--p-accent-strong);
+    box-shadow: none;
+}
+
+
+/* Die aeltere Automatik faerbt Projekt-, Uebersichts- und Rechtsseiten dunkel
+   (body:has(.project-section) und Geschwister). Sie traegt hoehere Spezifitaet
+   als die einfache body-Regel der hellen Schicht und muss deshalb mit
+   gleichem Gewicht zurueckgenommen werden - sonst bleibt der Inhalt dunkel. */
+body.page-dark,
+body:has(.project-section),
+body:has(.project-entry),
+body:has(.legal) {
+    background: var(--p-ground);
+    background-image: none;
+    color: var(--p-ink-2);
+}
+
+/* Abbildungen fuellen ihre Platte, statt darin zu schwimmen.
+   Die Regel aus der dunklen Fassung gab jedem Bild feste 220px Hoehe und
+   deckelte es spaeter auf 300px. In einer bis zu 920px breiten Platte blieb
+   daneben und darunter leere Flaeche, und die Groessen wirkten beliebig.
+   Breite Abbildungen skalieren jetzt ueber die Plattenbreite, schmale
+   behalten ihre natuerliche Groesse und werden nur nach oben begrenzt. */
+.project-section .image-gallery figure.figure-wide img {
+    display: block;
+    /* Breite Diagramme fuellen die Platte, kleine Abbildungen werden aber
+       nicht darueber hinaus aufgeblasen: "width: 100%" hat zum Beispiel den
+       631px breiten SAM-Vergleich auf 920px gezogen und sichtbar unscharf
+       gemacht. "width: auto" mit Deckel haelt jede Abbildung hoechstens in
+       ihrer natuerlichen Groesse. */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.project-section .image-gallery figure:not(.figure-wide) img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 360px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+/* Sehr kleine Auszuege aus den Berichten werden nicht hochskaliert, sondern
+   bleiben in ihrer echten Groesse stehen. */
+.project-section .image-gallery figure:not(.figure-wide) img[width][height] {
+    max-width: min(100%, 100vw);
+}
+
+/* Grundformatierung der Tabellen. Die helle Schicht setzte bisher nur Farben;
+   Breite, Innenabstand und Rahmenverhalten fehlten, weshalb die Spalten
+   zusammenliefen. */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.table-wrap th,
+.table-wrap td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.table-wrap th:not(:first-child),
+.table-wrap td:not(:first-child) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.table-wrap tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-title {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   Bildunterschriften der Projektseiten
+   Die Unterschriften tragen jetzt ganze Saetze mit Abbildungsnummer und
+   Quellenangabe. Zentriert wird ein mehrzeiliger Satz an beiden Raendern
+   unruhig, deshalb laeuft die Unterschrift linksbuendig unter der Abbildung
+   mit; das Bild selbst bleibt mittig. Die Quellenzeile steht ruhig darunter,
+   statt in der Akzentfarbe mit der Unterschrift um Aufmerksamkeit zu ringen.
+   --------------------------------------------------------------------------- */
+.project-section .image-gallery figure {
+    text-align: left;
+}
+
+.project-section .image-gallery figcaption {
+    margin-top: 12px;
+    font-size: 0.87rem;
+    line-height: 1.55;
+    color: var(--p-ink-3);
+    background: none;
+}
+
+.project-section .image-gallery figcaption strong {
+    color: var(--p-ink-2);
+}
+
+/* Gilt fuer jede Quellenzeile im hellen Abschnitt, nicht nur unter Abbildungen:
+   auch Tabellen und ganze Kapitel tragen eine, und mintgruen gesetzt lesen sie
+   sich wie Verweise zum Anklicken. */
+.project-section .fig-source {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.78rem;
+    color: var(--p-ink-3);
+    opacity: 0.8;
+}
+.project-section .table-wrap + .fig-source,
+.project-section .list + .fig-source,
+.project-section p + .fig-source {
+    margin-top: 14px;
+}
+
+/* Stehen zwei Abbildungen nebeneinander, sollen sie oben buendig beginnen und
+   nicht an unterschiedlich langen Unterschriften ausgerichtet werden. */
+.project-section .image-gallery {
+    align-items: flex-start;
+}
+
+/* ---------------------------------------------------------------------------
+   Zwischenueberschriften der Projektseiten
+   Auf der Masterarbeitsseite buendelt ".figure-group" jeweils mehrere
+   Abbildungen zu einem Thema. Die Klasse war im Bestand vergeben, aber ohne
+   Regel - die Ueberschrift fiel damit auf die Browservorgabe zurueck und war
+   vom Fliesstext kaum zu unterscheiden. Sie bekommt hier eine eigene Stufe
+   zwischen Abschnittstitel und Text: gross genug, um eine Gruppe anzufuehren,
+   ruhig genug, um dem h2 nicht die Rolle streitig zu machen.
+   --------------------------------------------------------------------------- */
+.project-section h3 {
+    font-size: clamp(1.25rem, 1.6vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin: 34px 0 14px;
+}
+
+.project-section h3:first-child,
+.project-section > h3:first-of-type {
+    margin-top: 0;
+}
+
+/* Eine Gruppenueberschrift gehoert zu den Abbildungen darunter, deshalb steht
+   sie mit Abstand nach oben und eng an ihrer Gruppe. */
+.project-section h3.figure-group {
+    margin: 44px 0 16px;
+}
+
+.project-section h3.figure-group + .image-gallery {
+    margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Wortumbruch im Seitenkopf
+   Titel wie "Werkerassistenzsystem" sind ein einziges langes Wort. Im gross
+   gesetzten Kopf wird es breiter als ein Telefonbildschirm, und weil nichts
+   das Wort trennen darf, wuchs die ganze Seite mit: der Text lief rechts aus
+   dem Bild, die Seite liess sich seitlich schieben. Trennung nach den
+   deutschen Regeln (lang="de") und Umbruch im Wort halten den Kopf in der
+   Breite. Die Abschnittstitel tragen dieselbe Regel bereits.
+   --------------------------------------------------------------------------- */
+header h1,
+header p,
+.project-section h3,
+.project-section li,
+.image-gallery figcaption,
+.image-gallery .fig-source {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Sobald js/kopfbiegung.js uebernommen hat, zeichnet ein clip-path die Kurve
+   der Startseite. Die bisherige Ellipse aus border-radius muss dann weg, sonst
+   liegen zwei Kurven uebereinander. Ohne JavaScript bleibt sie stehen.
+   --------------------------------------------------------------------------- */
+.biegung-aktiv header:not(.hero-b2b):not(.hero-section) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Formeln im Fliesstext der Projektseiten. Sie standen zuerst in der
+   Zitat-Fläche, was zwar passend aussah, aber semantisch eine Quelle behauptet.
+   Eigene Klasse, gleiche ruhige Flaeche, zentriert und eine Spur groesser als
+   der Fliesstext.
+   --------------------------------------------------------------------------- */
+.project-section .formel {
+    background: var(--p-inset);
+    border: 1px solid var(--p-line);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 22px auto;
+    max-width: 30rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--p-ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Zitat- und Hinweisflaechen hatten Rahmen und Hintergrund, aber keinerlei
+   Innenabstand: der Text klebte an der Umrandung. Hier bekommen sie Luft,
+   damit die Flaeche auch als Flaeche wirkt.
+   --------------------------------------------------------------------------- */
+.project-section .citation-box,
+.project-section .hinweis,
+.citation-box,
+.hinweis {
+    padding: 20px 24px;
+}
+
+@media (max-width: 720px) {
+    .project-section .citation-box,
+    .project-section .hinweis,
+    .citation-box,
+    .hinweis {
+        padding: 16px 18px;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Tabellen tragen standardmaessig rechtsbuendige Wertespalten, weil dort
+   Messwerte stehen und Ziffern untereinander lesbarer sind. Tabellen, die
+   stattdessen Text erklaeren (Bitbelegungen, Methodenlisten), bekommen die
+   Klasse "text" und bleiben durchgehend linksbuendig.
+   --------------------------------------------------------------------------- */
+.table-wrap.text th,
+.table-wrap.text td,
+.project-section .table-wrap.text th,
+.project-section .table-wrap.text td {
+    text-align: left;
+    font-variant-numeric: normal;
+}

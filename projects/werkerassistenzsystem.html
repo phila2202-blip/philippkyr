@@ -2,9 +2,15 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Werkerassistenzsystem – Philipp Kyr BSc</title>
+    <title>Werkerassistenzsystem – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48.png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 </head>
 <body>
 <header>
@@ -12,160 +18,289 @@
     <p>Computer Vision Konzept für das Industrie 4.0 Lab der FH St. Pölten</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="../index.html">Portfolio</a></li>
-        <li><a href="../projects.html">Projekte</a></li>
-        <li><a href="#ziel">Ziel</a></li>
-        <li><a href="#kalibrierung">Kalibrierung</a></li>
-        <li><a href="#objekterkennung">Objekterkennung</a></li>
-        <li><a href="#steuerung">Steuerung</a></li>
-        <li><a href="#ergebnis">Ergebnis</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Portfolio</a></li>
+            <li><a href="../projects.html">Projekte</a></li>
+            <li><a href="#herausforderung">Herausforderung</a></li>
+            <li><a href="#loesungsansatz">Lösungsansatz</a></li>
+            <li><a href="#hardware">Hardware</a></li>
+            <li><a href="#kalibrierung">Kalibrierung</a></li>
+            <li><a href="#objekterkennung">Objekterkennung</a></li>
+            <li><a href="#steuerung">Steuerung</a></li>
+            <li><a href="#projektmanagement">Projektmanagement</a></li>
+            <li><a href="#ergebnis">Ergebnis</a></li>
+            <li><a href="#quellen">Quellen</a></li>
+        </ul>
+    </nav>
 
 <main class="container">
     <div class="project-meta">
         <span><strong>Zeitraum:</strong> Februar – Juli 2022 (SS22)</span>
         <span><strong>Rahmen:</strong> Duales Praxisprojekt, 4. Semester, BSc Smart Engineering</span>
         <span><strong>Rolle:</strong> Projektleitung &amp; Umsetzung</span>
-        <span><strong>Betreuung:</strong> Dipl.-Ing. Christoph Braun, BSc · FH-Prof. Dr. Thomas Felberbauer, MSc</span>
     </div>
 
-    <section id="projektmanagement" class="project-section">
-        <h2>Projektmanagement</h2>
-        <p>Für die Strukturierung und zeitliche Planung des Projekts wurden ein Projektstrukturplan (PSP) sowie ein detailliertes Gantt-Chart erstellt. Dies ermöglichte die parallele Bearbeitung von Bildmanipulation, Objektdetektion und Kommunikation.</p>
+    <section id="herausforderung" class="project-section">
+        <h2>Herausforderung &amp; Problemstellung</h2>
+        <p>Im Industrie 4.0 Lab sollten die Möglichkeiten von Computer Vision möglichst anschaulich
+            demonstriert werden. Die Idee: ein Assistenzsystem, das eine Person durch eine
+            Baugruppenmontage begleitet. Eine Kamera analysiert den Arbeitsplatz, ein Projektor blendet
+            Arbeitsschritte, Bauteilinformationen und farbige Markierungen direkt auf der Arbeitsfläche ein.</p>
+        <p>Das Feedback sollte drei Dinge zeigen: den aktuellen Arbeitsschritt, das dafür verwendete
+            Bauteil und eine optische Markierung der im Schritt benötigten Materialien. Für die Kontrolle
+            von außen war ein Dashboard vorgesehen, über das sich der Montageablauf auch fernsteuern lässt.</p>
+        <p>Der ursprüngliche Vorschlag sah <strong>zwei Arbeitsbereiche</strong> vor, um das Computer-Vision-Konzept
+            und den im Labor vorhandenen Roboter zu einer gemeinsamen Montagelinie zu verbinden. Die Anbindung
+            des Dobot-Roboters wurde im Projektverlauf verworfen: die Entwicklung des
+            Kamera-Projektor-Kalibrierungsmoduls dauerte deutlich länger als geplant, und die daraus
+            entstandene Verzögerung ließ den zweiten Arbeitsbereich nicht mehr zu.</p>
+    </section>
+
+    <section id="loesungsansatz" class="project-section">
+        <h2>Lösungsansatz</h2>
+        <p>Aufgebaut wurde ein Montagebereich, in dem ein Projektor die Arbeitsfläche bespielt und eine
+            Kamera denselben Bereich auswertet. Die benötigten Bauteile werden per Objektdetektion
+            klassifiziert, farblich markiert und indexiert. Eine Gestensteuerung erlaubt die Bedienung
+            direkt am Arbeitsplatz, ohne Tastatur oder Maus; ein Node-RED-Dienst öffnet denselben Ablauf
+            für die Steuerung von außen und gibt den aktuellen Montagestatus aus.</p>
+
         <div class="image-gallery">
-            <figure>
-                <!-- Platzhalter für Abbildung 1: Projektstrukturplan -->
-                <img src="../img/werkerassistenz/projektstrukturplan.jpg" alt="Projektstrukturplan" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Projektstrukturplan (PSP)</figcaption>
-            </figure>
-            <figure>
-                <!-- Platzhalter für Abbildung 2: Gantt-Chart -->
-                <img src="../img/werkerassistenz/gantt-chart.jpg" alt="Gantt-Chart" onerror="this.src='../img/profil.svg'; this.style.opacity='0.2';">
-                <figcaption>Zeitplanung im Gantt-Chart</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/programmablauf.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/programmablauf.jpg" alt="Abbildung 28: Programmablauf des Systems" width="1400" height="1084" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 28:</strong> Programmablauf des Systems von der Kalibrierung über Bildaufnahme und Objekterkennung bis zur Projektion auf die Arbeitsfläche.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 28</span>
             </figure>
         </div>
     </section>
 
-    <section id="ziel" class="project-section">
-        <h2>Herausforderung & Problemstellung</h2>
-        <p>Im Industrie 4.0 Lab sollten die Möglichkeiten von Computer Vision möglichst anschaulich demonstriert
-            werden. Die Idee: ein Assistenzsystem, das eine Person durch eine Baugruppenmontage begleitet. Eine
-            Kamera analysiert den Arbeitsplatz, ein Projektor blendet Arbeitsschritte, Bauteilinformationen und
-            farbige Markierungen direkt auf der Arbeitsfläche ein.</p>
+    <section id="hardware" class="project-section">
+        <h2>Hardware &amp; Auslegung</h2>
+        <p>Ausgangspunkt der Beschaffung war die Frage, welche Kamera den
+            Arbeitsplatz vollständig erfasst. Dazu wurde der Laborarbeitsplatz vermessen und die
+            erforderliche Brennweite über den Zusammenhang
+            zwischen maximaler Objektgröße <em>G</em>, Bildsensorgröße <em>B</em>, Objektabstand <em>g</em>
+            und Brennweite <em>f</em> bestimmt:</p>
+        <p class="formel"><em>G</em> = <em>B</em> · (<em>g</em> / <em>f</em> − 1)</p>
+        <ul class="list">
+            <li><strong>Brennweitenbereich:</strong> 5 – 50 mm</li>
+            <li><strong>Sensorgröße:</strong> 1/2,5″, also rund 5,7 mm</li>
+            <li><strong>Montageabstand:</strong> 1000 mm über der Arbeitsfläche</li>
+            <li><strong>Ergebnis:</strong> eine maximal erfassbare Objektgröße von rund <strong>1134 mm</strong>, genug, um die
+                gesamte Arbeitsfläche abzudecken</li>
+        </ul>
+        <p>Für die Beschaffung wurden sechs Hersteller angefragt: Basler, Baumer, Sick, Cognex, Keyence und
+            Balluff. Baumer und Basler erwiesen sich als am interessantesten, weil sie fertige Bibliotheken
+            mitbringen, die sich direkt einbinden lassen (neoAPI beziehungsweise pylon). Grundsätzlich kommt
+            jede Kamera in Frage, die den <strong>GenICam</strong>-Standard unterstützt und sich über die Harvesters-API ansprechen lässt,
+            vorausgesetzt, der Hersteller gibt die nötigen Konfigurationsdateien frei. Als Projektor diente der am Laborplatz vorhandene Optoma ML750ST mit
+            einer Auflösung von 1280 × 800 Pixeln.</p>
+
         <div class="image-gallery">
             <figure>
-                <img src="../img/werkerassistenz/laborarbeitsplatz.jpg" alt="Laborarbeitsplatz im Industrie 4.0 Lab">
-                <figcaption>Laborarbeitsplatz mit Kamera und Projektor</figcaption>
-            </figure>
-            <figure>
-                <img src="../img/werkerassistenz/programmablauf.jpg" alt="Programmablauf des Systems">
-                <figcaption>Programmablauf: Kalibrierung, Bildaufnahme, Erkennung, Projektion</figcaption>
+                <a href="../img/werkerassistenz/laborarbeitsplatz.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/laborarbeitsplatz.jpg" alt="Abbildung 4: Laborarbeitsplatz im Industrie 4.0 Lab" width="929" height="658" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 4:</strong> Der vermessene Laborarbeitsplatz im Industrie 4.0 Lab. Kamera und Projektor sind über der Arbeitsfläche montiert und bilden den gemeinsamen Arbeitsbereich ab.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 4</span>
             </figure>
         </div>
     </section>
 
     <section id="kalibrierung" class="project-section">
-        <h2>Lösungsansatz</h2>
-        <h3>Kamera-Projektor-Kalibrierung</h3>
-        <p>Die größte Herausforderung war, Kamera und Projektor exakt aufeinander abzustimmen. Ein erster Ansatz
-            mit farbigen Markierungen (Blob-Detection) war zu anfällig für Helligkeit, Lichtfarbe und
-            Kamerawinkel und wurde verworfen.</p>
-        <p>Die Lösung war eine eigene Chessboard-Detection:</p>
+        <h2>Kamera-Projektor-Kalibrierung</h2>
+        <p>Die größte Herausforderung war, Kamera und Projektor exakt aufeinander abzustimmen. Ein erster
+            Ansatz über farbige Markierungen (Blob-Detection) wurde verworfen: er hängt zu stark von
+            Helligkeit, Lichtfarbe und Kamerawinkel ab und erlaubt weder eine genaue Positionsbestimmung
+            noch eine Fehlerkorrektur.</p>
+        <p>Für den zweiten Anlauf wurden zuerst die Anforderungen festgeschrieben, die eine tragfähige
+            Positionsbestimmung erfüllen muss:</p>
         <ul class="list">
-            <li>Ein Algorithmus berechnet die optimale Feldgröße des Schachbretts für die Projektorauflösung
-                (minimaler Pixelfehler, gleichmäßige Messpunktverteilung).</li>
-            <li>Das projizierte, rotierende Schachbrett dient zur automatischen Entzerrung der Kamera.</li>
-            <li>Über eine Perspektiven-Transformation und einen Binärbildabgleich wird die Pixelverschiebung
-                ermittelt und in X- und Y-Richtung automatisch korrigiert.</li>
+            <li>unabhängig von der Beleuchtungsstärke</li>
+            <li>unabhängig von der Lichtfarbe</li>
+            <li>automatische Fehlerkorrektur des Arbeitsbereiches</li>
+            <li>Fehlerkorrektur der Pixelpositionierung</li>
+            <li>Verringerung des Verzerrungseffekts der Kamera</li>
         </ul>
+        <p>Die Lösung war eine eigene Chessboard-Detection. Die Kameraverzerrung wird über die in OpenCV
+            enthaltenen Funktionen zur Schachbretterkennung und Entzerrung herausgerechnet.
+            Damit das automatisch abläuft, erzeugt eine eigene Funktion ein Schachbrett und lässt es über den Ausgabebildschirm rotieren;
+            die dabei aufgenommenen Bilder liefern die Daten für die Entzerrung.
+            Ergänzend entstand eine Funktion für transparente
+            Einblendungen, die Muster über den Bildschirm legt, ohne den Hintergrund zu verdecken.</p>
+        <p>Das Schachbrett bleibt auch für die Arbeitsbereichserfassung im Einsatz, weil es gegen wechselnde
+            Lichtverhältnisse robust ist und viele Messpunkte gleichzeitig liefert:</p>
+        <p class="formel">Messpunkte = (Felder horizontal − 1) · (Felder vertikal − 1)</p>
+        <p>Wie groß die Felder sein sollen, berechnet ein eigener Algorithmus aus Auflösung sowie minimaler
+            und maximaler Feldgröße. Bei 1920 × 1080 Pixeln, abzüglich eines Pixelrahmens
+            zur besseren Bereichserkennung also 1910 × 1070, sucht er zunächst den kleinsten Gesamtpixelfehler. Weil eine
+            gleichmäßige Verteilung der Messpunkte ebenso wichtig ist, wird zusätzlich die Fehlerdifferenz
+            zwischen horizontalen und vertikalen Feldern minimiert; im gezeigten Lauf fällt sie auf null.</p>
+        <p>Das so erzeugte Schachbrett wird projiziert, von der Kamera wieder aufgenommen und für die
+            Perspektiven-Transformation ausgewertet. Die Eckpunkte werden dabei nicht direkt gemessen,
+            sondern aus den verfügbaren Messpunkten interpoliert,
+            was eine deutlich genauere Abschätzung ergibt. Über einen Binärbildabgleich wird schließlich die verbleibende Pixelverschiebung
+            ermittelt und in X- und Y-Richtung automatisch korrigiert.</p>
+
         <div class="image-gallery">
             <figure>
-                <img src="../img/werkerassistenz/schachbrett-projektion.jpg" alt="Projiziertes Schachbrettmuster">
-                <figcaption>Erkennung des projizierten Schachbretts</figcaption>
+                <a href="../img/werkerassistenz/schachbrett-projektion.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/schachbrett-projektion.jpg" alt="Abbildung 12: Erzeugtes Schachbrettmuster auf dem Ausgabebildschirm" width="675" height="385" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 12:</strong> Das erzeugte Schachbrett wird angezeigt und rotiert. Aus den Aufnahmen dieser Rotation berechnet sich die Entzerrung der Kamera.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 12</span>
             </figure>
             <figure>
-                <img src="../img/werkerassistenz/schachbrett-arbeitsflaeche.jpg" alt="Schachbrett auf der Arbeitsfläche">
-                <figcaption>Kalibrierung auf der Arbeitsfläche</figcaption>
+                <a href="../img/werkerassistenz/schachbrett-arbeitsflaeche.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/schachbrett-arbeitsflaeche.jpg" alt="Abbildung 16: Projiziertes Schachbrett auf der Arbeitsfläche" width="904" height="679" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 16:</strong> Das regenerierte Schachbrett auf der Projektionsfläche. Je kleiner die Felder, desto dichter liegen die Messpunkte der Kalibrierung.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 16</span>
             </figure>
             <figure>
-                <img src="../img/werkerassistenz/perspektiven-transformation.jpg" alt="Perspektiven-Transformation">
-                <figcaption>Perspektiven-Transformation</figcaption>
+                <a href="../img/werkerassistenz/perspektiven-transformation.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/perspektiven-transformation.jpg" alt="Abbildung 17: Perspektiven-Transformation, verzerrte Aufnahme links, entzerrtes Ergebnis rechts" width="450" height="226" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 17:</strong> Perspektiven-Transformation: Aus den interpolierten Eckpunkten der schräg aufgenommenen Fläche (links) entsteht die entzerrte Draufsicht (rechts), auf die sich die Projektion bezieht.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 17</span>
             </figure>
         </div>
     </section>
 
     <section id="objekterkennung" class="project-section">
-        <h3>Objekterkennung mit YOLOv5</h3>
-        <p>Für die Erkennung der Bauteile (Arduino, Bluetooth-Modul, Breadboard, ESP, Drehgeber) wurde YOLOv5
-            trainiert. Nach rund 100 händisch in Roboflow annotierten Aufnahmen übernahm ein eigenes Skript mit dem
-            ersten trainierten Modell die Annotation automatisch – so wuchs das Datenset auf mehrere tausend
-            Objekte. Der Tracking-Algorithmus SORT, ergänzt um eine eigene Glättung, verhindert das „Zittern“ der
-            erkannten Positionen.</p>
+        <h2>Objekterkennung mit YOLOv5</h2>
+        <p>Für die Erkennung der Bauteile fiel die Wahl auf YOLOv5, wegen der einfachen Handhabung, der
+            Detektionsgenauigkeit und vor allem wegen der Geschwindigkeit, die für ein reaktionsfreudiges
+            Assistenzsystem nötig ist. Das Datenset umfasst fünf Klassen: <strong>Arduino</strong>,
+            <strong>Bluetooth-Modul</strong>, <strong>Breadboard</strong>, <strong>ESP</strong> und
+            <strong>Drehgeber</strong>.</p>
+        <p>Als Grundlage dienten rund 100 im Labor aufgenommene Bilder, die
+            in Roboflow manuell annotiert wurden. Auf Basis dieses ersten Modells übernahm ein eigens
+            entwickeltes Skript die weitere Annotation vollständig. Dadurch
+            ließ sich die Zahl der Aufnahmen drastisch steigern, und über
+            Bildmanipulation in Roboflow wurde das Datenset noch einmal verdreifacht.</p>
+        <p>Beim Training steigt die mittlere Durchschnittsgenauigkeit (mAP) auffallend schnell an. Das kann
+            auf ein noch zu kleines Datenset hindeuten. Auch die geringe Metrikabweichung zwischen Trainings-
+            und Validierungsset ist ein Hinweis, denn sie kann auf Overfitting hindeuten. In der Versuchsumgebung
+            reichte die erzielte Genauigkeit für den Prototyp aus; für einen produktiven Einsatz wäre ein
+            größeres und vielfältigeres Datenset der nächste Schritt.</p>
+        <p>Zur Stabilisierung der erkannten Positionen übernimmt der Tracking-Algorithmus <strong>SORT</strong>
+            die Objektnachverfolgung. Ergänzt wurde er um eine eigene Glättung, die das „Zittern“ der
+            Rückgabeposition unterdrückt, das aus den Ungenauigkeiten der Detektion entsteht.</p>
+
         <div class="image-gallery">
-            <figure>
-                <img src="../img/werkerassistenz/roboflow-annotation.jpg" alt="Annotation in Roboflow">
-                <figcaption>Annotation der Bauteile in Roboflow</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/roboflow-annotation.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/roboflow-annotation.jpg" alt="Abbildung 20: Annotation der Bauteile in Roboflow" width="1245" height="530" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 20:</strong> Annotation der Bauteile in Roboflow. Rund 100 Aufnahmen wurden von Hand beschriftet, bevor ein eigenes Skript die weitere Annotation übernahm.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 20</span>
             </figure>
-            <figure>
-                <img src="../img/werkerassistenz/datenset.jpg" alt="Anzahl der Objekte im Datenset">
-                <figcaption>Anzahl der aufgenommenen Objekte pro Klasse</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/datenset.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/datenset.jpg" alt="Abbildung 21: Anzahl der aufgenommenen Objekte je Klasse" width="735" height="769" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 21:</strong> Anzahl der aufgenommenen Objekte je Bauteilklasse im fertigen Datenset.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 21</span>
             </figure>
-            <figure>
-                <img src="../img/werkerassistenz/yolov5-training.jpg" alt="YOLOv5 Trainingsverlauf">
-                <figcaption>Trainingsverlauf (mAP) von YOLOv5</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/yolov5-training.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/yolov5-training.jpg" alt="Abbildung 22: Trainingsverlauf des YOLOv5-Modells" width="1245" height="796" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 22:</strong> Trainingsverlauf des YOLOv5-Modells. Der rasche Anstieg der mittleren Durchschnittsgenauigkeit (mAP) und die geringe Abweichung zwischen Trainings- und Validierungsset sind Hinweise auf die begrenzte Größe des Datensets.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 22</span>
             </figure>
         </div>
     </section>
 
     <section id="steuerung" class="project-section">
-        <h3>Gestensteuerung, Node-RED &amp; Softwarearchitektur</h3>
-        <ul class="list">
-            <li><strong>Gestensteuerung:</strong> Mit MediaPipe wird die Hand erkannt; virtuelle, projizierte
-                Buttons lassen sich mit dem Zeigefinger auslösen.</li>
-            <li><strong>Node-RED Dashboard:</strong> Externe Kontrolle und Steuerung der Arbeitsschritte,
-                Kommunikation über UDP im JSON-Format.</li>
-            <li><strong>Performance:</strong> Bildverarbeitung, Kommunikation, Gestensteuerung und Objekterkennung
-                laufen als vier parallele Prozesse auf eigenen CPU-Kernen, verbunden über Pipes.</li>
-        </ul>
+        <h2>Gestensteuerung, Node-RED &amp; Softwarearchitektur</h2>
+        <p>Die Bedienung erfolgt unmittelbar am Arbeitsplatz. Über die
+            Bibliothek MediaPipe wird die Hand erfasst; deren Handmodell liefert 21 Landmarken, aus denen sich die Fingerposition ableiten
+            lässt. In den Arbeitsbereich projizierte virtuelle Buttons werden mit dem Zeigefinger ausgelöst
+            und schalten jeweils einen Arbeitsschritt weiter.</p>
+        <p>Parallel dazu läuft ein Node-RED-Dienst, den das Python-Programm selbst startet. Er gibt den
+            aktuellen Montagestatus aus und erlaubt die Steuerung der Arbeitsschritte von außen. Die
+            Kommunikation läuft über UDP, der Informationsaustausch im JSON-Format.</p>
+        <p>Als Programmiersprache wurde Python gewählt, weil es alle benötigten Bibliotheken unterstützt,
+            von OpenCV über YOLOv5 und MediaPipe bis PyTorch, und schnelles Prototyping erlaubt. Damit die Oberfläche
+            trotz der Rechenlast reaktionsfreudig bleibt, nutzt die Anwendung die Mehrkernarchitektur
+            moderner Prozessoren: <strong>vier Prozesse</strong> laufen auf eigenen physischen CPU-Kernen, nämlich
+            Bildverarbeitung, Kommunikation, Gestensteuerung und Objekterkennung, und tauschen ihre Daten
+            über Pipes aus.</p>
+
         <div class="image-gallery">
-            <figure>
-                <img src="../img/werkerassistenz/gestensteuerung.jpg" alt="Gestensteuerung mit virtuellen Buttons">
-                <figcaption>Virtuelle Buttons per Zeigefinger</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/gestensteuerung.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/gestensteuerung.jpg" alt="Abbildung 25: Handmodell von MediaPipe mit 21 nummerierten Landmarken" width="1317" height="460" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 25:</strong> Das Handmodell von MediaPipe mit 21 Landmarken. Die Position der Zeigefingerspitze (Punkt 8) gegenüber dem Handgelenk liefert die Geste, mit der die projizierten Buttons ausgelöst werden.</figcaption>
+                <span class="fig-source">Abbildung aus der MediaPipe-Dokumentation, wiedergegeben in Kyr (2022), Abbildung 25</span>
+            </figure>
+        </div>
+    </section>
+
+    <section id="projektmanagement" class="project-section">
+        <h2>Projektmanagement</h2>
+        <p>Die Arbeitspakete wurden zunächst in einer Mindmap gesammelt und anschließend in einen
+            Projektstrukturplan überführt. Für die zeitliche Planung kam ein Gantt-Diagramm hinzu, das
+            Arbeitszeiträume und Abhängigkeiten sichtbar macht und über das Semester hinweg laufend
+            angepasst wurde. Das ermöglichte die parallele Bearbeitung von Bildmanipulation,
+            Objektdetektion und Kommunikation.</p>
+        <p>Das Projekttagebuch zeigt den Verlauf von der Ideenfindung am 15. Februar 2022 über die lange
+            Programmierphase bis zur Inbetriebnahme. Eine Zäsur ist der 23. April 2022: an diesem Tag wurde
+            das erste Konzept der Kamerakalibrierung verworfen. An diesem Punkt trat die Chessboard-Detection
+            an die Stelle der Blob-Detection. Die Installation der Kamera und die Inbetriebnahme folgten
+            Anfang Mai, die Fertigstellung am 13. Mai 2022, die Projektvernissage am 14. Juni 2022.</p>
+
+        <div class="image-gallery">
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/projektstrukturplan.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/projektstrukturplan.jpg" alt="Abbildung 3: Projektstrukturplan zum Projektstart" width="1494" height="1051" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 3:</strong> Projektstrukturplan zum Projektstart. Die vier Kategorien bündeln die Arbeitspakete und erlaubten die parallele Bearbeitung.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 3</span>
             </figure>
         </div>
     </section>
 
     <section id="ergebnis" class="project-section">
-        <h2>Ergebnis & Mehrwert</h2>
+        <h2>Ergebnis &amp; Mehrwert</h2>
         <p>Entstanden ist ein funktionsfähiges Werkerassistenzsystem, das in acht Schritten durch den Aufbau
-            einer LED-Steuerung mit Arduino führt – von der Aufgabenbeschreibung über die Platzierung der Bauteile
-            bis zur Verdrahtung. Benötigte Bauteile werden erkannt und auf der Arbeitsfläche hervorgehoben. Das
-            System wurde im Mai 2022 einsatzbereit übergeben und für die Demonstration bei der Langen Nacht der
-            Forschung eingesetzt.</p>
+            einer LED-Steuerung mit Arduino führt:</p>
+        <ul class="list">
+            <li>Aufgabenbeschreibung</li>
+            <li>Breadboard nehmen</li>
+            <li>Arduino platzieren</li>
+            <li>Widerstand anschließen</li>
+            <li>LED anschließen</li>
+            <li>Verdrahtung</li>
+            <li>Drehgeber anschließen</li>
+            <li>Gratulation zur Fertigstellung</li>
+        </ul>
+        <p>Benötigte Bauteile werden erkannt und auf der Arbeitsfläche hervorgehoben, Produktinformationen
+            lassen sich zum jeweiligen Schritt einblenden. Damit vereint der Prototyp mehrere Computer-Vision-Konzepte an einem Platz,
+            nämlich Bildmanipulation, Objekterkennung und Gestensteuerung, und zeigt, wie sich Mixed Reality im produktiven Einsatz nutzen lässt. Der Nutzen liegt in der digitalen Anleitung von Personal und
+            Schulungsteilnehmenden: Die benötigte Information erscheint am Ort des Arbeitsschritts und muss
+            nicht aus einer separaten Dokumentation entnommen werden.</p>
+        <p>Das System wurde im Mai 2022 einsatzbereit übergeben, bei der Projektvernissage im Juni vorgeführt
+            und anschließend für die Demonstration bei der Langen Nacht der Forschung eingesetzt.</p>
+
         <div class="image-gallery">
-            <figure>
-                <img src="../img/werkerassistenz/werkerassistenzsystem.jpg" alt="Werkerassistenzsystem auf der Projektionsfläche">
-                <figcaption>Werkerassistenzsystem auf der Projektionsfläche</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/werkerassistenzsystem.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/werkerassistenzsystem.jpg" alt="Abbildung 29: Werkerassistenzsystem auf der Projektionsfläche" width="1103" height="491" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 29:</strong> Das fertige Werkerassistenzsystem im Betrieb: Arbeitsschritt, Bauteilinformationen und Bedienelemente werden direkt auf die Arbeitsfläche projiziert.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 29</span>
             </figure>
-            <figure>
-                <img src="../img/werkerassistenz/optisches-feedback.jpg" alt="Optisches Feedback bei der Objekterkennung">
-                <figcaption>Optisches Feedback: Objekterkennung und Markierung</figcaption>
+            <figure class="figure-wide">
+                <a href="../img/werkerassistenz/optisches-feedback.jpg" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/werkerassistenz/optisches-feedback.jpg" alt="Abbildung 30: Optisches Feedback mit Objektdetektion und Schüttgutmarkierung" width="1400" height="468" loading="lazy" decoding="async"></a>
+                <figcaption><strong>Abbildung 30:</strong> Optisches Feedback: rechts die Objektdetektion der Bauteile, links die farbige Markierung des benötigten Schüttguts.</figcaption>
+                <span class="fig-source">Quelle: Kyr (2022), Abbildung 30</span>
             </figure>
         </div>
-        <ul class="tags">
+    </section>
+
+    <section id="quellen" class="project-section">
+        <h2>Quellen</h2>
+        <p class="citation-box">Kyr, P. (2022). <em>Computer Vision Konzept</em> [Praxisbericht, Februar bis Juli 2022]. Fachhochschule St. Pölten, Dualer Bachelorstudiengang Smart Engineering of Production Technologies and Processes.</p>
+        <p>Die Abbildungen dieser Seite stammen aus dem genannten Praxisbericht und tragen dessen
+            Abbildungsnummern. Abbildung 25 bildet das Handmodell aus der MediaPipe-Dokumentation ab und ist
+            deshalb gesondert gekennzeichnet.</p>
+
+        <ul class="tags" style="margin-top: 30px;">
             <li>Python</li><li>OpenCV</li><li>YOLOv5</li><li>PyTorch</li><li>Roboflow</li><li>SORT</li>
-            <li>MediaPipe</li><li>Node-RED</li><li>Multiprocessing</li>
+            <li>MediaPipe</li><li>Node-RED</li><li>Multiprocessing</li><li>GenICam</li>
         </ul>
-        <a class="btn" href="../projects.html">Zurück zu den Projekten</a>
+        <a class="btn" style="margin-top: 20px;" href="../projects.html">Zurück zu den Projekten</a>
     </section>
 </main>
 
 <footer>
-    <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
+    <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="../impressum.html">Impressum &amp; Datenschutz</a></p>
 </footer>
-<script>document.getElementById('jahr').textContent = new Date().getFullYear();</script>
+<script src="../js/seite.js" defer></script>
+<script src="../js/kopfbiegung.js" defer></script>
 </body>
 </html>

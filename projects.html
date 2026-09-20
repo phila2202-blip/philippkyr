@@ -2,34 +2,49 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projektübersicht von Philipp Kyr BSc – Computer Vision, IIoT, Sensorik und Softwarearchitektur.">
-    <title>Projekte &amp; Forschung – Philipp Kyr BSc</title>
+    <meta name="description" content="Projektübersicht von Philipp Kyr, BSc – Computer Vision, IIoT, Sensorik und Softwarearchitektur.">
+    <title>Projekte &amp; Forschung – Philipp Kyr, BSc</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Kopf dunkel, Inhalt hell: derselbe Aufbau wie auf den Detailseiten. */
         body {
-            background: var(--dark-gradient);
-            color: var(--text-light);
-            min-height: 100vh;
+            background: var(--p-ground);
+            background-image: none;
+            color: var(--p-ink-2);
         }
         .projects-header {
             text-align: center;
-            padding: 70px 20px 40px;
+            padding: 96px 20px 56px;
+            background: var(--dark-gradient);
+            border-bottom: 1px solid rgba(0, 229, 176, 0.18);
         }
         .projects-header h1 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4.4vw, 3.5rem);
+            font-weight: 900;
             color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+            line-height: 1.02;
+            margin-bottom: 14px;
+            hyphens: auto;
         }
         .projects-header p {
             font-size: 1.15rem;
-            color: var(--text-light-muted);
+            color: #a7b8b2;
             max-width: 680px;
             margin: 0 auto;
+            line-height: 1.6;
+        }
+        @media (max-width: 720px) {
+            .projects-header { padding: 64px 20px 40px; }
         }
     </style>
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <body>
 
@@ -39,7 +54,7 @@
             <a href="index.html" class="nav-brand">
                 <div class="nav-logo-badge">PK</div>
                 <div class="nav-brand-text">
-                    <span class="nav-name">Philipp Kyr BSc</span>
+                    <span class="nav-name">Philipp Kyr, BSc</span>
                     <span class="nav-tagline">Founder &amp; Engineer</span>
                 </div>
             </a>
@@ -49,7 +64,6 @@
                 <li><a href="index.html#startup" class="nav-link">Gründung (engiQ)</a></li>
                 <li><a href="index.html#projekte" class="nav-link">Highlights</a></li>
                 <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
-                <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
             </ul>
 
             <a href="index.html#kontakt" class="btn btn-primary nav-cta-btn">Let’s Connect</a>
@@ -66,9 +80,23 @@
 
     <main class="container" style="padding-bottom: 80px;">
 
+        <!-- Aktuelle Arbeit: engiQ Compass -->
+        <article id="engiq-compass" class="project-entry" style="border-color: #00664f;">
+            <img class="project-thumbnail" src="img/engiq-compass-wortmarke.png" alt="Wortmarke engiQ Compass" style="object-fit: contain; background: #ffffff; padding: 14px;">
+            <div class="project-content">
+                <h2>engiQ Compass: Plattform für Engineering und Qualitätsmanagement</h2>
+                <p>Durchgängige Software von der Projektierung und normkonformen Auslegung über geführte Prüfabläufe bis zur revisionssicheren Abnahme. Eigene Entwicklung, alle neun Module umgesetzt. engiQ systems ist in der Gründungsphase, der Marktstart steht bevor.</p>
+                <ul class="tags">
+                    <li>Engineering</li><li>Qualitätsmanagement</li><li>FAT / SAT</li><li>IEC 61439</li><li>PAdES</li><li>Docker</li>
+                </ul>
+                <a class="btn btn-primary" href="https://engiq.systems" target="_blank" rel="noopener noreferrer" style="padding: 10px 22px; font-size: 0.88rem; margin-top: 10px;">engiq.systems ↗</a>
+                <p style="margin-top: 12px; font-size: 0.8rem; color: var(--p-ink-3);">Der Link führt auf die Homepage von engiQ systems.</p>
+            </div>
+        </article>
+
         <!-- Masterarbeit -->
         <article id="masterarbeit" class="project-entry">
-            <img class="project-thumbnail" src="img/masterarbeit/master_1.png" alt="Thumbnail Masterarbeit" style="object-fit: contain; padding: 8px;">
+            <img class="project-thumbnail" src="img/masterarbeit/c4-container-architektur.png" alt="Thumbnail Masterarbeit" style="object-fit: contain; padding: 8px;">
             <div class="project-content">
                 <h2>Masterarbeit: Dezentrale IIoT-Architektur</h2>
                 <p>Technologische Konzeption eines IoT/IIoT-Systems zur skalierbaren Überwachung und Analyse dezentralisierter Daten. Entwicklung einer verteilten Edge-Computing Architektur mit hybrider Datenverarbeitung (Neo4j, InfluxDB, NATS) und Cloud-Shadowing.</p>
@@ -89,6 +117,19 @@
                     <li>Edge Computing</li><li>Docker</li><li>Kubernetes</li><li>K3s</li><li>Podman</li><li>IIoT</li>
                 </ul>
                 <a class="btn btn-primary" href="projects/edge-computing-analyse.html" style="padding: 10px 22px; font-size: 0.88rem; margin-top: 10px;">Zum Projekt →</a>
+            </div>
+        </article>
+
+        <!-- Knowledge Modeling State-of-the-Art Report -->
+        <article id="knowledge-modeling" class="project-entry">
+            <img class="project-thumbnail" src="img/star/thumb.jpg" alt="Thumbnail Knowledge Modeling" style="object-fit: contain; padding: 8px;">
+            <div class="project-content">
+                <h2>Knowledge Modeling in Industrie 4.0</h2>
+                <p>State-of-the-Art Report zu Wissensmodellierung: RDF-Formate als Austauschformat, Graphdatenbanken für verknüpfte Anlagendaten und Vektordatenbanken für Ähnlichkeitssuche, samt Benchmark-Vergleich und Kriterienkatalog. Die Vorarbeit zur Datenhaltung der Masterarbeit.</p>
+                <ul class="tags">
+                    <li>Knowledge Modeling</li><li>RDF / OWL</li><li>SPARQL</li><li>Graphdatenbanken</li><li>Neo4j</li><li>Industrie 4.0</li>
+                </ul>
+                <a class="btn btn-primary" href="projects/knowledge-modeling-star.html" style="padding: 10px 22px; font-size: 0.88rem; margin-top: 10px;">Zum Bericht →</a>
             </div>
         </article>
 
@@ -138,12 +179,10 @@
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="jahr">2026</span> Philipp Kyr BSc. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum &amp; Datenschutz</a></p>
+            <p>&copy; <span id="jahr">2026</span> Philipp Kyr, BSc. Alle Rechte vorbehalten. | <a href="impressum.html">Impressum &amp; Datenschutz</a></p>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('jahr').textContent = new Date().getFullYear();
-    </script>
+    <script src="js/seite.js" defer></script>
 </body>
 </html>
