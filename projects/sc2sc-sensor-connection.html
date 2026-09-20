@@ -37,7 +37,7 @@
     <div class="project-meta">
         <span><strong>Zeitraum:</strong> WS 2023/24 und SS 2024</span>
         <span><strong>Rahmen:</strong> Masterklassenprojekt Industrie 4.0 (MKL-PR-I4.0 PA mit23)</span>
-        <span><strong>Bearbeitung:</strong> im Zweierteam</span>
+        <span><strong>Bearbeitung:</strong> gemeinsam mit Andreas Jilch</span>
         <span><strong>Eigener Anteil:</strong> Protokollentwurf, Datenschnittstelle und ESP32-Software</span>
     </div>
 
@@ -56,7 +56,7 @@
         <p class="citation-box">Wie ist die Datenschnittstelle auf Basis TCP/IP zu gestalten, um eine
             schnelle und benutzerfreundliche Erweiterung einer Siemens S7 Maschinensteuerung um
             zusätzliche, selbstentwickelte Sensoreinheiten zu ermöglichen?</p>
-        <span class="fig-source">Quelle: Kyr (2024), Kapitel 2 und 3</span>
+        <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Kapitel 2 und 3</span>
     </section>
 
     <section id="loesungsansatz" class="project-section">
@@ -75,7 +75,7 @@
             <figure class="figure-wide">
                 <a href="../img/sc2sc/schema.jpg?v=3" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/schema.jpg?v=3" alt="Abbildung 1: Schema der SC2SC-Schnittstelle zwischen Siemens S7 Steuerung und ESP32-Sensormodulen" width="1313" height="858" loading="lazy" decoding="async"></a>
                 <figcaption><strong>Abbildung 1:</strong> Logischer Aufbau der SC2SC-Schnittstelle. Die Steuerung fragt als Client die ESP32-Module ab, die als Server antworten.</figcaption>
-                <span class="fig-source">Quelle: Kyr (2024), Abbildung 1</span>
+                <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Abbildung 1</span>
             </figure>
         </div>
     </section>
@@ -91,7 +91,7 @@
             <figure>
                 <a href="../img/sc2sc/sc2sc-protokollaufbau.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/sc2sc-protokollaufbau.png" alt="Abbildung 49: Die drei Segmente des SC2SC-Protokolls" width="697" height="632" loading="lazy" decoding="async"></a>
                 <figcaption><strong>Abbildung 49:</strong> Die drei statischen Segmente der Datenschnittstelle.</figcaption>
-                <span class="fig-source">Quelle: Kyr (2024), Abbildung 49</span>
+                <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Abbildung 49</span>
             </figure>
         </div>
 
@@ -161,12 +161,12 @@
             <figure>
                 <a href="../img/sc2sc/testaufbau.jpg?v=2" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/testaufbau.jpg?v=2" alt="Abbildung 53: Testaufbau mit Siemens SIMATIC S7-1500 Steuerung" width="1317" height="1396" loading="lazy" decoding="async"></a>
                 <figcaption><strong>Abbildung 53:</strong> Testaufbau mit der Siemens-Steuerung, an der die Schnittstelle validiert wurde.</figcaption>
-                <span class="fig-source">Quelle: Kyr (2024), Abbildung 53</span>
+                <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Abbildung 53</span>
             </figure>
             <figure>
                 <a href="../img/sc2sc/esp32-module.jpg?v=4" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/esp32-module.jpg?v=4" alt="Abbildung 54: Die aufgebauten ESP32-Sensormodule" width="1081" height="445" loading="lazy" decoding="async"></a>
                 <figcaption><strong>Abbildung 54:</strong> Die aufgebauten ESP32-Sensormodule mit eigener Stromversorgung.</figcaption>
-                <span class="fig-source">Quelle: Kyr (2024), Abbildung 54</span>
+                <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Abbildung 54</span>
             </figure>
         </div>
     </section>
@@ -231,7 +231,7 @@
             <figure>
                 <a href="../img/sc2sc/sc2sc-webkonfiguration.png" target="_blank" rel="noopener" title="Abbildung in Originalgröße öffnen"><img src="../img/sc2sc/sc2sc-webkonfiguration.png" alt="Abbildung 60: Weboberfläche zur Konfiguration der Netzwerkverbindung" width="423" height="612" loading="lazy" decoding="async"></a>
                 <figcaption><strong>Abbildung 60:</strong> Die Konfigurationsseite des Sensormoduls, erreichbar über den eigenen Zugangspunkt.</figcaption>
-                <span class="fig-source">Quelle: Kyr (2024), Abbildung 60</span>
+                <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Abbildung 60</span>
             </figure>
         </div>
     </section>
@@ -250,7 +250,7 @@
             können, und die Weboberfläche macht die Inbetriebnahme ohne Programmierkenntnisse möglich.
             Damit lässt sich eine bestehende Maschinensteuerung um eigene Sensorik erweitern, ohne sich an
             ein proprietäres System zu binden.</p>
-        <span class="fig-source">Quelle: Kyr (2024), Kapitel 17.8</span>
+        <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Kapitel 17.8</span>
     </section>
 
     <section id="ausblick" class="project-section">
@@ -266,15 +266,16 @@
             nach einem Update des Arduino-Frameworks nicht mehr nutzbar, sodass auf eine weniger performante
             Alternative ausgewichen werden musste. Dieser Punkt ist der erste Ansatzpunkt für die nächste
             Iteration.</p>
-        <span class="fig-source">Quelle: Kyr (2024), Kapitel 17.9 und 17.11</span>
+        <span class="fig-source">Quelle: Kyr &amp; Jilch (2024), Kapitel 17.9 und 17.11</span>
     </section>
 
     <section id="quellen" class="project-section">
         <h2>Quellen</h2>
-        <p class="citation-box">Kyr, P. (2024). <em>SC2SC – Sensor Connection to Siemens Controller</em> [Abschlussdokumentation, Masterklassenprojekt Industrie 4.0, gemeinsam mit einem Projektpartner verfasst]. Fachhochschule St. Pölten, Department Medien und Digitale Technologien.</p>
+        <p class="citation-box">Kyr, P., &amp; Jilch, A. (2024). <em>SC2SC – Sensor Connection to Siemens Controller</em> [Abschlussdokumentation, Masterklassenprojekt Industrie 4.0]. Fachhochschule St. Pölten, Department Medien und Digitale Technologien.</p>
         <p>Die Abbildungen dieser Seite stammen aus der genannten Abschlussdokumentation und tragen deren
-            Abbildungsnummern. Das Projekt wurde zu zweit bearbeitet; die hier dargestellten Inhalte
-            beziehen sich auf den Protokollentwurf, die Datenschnittstelle und die ESP32-seitige Software.</p>
+            Abbildungsnummern. Die Arbeit wurde gemeinsam mit Andreas Jilch verfasst; die hier
+            dargestellten Inhalte beziehen sich auf den Protokollentwurf, die Datenschnittstelle und
+            die ESP32-seitige Software.</p>
 
         <ul class="tags" style="margin-top: 30px;">
             <li>Siemens S7 (TIA Portal)</li><li>ESP32</li><li>C/C++</li><li>SCL</li><li>TCP/IP</li>
